@@ -3,7 +3,7 @@ Router.route('home', {
 	layoutTemplate: 'DesktopLayout'
 });
 
-Router.route('Lights', {
+Router.route('lights', {
 	path: '/lights',
 	layoutTemplate: 'DesktopLayout',
 	data: {
