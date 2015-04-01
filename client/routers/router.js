@@ -1,3 +1,4 @@
 Router.route('home', {
-	path: '/'
+	path: '/',
+	layoutTemplate: 'DesktopLayout'
 });
