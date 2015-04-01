@@ -1,0 +1,25 @@
+﻿<template name="Notifications">
+<div id="notifications">
+	<div class="background js-close"></div>
+	<div class="drop-down">
+		<h1>NOTIFICATIONS AND ALERT CENTER</h1>
+		<span>PURGE</span>
+		<div class="messages">
+			
+			<h2>PAST NOTIFICATIONS</h2>
+			
+			<ul class="past-notifications">
+				{{#each oldNotifications}}
+					<li class="notification">
+						<h2>{{description}}</h2>
+						<span>{{date}}</span>
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+		<div class="close js-close">
+			<i class="ionicons ion-navicon-round"></i>
+		</div>
+	</div>
+</div>
+</template>
