@@ -1,0 +1,62 @@
+body {
+	min-width: 780px;
+	margin: 0px;
+	flex-flow: column;
+	height: 100%;
+	font-family: Roboto, arial, sans-serif;
+}
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+/********************
+	Header
+********************/
+
+body > header #current-date {
+	background-color: #333333;
+	color: #eeeeee;
+	float: left;
+	width: 365px;
+	font-size: x-large;
+	text-align: center;
+	line-height: 50px;
+	border-right: 1px solid #323131;
+}
+
+body > header #current-date span:first-child {
+	font-weight: bold;
+	margin-right: 25px;
+}
+
+body > header #notification-ticker {
+	background-color: #474e4d;
+	color: #eeeeee;
+	line-height: 50px;
+	overflow: hidden;
+	padding-left: 30px;
+	border-left: 1px solid #454c4b;
+	font-size: large;
+	color: #fefdfd;
+	cursor: pointer;
+}
+
+body > header #notification-ticker span:nth-of-type(1) {
+	color: #c1c0c0;
+	margin-left: 7px;
+}
+  
+body > header #microphone {
+	float: right;
+	position: absolute;
+	right: 50px;
+	font-size: larger;
+	color: white;
+	top: 15px;
+	cursor: pointer;
+}
