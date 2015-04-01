@@ -1,0 +1,25 @@
+.simple-device-view ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	overflow-x: hidden;
+	padding-bottom: 20px;
+}
+
+.simple-device-view ul li {
+	margin-bottom: 70px;
+}
+
+.simple-device-view ul li h3 {
+	float: left;
+	margin: 0px;
+}
+
+.simple-device-view ul li span {
+	float: right;
+}
+
+.simple-device-view ul li span span {
+	float: none;
+	cursor: pointer;
+}
