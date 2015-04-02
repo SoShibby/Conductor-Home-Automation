@@ -1,4 +1,4 @@
-Template.Lights.helpers({
+﻿Template.Lights.helpers({
 	locationName: function() {
 		return "Unknown Location".toUpperCase();
 	},
@@ -6,6 +6,6 @@ Template.Lights.helpers({
 		return this.devices.length;
 	},
 	isLightOn: function() {
-		return properties.power ? "active" : "";
+		return this.properties.power ? "active" : "";
 	}
 });
