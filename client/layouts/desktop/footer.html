@@ -1,6 +1,6 @@
 <template name="Footer">
 	<ul>
-		<li class="category selected">
+		<li class="category {{isCurrentRouteName 'home'}}">
 			<a href="{{pathFor route='home'}}">
 				<div class="icon">
 					<i class="fa fa-home"></i>
@@ -8,7 +8,7 @@
 				<span>DASHBOARD</span>
 			</a>
 		</li>
-		<li class="category">
+		<li class="category {{isCurrentRouteName 'lights'}}">
 			<a href="{{pathFor route='lights'}}">
 				<div class="icon">
 					<i class="fa fa-lightbulb-o"></i>
@@ -16,7 +16,7 @@
 				<span>LIGHTS</span>
 			</a>
 		</li>
-		<li class="category">
+		<li class="category {{isCurrentRouteName 'settings'}}">
 			<div class="icon">
 				<i class="ionicons ion-settings"></i>
 			</div>
