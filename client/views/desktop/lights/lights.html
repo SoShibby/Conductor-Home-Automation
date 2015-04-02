@@ -19,7 +19,18 @@
 						{{#if equals type "light"}}
 							<li>
 								<h3>{{name}}</h3>
-								<span>LIGHTS ARE <span class="switch {{isLightOn}}"></span></span>	
+								<span>LIGHTS ARE <span class="switch {{isLightOn}}"></span></span>
+								{{#if properties.brightness}}
+									<div class="slider">
+										<div class="popup">
+											<div class="bottom-line"></div>
+											<div class="top-line"></div>
+											<span>%</span>
+											<span class="value">{{properties.brightness}}</span>
+										</div>
+										<input type="range" min="0" max="100" value="{{properties.brightness}}">
+									</div>
+								{{/if}}								
 							</li>
 						{{/if}}
 					{{/each}}

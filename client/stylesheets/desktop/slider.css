@@ -1,0 +1,87 @@
+.slider {
+	clear: both;
+	height: 70px;
+	overflow: hidden;
+}
+
+.slider input {
+	width: 100%;
+	height: 3px;
+	-webkit-appearance: none;
+	outline: 0;
+}
+
+.slider input::-webkit-slider-thumb {
+	background-color: #666;
+	-webkit-appearance: none !important;
+	position: relative;
+	width: 8px;
+	height: 100%;
+}
+
+.slider input::-webkit-slider-runnable-track {
+	background-color: #888888; 
+}
+
+.slider input::-webkit-slider-thumb:before {
+	content: "-";
+	position: absolute;
+	left: -3000px;
+	right: 0;
+	top: -2px;
+	bottom: 0;
+	background-color: #00c19e;
+	overflow: hidden;
+	height: 3px;
+}
+
+.slider input::-webkit-slider-thumb:after {
+	content: "";
+	position: absolute;
+	left: -8px;
+	right: -8px;
+	top: -10px;
+	bottom: -10px;
+	background: #b0b0b0;
+	border-radius: 50%;
+	border: 2px solid #474e4d;
+	z-index: 10;
+	overflow: hidden;
+}
+
+/*	Slider value */
+
+.slider {
+	margin-bottom: 50px;
+}
+
+.slider .popup {
+	height: 40px;
+	width: 80px;
+	margin-left: 225px;
+}
+
+.slider .popup .bottom-line {
+	height: 1px;
+	width: 30px;
+	transform: rotate(-45deg);
+	background-color: #848282;
+	top: 29px;
+	position: relative;
+	left: 10px;
+}
+
+.slider .popup .top-line {
+	height: 1px;
+	width: 44px;
+	background-color: #848282;
+	position: relative;
+	left: 35px;
+	top: 18px;
+}
+
+.slider .popup span {
+	color: #cfcfcf;
+	font-size: small;
+	float: right;
+}
