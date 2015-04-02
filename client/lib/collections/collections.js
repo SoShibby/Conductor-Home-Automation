@@ -4,6 +4,7 @@ Locations = new Meteor.Collection(null);
 //Insert "dummy" device data for now
 Devices.insert({ 
 					name: "Roof Lights",
+					type: "light",
 					components: [{
 									name: "Roof Light",
 									type: "light",
@@ -20,6 +21,7 @@ Devices.insert({
 				
 Devices.insert({ 
 					name: "Window Lights",
+					type: "light",
 					components: [{
 									name: "Window Light",
 									type: "light",
