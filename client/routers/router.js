@@ -7,6 +7,6 @@ Router.route('lights', {
 	path: '/lights',
 	layoutTemplate: 'DesktopLayout',
 	data: {
-				devices: Devices.find({})
+				devices: Devices.find({}).fetch()
 		  }
 });
