@@ -24,3 +24,7 @@
 	float: none;
 	cursor: pointer;
 }
+
+.simple-device-view .slider {
+	padding-top: 30px;
+}
