@@ -14,7 +14,7 @@
 			var links = makeNavigationLinks();
 			
 			if(links.length !== 0){
-				window.location.href = links[0].url;		//Navigate to the first link in the sidebar
+				Router.go('lights', {}, { query: { locationName: links[0].name }});		//Navigate to the first link in the sidebar
 			}else{
 				//No links exist in the sidebar
 			}
