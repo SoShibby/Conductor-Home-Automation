@@ -1,6 +1,6 @@
 ﻿Template.Lights.helpers({
 	locationName: function() {
-		return "Unknown Location".toUpperCase();
+		return this.locationName.toUpperCase();
 	},
 	numberOfDevices: function() {
 		return this.devices.length;
