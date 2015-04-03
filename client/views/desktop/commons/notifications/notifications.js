@@ -21,7 +21,6 @@
 
 //Show the notifications drop down menu when the user clicks on a dom element
 $('html').on('click', '.js-show-notifications', function() {
-	console.log('clicked');
 	$('#notifications').show();
 	$('#notifications .background').fadeIn();
 	$('#notifications .drop-down').animate({
