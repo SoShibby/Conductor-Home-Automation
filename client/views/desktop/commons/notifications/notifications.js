@@ -1,24 +1,23 @@
-﻿//Display old notifications
-Template.Notifications.oldNotifications = function() {
-	//Populate the notifications with dummy data, just so we can see how the website will look
-	return [{
-				description: "Overall temperature has been automatically risen to 23°C",
-				date: 1427919995000
-			},
-			{
-				description: "The washing machine was left on while nobody was home",
-				date: 1420143995000
-			},
-			{
-				description: "Dishwasher has finished the cycle",
-				date: 1417465595000
-			}];
-}
-
-//Convert dates from unix epoch date to a human readable date format
-Template.Notifications.date = function() {
-	return moment(this.date).format('h:mm MM MMMM YYYY');
-}
+﻿Template.Notifications.helpers({
+	oldNotifications: function() {
+		//Populate the notifications with dummy data, just so we can see how the website will look
+		return [{
+					description: "Overall temperature has been automatically risen to 23°C",
+					date: 1427919995000
+				},
+				{
+					description: "The washing machine was left on while nobody was home",
+					date: 1420143995000
+				},
+				{
+					description: "Dishwasher has finished the cycle",
+					date: 1417465595000
+				}];
+	},
+	date: function() {
+		return moment(this.date).format('h:mm MM MMMM YYYY');
+	}
+});
 
 //Show the notifications drop down menu when the user clicks on a dom element
 $('html').on('click', '.js-show-notifications', function() {
