@@ -9,6 +9,17 @@
 		return this.properties.power ? "active" : "";
 	},
 	sidebarInformation: function() {
+		//If no location is selected in the sidebar, then go to the first link in the navigation sidebar
+		if(this.locationName === undefined){
+			var links = makeNavigationLinks();
+			
+			if(links.length !== 0){
+				window.location.href = links[0].url;		//Navigate to the first link in the sidebar
+			}else{
+				//No links exist in the sidebar
+			}
+		}
+		
 		return {
 					title: "Lighting Control",
 					links: makeNavigationLinks(this.locationName)
