@@ -53,7 +53,7 @@ function makeNavigationLinks(){
 						name: location.name,
 						highlightedDescription: highlightedDescription,
 						description: description,
-						url: Router.current().route.url() + "?location=" + location.name,
+						url: Router.current().route.url() + "?locationName=" + location.name,
 						selected: false
 				   });
 	}
