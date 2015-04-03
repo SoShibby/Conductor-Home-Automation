@@ -11,7 +11,7 @@
 	sidebarInformation: function() {
 		return {
 					title: "Lighting Control",
-					links: makeNavigationLinks()
+					links: makeNavigationLinks(this.locationName)
 			   };
 	}
 });
@@ -21,7 +21,7 @@
  *
  * @return  array containing link information that is shown in the side bar
  */
-function makeNavigationLinks(){
+function makeNavigationLinks(currentLocation){
 	var links = [];
 	var locations = Locations.find().fetch();
 	
@@ -54,7 +54,7 @@ function makeNavigationLinks(){
 						highlightedDescription: highlightedDescription,
 						description: description,
 						url: Router.current().route.url() + "?locationName=" + location.name,
-						selected: false
+						selected: (currentLocation === location.name)		//If the location that this link points to is the same location that we are currently viewing then set this link as selected 
 				   });
 	}
 	
