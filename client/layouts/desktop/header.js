@@ -1,8 +1,14 @@
+var currentDate = new ReactiveVar(moment());
+
 Template.Header.helpers({
 	time: function(){
-		return moment().format('hh:mmA');
+		return currentDate.get().format('hh:mmA');
 	},
 	date: function(){
-		return moment().format('M MMMM YYYY');
+		return currentDate.get().format('M MMMM YYYY');
 	}
 });
+
+setInterval(function() {
+	currentDate.set(moment());
+}, 1000);
