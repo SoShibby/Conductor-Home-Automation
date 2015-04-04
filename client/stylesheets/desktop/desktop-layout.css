@@ -1,13 +1,13 @@
 html {
-	height: 100%;
+    height: 100%;
 }
 
 body {
-	min-width: 780px;
-	margin: 0px;
-	flex-flow: column;
-	height: 100%;
-	font-family: Roboto, arial, sans-serif;
+    min-width: 780px;
+    margin: 0px;
+    flex-flow: column;
+    height: 100%;
+    font-family: Roboto, arial, sans-serif;
 }
 
 .clearfix:after {
@@ -19,116 +19,116 @@ body {
 }
 
 /********************
-	Header
+    Header
 ********************/
 
 body > header #current-date {
-	background-color: #333333;
-	color: #eeeeee;
-	float: left;
-	width: 365px;
-	font-size: x-large;
-	text-align: center;
-	line-height: 50px;
-	border-right: 1px solid #323131;
+    background-color: #333333;
+    color: #eeeeee;
+    float: left;
+    width: 365px;
+    font-size: x-large;
+    text-align: center;
+    line-height: 50px;
+    border-right: 1px solid #323131;
 }
 
 body > header #current-date span:first-child {
-	font-weight: bold;
-	margin-right: 25px;
+    font-weight: bold;
+    margin-right: 25px;
 }
 
 body > header #notification-ticker {
-	background-color: #474e4d;
-	color: #eeeeee;
-	line-height: 50px;
-	overflow: hidden;
-	padding-left: 30px;
-	border-left: 1px solid #454c4b;
-	font-size: large;
-	color: #fefdfd;
-	cursor: pointer;
+    background-color: #474e4d;
+    color: #eeeeee;
+    line-height: 50px;
+    overflow: hidden;
+    padding-left: 30px;
+    border-left: 1px solid #454c4b;
+    font-size: large;
+    color: #fefdfd;
+    cursor: pointer;
 }
 
 body > header #notification-ticker span:nth-of-type(1) {
-	color: #c1c0c0;
-	margin-left: 7px;
+    color: #c1c0c0;
+    margin-left: 7px;
 }
   
 body > header #microphone {
-	float: right;
-	position: absolute;
-	right: 50px;
-	font-size: larger;
-	color: white;
-	top: 15px;
-	cursor: pointer;
+    float: right;
+    position: absolute;
+    right: 50px;
+    font-size: larger;
+    color: white;
+    top: 15px;
+    cursor: pointer;
 }
 
 /********************
-	Main Content
+    Main Content
 ********************/
 
 body > #main {
-	height: calc(100% - (50px + 92px));		/* Remove header and footer height from the total height of the nav */
-	margin-bottom: 0px;
+    height: calc(100% - (50px + 92px));     /* Remove header and footer height from the total height of the nav */
+    margin-bottom: 0px;
 }
 
 /********************
-	Footer
+    Footer
 ********************/
 
 body > footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	background-color: #3c3c3c;
-	border-top: 2px solid #00ba99;
-	min-width: 780px;
-	z-index: 10;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #3c3c3c;
+    border-top: 2px solid #00ba99;
+    min-width: 780px;
+    z-index: 10;
 }
 
 body > footer ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	text-align: center;
-	height: 90px;
-	white-space: nowrap;
-	width: 100%;
-	overflow-x: auto;
-	overflow-y: hidden;
-	display: flex;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    height: 90px;
+    white-space: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
 }
 
 body > footer ul::-webkit-scrollbar {
     width: 2px;
-	background: transparent;
+    background: transparent;
 }
  
 body > footer ul::-webkit-scrollbar-track {
-	/*-webkit-box-shadow: inset 0 0 6px rgba(71, 78, 77, 1);*/
-	background: transparent;
-	border-radius: 10px;
+    /*-webkit-box-shadow: inset 0 0 6px rgba(71, 78, 77, 1);*/
+    background: transparent;
+    border-radius: 10px;
 }
 
 body > footer ul::-webkit-scrollbar * {
-	background: transparent;
+    background: transparent;
 }
 
 body > footer ul::-webkit-scrollbar-thumb {
-	background:rgba(255,0,0,0.1) !important;
-	border-radius: 10px;
-	/*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);*/
+    background:rgba(255,0,0,0.1) !important;
+    border-radius: 10px;
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);*/
 }
 
 body > footer ul  li {
-	width: 130px;
-	height: 90px;
-	list-style-type: none;
-	display: inline-block;
-	cursor: pointer;
-	flex: none;
+    width: 130px;
+    height: 90px;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+    flex: none;
 }
 
 body > footer ul  li a,
@@ -136,40 +136,40 @@ body > footer ul  li a:link,
 body > footer ul  li a:visited,
 body > footer ul  li a:hover,
 body > footer ul  li a:active{
-	text-decoration: none;
+    text-decoration: none;
 }
 
 body > footer .category .icon {
-	background-color: white;
-	border-radius: 50%;
-	height: 40px;
-	width: 40px;
-	margin-top: 13px;
-	color: #3c3c3c;
-	display: table;
-	margin-left: 45px;
-	margin-bottom: 7px;
-	box-shadow: 0px 0px 0px 1px #5F5F5F;
+    background-color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-top: 13px;
+    color: #3c3c3c;
+    display: table;
+    margin-left: 45px;
+    margin-bottom: 7px;
+    box-shadow: 0px 0px 0px 1px #5F5F5F;
 }
 
 body > footer .category .icon i{
-	font-size: xx-large;
-	text-align: center;
-	vertical-align: middle;
-	display: table-cell;
+    font-size: xx-large;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 body > footer .category span {
-	display: block;
-	color: white;
-	font-size: x-small;
+    display: block;
+    color: white;
+    font-size: x-small;
 }
 
 body > footer .category.selected {
-	background-color: #00ba99;
+    background-color: #00ba99;
 }
 
 body > footer .category.selected .icon {
-	box-shadow: none;
-	color: #00b997;
+    box-shadow: none;
+    color: #00b997;
 }

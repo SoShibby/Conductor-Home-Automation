@@ -1,19 +1,19 @@
 .switch {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .switch.active {
-	color: #03f0c4 !important;
+    color: #03f0c4 !important;
 }
 
 .switch.active:after {
-	content: 'ON';
+    content: 'ON';
 }
 
 .switch:not(.active) {
-	color: #FF5C5C !important;
+    color: #FF5C5C !important;
 }
 
 .switch:not(.active):after {
-	content: 'OFF';
+    content: 'OFF';
 }

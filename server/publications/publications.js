@@ -1,7 +1,7 @@
 Meteor.publish("devices", function () {
-	return Devices.find();
+    return Devices.find();
 });
 
 Meteor.publish("locations", function () {
-	return Locations.find();
+    return Locations.find();
 });

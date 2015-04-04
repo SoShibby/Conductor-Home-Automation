@@ -1,220 +1,220 @@
 /********************
-	Main Content
+    Main Content
 ********************/
 
 #main {
-	margin-bottom: 92px;
+    margin-bottom: 92px;
 }
 
 #main #dashboard {
-	background-color: #00ebc1;
-	height: 310px;
-	border-top: 1px solid #00ffd7;
-	box-shadow: 0 1px 0 #43f0d1;
-	border-bottom: 1px solid #00e8b7;
-	display: flex;
-	justify-content: center;
+    background-color: #00ebc1;
+    height: 310px;
+    border-top: 1px solid #00ffd7;
+    box-shadow: 0 1px 0 #43f0d1;
+    border-bottom: 1px solid #00e8b7;
+    display: flex;
+    justify-content: center;
 }
 
 /********************
-	Card
+    Card
 ********************/
 
 .card {
-	width: 370px;
-	min-width: 370px;
-	margin-top: 40px;
+    width: 370px;
+    min-width: 370px;
+    margin-top: 40px;
 }
 
 .card:first-child {
-	margin-right: 100px;
+    margin-right: 100px;
 }
 
 .card:last-child {
-	margin-left: 100px;
+    margin-left: 100px;
 }
 
 .card .bar {
-	width: 135px;
-	border-radius: 5px;
-	height: 5px;
-	background-color: #1aa28a;
+    width: 135px;
+    border-radius: 5px;
+    height: 5px;
+    background-color: #1aa28a;
 }
 
 .card h2 {
-	color: white;
-	font-weight: normal;
-	font-size: small;
-	margin-bottom: 25px;
-	margin-top: 10px;
+    color: white;
+    font-weight: normal;
+    font-size: small;
+    margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .card.temperature .details {
-	height: 117px;
+    height: 117px;
 }
 
 .card.temperature .details .icon {
-	vertical-align: middle;
-	display: inline-block;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .card.temperature .details .icon .circle {
-	height: 70px;
-	width: 70px;
-	background-color: #17ab91;
-	border-radius: 50%;
-	line-height: 60px;
-	text-align: center;
-	display: table;
+    height: 70px;
+    width: 70px;
+    background-color: #17ab91;
+    border-radius: 50%;
+    line-height: 60px;
+    text-align: center;
+    display: table;
 }
 
 .card.temperature .details .icon .circle i {
-	font-size: 60px;
-	color: #00ebc1;
-	display: table-cell;
-	text-align: center;
-	vertical-align: middle;
+    font-size: 60px;
+    color: #00ebc1;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .card.temperature .details .temperature {
-	font-size: 110px;
-	color: white;
-	margin-left: 45px;
-	vertical-align: middle;
-	display: inline-block;
+    font-size: 110px;
+    color: white;
+    margin-left: 45px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .card.temperature .temperature span:last-child {
-	margin-left: -27px;
+    margin-left: -27px;
     color: #19a68d;
 }
 
 .card.temperature .slider {
-	width: 250px;
-	height: 5px;
-	clear: both;
-	border-radius: 5px;
-	position: relative;
-	margin-top: 40px;
-	margin-left: 55px;
+    width: 250px;
+    height: 5px;
+    clear: both;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 55px;
 }
 
 .card.temperature .slider .slider-background {
-	background-color: #10c1a2;
-	height: inherit;
-	border-radius: 5px;
-	position: absolute;
-	width: inherit;
+    background-color: #10c1a2;
+    height: inherit;
+    border-radius: 5px;
+    position: absolute;
+    width: inherit;
 }
 
 .card.temperature .slider .slider-foreground {
-	background-color: white;
-	height: inherit;
-	position: absolute;
-	width: 85px;
-	border-radius: 5px;
+    background-color: white;
+    height: inherit;
+    position: absolute;
+    width: 85px;
+    border-radius: 5px;
 }
 
 .card.next-event {
-	width: 280px;
-	min-width: 280px;
+    width: 280px;
+    min-width: 280px;
 }
 
 .card.next-event .details h3 {
-	color: #1aa38b;
-	font-size: 36px;
-	font-weight: 100;
-	margin: 0;
+    color: #1aa38b;
+    font-size: 36px;
+    font-weight: 100;
+    margin: 0;
 }
 
 .card.next-event .details h2:nth-child(2) {
-	font-size: 80px;
-	margin: 0;
-	float: left;
+    font-size: 80px;
+    margin: 0;
+    float: left;
 }
 
 .card.next-event .details h2:nth-child(3) {
-	margin: 0;
-	float: left;
-	font-size: 80px;
-	color: #1b9e87;
+    margin: 0;
+    float: left;
+    font-size: 80px;
+    color: #1b9e87;
 }
 
 .card.next-event .about {
-	color: white;
-	font-size: 23px;
-	clear: both;
-	padding-top: 9px;
+    color: white;
+    font-size: 23px;
+    clear: both;
+    padding-top: 9px;
 }
 
 /********************
-	People
+    People
 ********************/
 
 #people {
-	height: 120px;
-	padding-top: 60px;
-	display: flex;
-	justify-content: center;
+    height: 120px;
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
 }
 
 #people .person {
-	height: 70px;
-	width: 230px;
-	text-align: center;
-	opacity: 0.4;
-	cursor: pointer;
-	margin-right: 60px;
+    height: 70px;
+    width: 230px;
+    text-align: center;
+    opacity: 0.4;
+    cursor: pointer;
+    margin-right: 60px;
 }
 
 #people .person:last-child {
-	margin-right: 0px;
+    margin-right: 0px;
 }
 
 #people .person.selected {
-	opacity: 1;
+    opacity: 1;
 }
 
 #people .person .portrait {
-	height: 70px;
-	width: 70px;
-	background-color: #e76e5e;
-	color: #CD1C04;
-	border-radius: 50%;
-	line-height: 60px;
-	text-align: center;
-	display: table;
-	float: left;
+    height: 70px;
+    width: 70px;
+    background-color: #e76e5e;
+    color: #CD1C04;
+    border-radius: 50%;
+    line-height: 60px;
+    text-align: center;
+    display: table;
+    float: left;
 }
 
 #people .person .portrait i {
-	font-size: 50px;
-	display: table-cell;
-	text-align: center;
-	vertical-align: middle;
+    font-size: 50px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
 }
 
 #people .person .name {
-	line-height: 80px;
-	color: #878787;
-	font-size: large;
-	float: left;
-	margin-left: 15px;
+    line-height: 80px;
+    color: #878787;
+    font-size: large;
+    float: left;
+    margin-left: 15px;
 }
 
 #people .add-person {
-	background-color: #00ba99;
-	height: 30px;
-	width: 30px;
-	margin-top: 25px;
-	cursor: pointer;
+    background-color: #00ba99;
+    height: 30px;
+    width: 30px;
+    margin-top: 25px;
+    cursor: pointer;
 }
 
 #people .add-person span {
-	color: white;
-	font-size: xx-large;
-	vertical-align: middle;
-	text-align: center;
-	line-height: 30px;
-	padding-left: 6px;
+    color: white;
+    font-size: xx-large;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 30px;
+    padding-left: 6px;
 }

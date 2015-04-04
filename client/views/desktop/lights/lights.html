@@ -1,43 +1,43 @@
 <template name="Lights">
-	{{> Sidebar sidebarInformation}}
-	
-	<section id="devices" class="main-device-layout simple-device-view">
-		<div class="content-wrapper">
-			<header>
-				<span>{{locationName}}</span>
-				{{#if devices}}
-					{{#if isArrayOfSize devices 1}}
-						<span>TOTAL OF {{numberOfDevices}} LIGHT SOURCE</span>
-					{{else}}
-						<span>TOTAL OF {{numberOfDevices}} LIGHT SOURCES</span>
-					{{/if}}
-				{{else}}
-					<span>NO LIGHT SOURCES FOUND</span>
-				{{/if}}
-			</header>
-			<ul>
-				{{#each devices}}
-					{{#each components}}
-						{{#if equals type "light"}}
-							<li>
-								<h3>{{name}}</h3>
-								<span>LIGHTS ARE <span class="switch {{isLightOn}}"></span></span>
-								{{#if properties.brightness}}
-									<div class="slider">
-										<div class="popup">
-											<div class="bottom-line"></div>
-											<div class="top-line"></div>
-											<span>%</span>
-											<span class="value">{{properties.brightness}}</span>
-										</div>
-										<input type="range" min="0" max="100" value="{{properties.brightness}}">
-									</div>
-								{{/if}}								
-							</li>
-						{{/if}}
-					{{/each}}
-				{{/each}}
-			</ul>
-		</div>
-	</section>
+    {{> Sidebar sidebarInformation}}
+    
+    <section id="devices" class="main-device-layout simple-device-view">
+        <div class="content-wrapper">
+            <header>
+                <span>{{locationName}}</span>
+                {{#if devices}}
+                    {{#if isArrayOfSize devices 1}}
+                        <span>TOTAL OF {{numberOfDevices}} LIGHT SOURCE</span>
+                    {{else}}
+                        <span>TOTAL OF {{numberOfDevices}} LIGHT SOURCES</span>
+                    {{/if}}
+                {{else}}
+                    <span>NO LIGHT SOURCES FOUND</span>
+                {{/if}}
+            </header>
+            <ul>
+                {{#each devices}}
+                    {{#each components}}
+                        {{#if equals type "light"}}
+                            <li>
+                                <h3>{{name}}</h3>
+                                <span>LIGHTS ARE <span class="switch {{isLightOn}}"></span></span>
+                                {{#if properties.brightness}}
+                                    <div class="slider">
+                                        <div class="popup">
+                                            <div class="bottom-line"></div>
+                                            <div class="top-line"></div>
+                                            <span>%</span>
+                                            <span class="value">{{properties.brightness}}</span>
+                                        </div>
+                                        <input type="range" min="0" max="100" value="{{properties.brightness}}">
+                                    </div>
+                                {{/if}}                             
+                            </li>
+                        {{/if}}
+                    {{/each}}
+                {{/each}}
+            </ul>
+        </div>
+    </section>
 </template>
