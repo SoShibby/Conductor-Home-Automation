@@ -22,7 +22,7 @@ Authentication = (function() {
 		var apiKey = GUID.createGUID();
 		
 		if(AccessLevel[accessLevel] === undefined)
-			throw "Unknown access level";
+			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unknown access level");
 		
 		apiKeys.insert({ 
 						 apiKey: apiKey,
