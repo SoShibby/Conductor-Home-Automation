@@ -1,0 +1,66 @@
+#create-account {
+    width: 327px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 10%;
+}
+
+#create-account #account-info h1 {
+    color: #1fa67b;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+#create-account #account-info input {
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 20px;
+    width: 100%;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    height: 35px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+#create-account #account-info a {
+    font-size: 13px;
+    text-align: center;
+    display: block;
+    color: #2a6496 !important;
+    text-decoration: underline;
+}
+
+#create-account #account-info input[type="submit"] {
+    color: #fff;
+    background-color: #1fa67b;
+    background-image: none;
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-radius: 6px;
+    height: 40px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 10px;
+    text-shadow: none;
+    cursor: pointer;
+}
+
+#create-account #account-info hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #ffffff;
+}
+
+#create-account footer {
+    color: #6d6d6d;
+    font-size: 12px;
+    text-align: center;
+}
