@@ -28,3 +28,7 @@ Router.route('lights', {
 Router.route('create-account', {
     path: '/create-account'
 });
+
+Router.route('login', {
+    path: '/login'
+});

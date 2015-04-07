@@ -1,4 +1,5 @@
-#create-account {
+#create-account,
+#login {
     width: 327px;
     margin-left: auto;
     margin-right: auto;
@@ -6,7 +7,8 @@
     top: 10%;
 }
 
-#create-account #account-info h1 {
+#create-account #account-info h1,
+#login #login-info h1 {
     color: #1fa67b;
     font-size: 20px;
     text-align: center;
@@ -14,7 +16,8 @@
     margin-bottom: 25px;
 }
 
-#create-account #account-info input {
+#create-account #account-info input,
+#login #login-info input{
     padding: 4px 6px;
     font-size: 14px;
     line-height: 20px;
@@ -29,7 +32,8 @@
     margin-bottom: 15px;
 }
 
-#create-account #account-info a {
+#create-account #account-info a,
+#login #login-info a {
     font-size: 13px;
     text-align: center;
     display: block;
@@ -37,7 +41,8 @@
     text-decoration: underline;
 }
 
-#create-account #account-info input[type="submit"] {
+#create-account #account-info input[type="submit"],
+#login #login-info input[type="submit"] {
     color: #fff;
     background-color: #1fa67b;
     background-image: none;
@@ -52,14 +57,16 @@
     cursor: pointer;
 }
 
-#create-account #account-info hr {
+#create-account #account-info hr,
+#login #login-info hr {
     margin: 20px 0;
     border: 0;
     border-top: 1px solid #eeeeee;
     border-bottom: 1px solid #ffffff;
 }
 
-#create-account footer {
+#create-account footer,
+#login footer {
     color: #6d6d6d;
     font-size: 12px;
     text-align: center;
