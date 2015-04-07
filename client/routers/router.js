@@ -1,3 +1,18 @@
+/*  Redirect logged out users to the login page    */
+var OnBeforeActions = {
+    loginRequired: function(pause) {
+        if (!Meteor.userId()) {
+            Router.go('login')
+        } else {
+            this.next();
+        }
+    }
+};
+
+Router.onBeforeAction(OnBeforeActions.loginRequired, {
+    only: ['home', 'lights']
+});
+
 Router.route('home', {
     path: '/',
     layoutTemplate: 'DesktopLayout'
