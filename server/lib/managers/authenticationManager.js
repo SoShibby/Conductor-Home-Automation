@@ -21,7 +21,8 @@ Authentication = (function() {
 		
 		var apiKey = GUID.createGUID();
 		
-        if(AccessLevel[accessLevel] === undefined)
+        //Check if the requested access level is valid
+        if(!contains(AccessLevel, accessLevel))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unknown access level");
 		
 		ApiKeys.insert({ 
@@ -31,7 +32,23 @@ Authentication = (function() {
                        
 		return apiKey;
 	}
-
+    
+    /**
+	 * Checks if a value exist in an object
+	 *
+	 * @param   object  the object that should be searched
+     * @param   value   the value that we are looking for
+     * @return          true if the value exist in the object otherwise returns false
+	 */
+	function contains(obj, value) {
+		for (key in obj) {
+            if (obj[key] === value) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * Removes an API key from the database
 	 *
