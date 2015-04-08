@@ -13,7 +13,7 @@ ControlUnitRepository = (function() {
 		Assert.isString(userId, "Parameter userId must be a string");
         Assert.isString(name, "Parameter name must be a string");
 		
-		var apiKey = Authentication.createApiKey(Authentication.AccessLevel.ControlUnit);
+		var apiKey = Authentication.createApiKey(Authentication.AccessLevel.CONTROL_UNIT);
 		var controlUnitId = GUID.createGUID();
 		
 		controlUnits.insert({ 
