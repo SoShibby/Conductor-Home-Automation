@@ -5,3 +5,7 @@ Meteor.publish("devices", function () {
 Meteor.publish("locations", function () {
     return Locations.find();
 });
+
+Meteor.publish("controlUnits", function () {
+    return ControlUnits.find();
+});
