@@ -21,16 +21,17 @@ Authentication = (function() {
 		
 		var apiKey = GUID.createGUID();
 		
-		if(AccessLevel[accessLevel] === undefined)
+        if(AccessLevel[accessLevel] === undefined)
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unknown access level");
 		
-		apiKeys.insert({ 
-						 apiKey: apiKey,
-						 accessLevel: accessLevel
+		ApiKeys.insert({ 
+                            apiKey: apiKey,
+                            accessLevel: accessLevel
 					   });
+                       
 		return apiKey;
 	}
-	
+
 	/**
 	 * Removes an API key from the database
 	 *
@@ -44,7 +45,7 @@ Authentication = (function() {
 		if(!existsApiKey(apiKey))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No api key exists with the key '" + apiKey + "'");
 	
-		apiKeys.remove({
+		ApiKeys.remove({
                             apiKey: apiKey
                        });
 	}
@@ -55,7 +56,7 @@ Authentication = (function() {
 	 * @return  an array containing all API keys from the database
 	 */
 	function getApiKeys(){
-		return apiKeys.find().fetch();
+		return ApiKeys.find().fetch();
 	}
 	
 	/**
@@ -65,7 +66,7 @@ Authentication = (function() {
 	 * @return         true if the API key exist in the database otherwise false
 	 */
 	function existsApiKey(apiKey){
-		var apiKey = apiKeys.findOne({
+		var apiKey = ApiKeys.findOne({
 									   apiKey: apiKey
    									 });
                                      
@@ -84,7 +85,7 @@ Authentication = (function() {
 		if(!existsApiKey(apiKey))
 			return false;
 			
-		var apiKey = apiKeys.findOne({
+		var apiKey = ApiKeys.findOne({
                                           apiKey: apiKey,
                                           accessLevel: accessLevel
    									 });
