@@ -1,7 +1,7 @@
 /**
  * Handles the insertion and retrieving of control units from and to the database
  */
-ControlUnitManager = (function() {
+ControlUnitRepository = (function() {
 
 	/**
 	 * Creates and adds a new control unit to the database
