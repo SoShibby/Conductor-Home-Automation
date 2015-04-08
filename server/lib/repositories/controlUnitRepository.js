@@ -16,7 +16,7 @@ ControlUnitRepository = (function() {
 		var apiKey = Authentication.createApiKey(Authentication.AccessLevel.CONTROL_UNIT);
 		var controlUnitId = GUID.createGUID();
 		
-		controlUnits.insert({ 
+		ControlUnits.insert({ 
 								controlUnitId: controlUnitId, 
 								name: name, 
 								apiKey: apiKey,
@@ -38,7 +38,7 @@ ControlUnitRepository = (function() {
 		if(!exists(controlUnitId))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove control unit, no control unit exists with the id '" + controlUnitId + "'");
 		
-		controlUnits.remove({
+		ControlUnits.remove({
 								controlUnitId: controlUnitId
 							});
 	}
@@ -53,7 +53,7 @@ ControlUnitRepository = (function() {
 	function getNameById(controlUnitId){
 		Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
 		
-		var controlUnit = controlUnits.findOne({ 
+		var controlUnit = ControlUnits.findOne({ 
 													controlUnitId: controlUnitId 
 												});
 		
@@ -73,7 +73,7 @@ ControlUnitRepository = (function() {
 	function getControlUnitIdByApiKey(apiKey){
 		Assert.isString(apiKey, "Parameter apiKey must be a string");
 		
-		var controlUnit = controlUnits.findOne({ apiKey: apiKey });
+		var controlUnit = ControlUnits.findOne({ apiKey: apiKey });
 		
 		if(!controlUnit)
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Couldn't find a control unit with the apiKey '" + apiKey + "'");
@@ -90,7 +90,7 @@ ControlUnitRepository = (function() {
 	function getControlUnitsByOwnerId(ownerId){
 		Assert.isString(ownerId, "Parameter ownerId must be a string");
 		
-		return controlUnits.find({ owner: ownerId }).fetch();
+		return ControlUnits.find({ owner: ownerId }).fetch();
 	}
 	
 	/**
@@ -103,7 +103,7 @@ ControlUnitRepository = (function() {
 	function getApiKey(controlUnitId){
 		Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
 		
-		var controlUnit = controlUnits.findOne({ controlUnitId: controlUnitId });
+		var controlUnit = ControlUnits.findOne({ controlUnitId: controlUnitId });
 		
 		if(!controlUnit)
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Couldn't find a control unit with the controlUnitId '" + controlUnitId + "'");
@@ -120,7 +120,7 @@ ControlUnitRepository = (function() {
 	function exists(controlUnitId){
 		Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
 		
-		var controlUnit = controlUnits.findOne({ 
+		var controlUnit = ControlUnits.findOne({ 
 													controlUnitId: controlUnitId 
 												});
 		return controlUnit !== undefined;
@@ -141,7 +141,7 @@ ControlUnitRepository = (function() {
 		if(!exists(controlUnitId))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to set name of control unit, no control unit exists with the id '" + controlUnitId + "'");
 		
-		controlUnits.update({
+		ControlUnits.update({
 								controlUnitId: controlUnitId
 							},
 							{
@@ -165,7 +165,7 @@ ControlUnitRepository = (function() {
 		if(!exists(controlUnitId))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to set owner of control unit, no control unit exists with the id '" + controlUnitId + "'");
 		
-		var controlUnit = controlUnits.findOne({
+		var controlUnit = ControlUnits.findOne({
 												controlUnitId: controlUnitId
 											 });
 							 
@@ -187,7 +187,7 @@ ControlUnitRepository = (function() {
 		if(!exists(controlUnitId))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to set owner of control unit, no control unit exists with the id '" + controlUnitId + "'");
 		
-		controlUnits.update({
+		ControlUnits.update({
 								controlUnitId: controlUnitId
 							},
 							{
@@ -215,7 +215,7 @@ ControlUnitRepository = (function() {
 		if(!exists(controlUnitId))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to set owner of control unit, no control unit exists with the id '" + controlUnitId + "'");
 		
-		var controlUnit = controlUnits.findOne({
+		var controlUnit = ControlUnits.findOne({
                                                     owner: userId,
                                                     controlUnitId: controlUnitId
                                                 });
