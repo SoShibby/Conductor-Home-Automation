@@ -110,6 +110,15 @@ ControlUnitRepository = (function() {
 		
 		return controlUnit["apiKey"];
 	}
+    
+    /**
+	 * Retrieves all control units in the database
+	 *
+	 * @return  returns all control units in the database
+	 */
+    function getAll(){
+        return ControlUnits.find().fetch();
+    }
 	
 	/**
 	 * Check if a control unit exist with a given id
@@ -231,6 +240,7 @@ ControlUnitRepository = (function() {
 		getControlUnitIdByApiKey: getControlUnitIdByApiKey,
 		getControlUnitsByOwnerId: getControlUnitsByOwnerId,
 		getApiKey: getApiKey,
+        getAll: getAll,
 		exists: exists,
 		setName: setName,
 		getOwner: getOwner,
