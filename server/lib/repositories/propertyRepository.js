@@ -21,7 +21,8 @@ PropertyRepository = (function() {
 		Assert.isString(componentId, "Parameter componentId must be a string");
 		Assert.isString(propertyName, "Parameter propertyName must be a string");
 		
-		if(enums !== undefined && !isValidEnum(enums))
+        //Check if the enum field is set and if it is set then check if the supplied enum is valid
+		if(enums !== undefined && enums !== null && !isValidEnum(enums))
 			throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Invalid property enum.");
 		
 		if(!isValidValue(propertyValue, dataType, enums))
@@ -33,7 +34,7 @@ PropertyRepository = (function() {
                                                                     type: dataType,
                                                                     'enum': enums,
                                                                     updated: new Date
-                                                                }
+                                                                };
 		var result = Devices.update({ 
                                         controlUnitId: controlUnitId,
                                         id: deviceId,
