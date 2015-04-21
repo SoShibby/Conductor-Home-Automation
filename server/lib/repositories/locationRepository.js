@@ -49,9 +49,19 @@ LocationRepository = (function() {
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove location, couldn't find a location with _id '" + id + "'");
     }
     
+    /**
+	 * Get a location with a certain id
+	 *
+     * @param _id  the id of the location that is to be retrieved
+     */
+    function get(_id){
+        return Locations.findOne(_id);
+    }
+    
     //return public functions
     return {
         add: add,
-        remove: remove
+        remove: remove,
+        isOwner: isOwner
     }
 }());
