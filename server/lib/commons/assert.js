@@ -11,6 +11,12 @@ Assert = (function() {
 		}
 	}
 	
+    function isFloat(variable, errorMessage){
+        if(!(typeof variable == "number" && variable%1!==0)){
+            throw new Meteor.Error(ErrorCode.ASSERTION_FAILED, errorMessage);
+		}
+    }
+    
 	function isBoolean(variable, errorMessage){
 		if(!(typeof variable == "boolean")){
             throw new Meteor.Error(ErrorCode.ASSERTION_FAILED, errorMessage);
