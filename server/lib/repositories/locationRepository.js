@@ -62,6 +62,6 @@ LocationRepository = (function() {
     return {
         add: add,
         remove: remove,
-        isOwner: isOwner
+        get: get
     }
 }());
