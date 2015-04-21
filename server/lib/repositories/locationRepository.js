@@ -46,7 +46,7 @@ LocationRepository = (function() {
         if(result === 1)
             return true;
         else
-            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove location, couldn't find a location with _id '" + id + "'");
+            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove location, couldn't find a location with _id '" + _id + "'");
     }
     
     /**
