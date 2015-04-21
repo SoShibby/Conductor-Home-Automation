@@ -78,6 +78,7 @@ Assert = (function() {
 	return {
 		isString: isString,
 		isInt: isInt,
+        isFloat: isFloat,
 		isBoolean: isBoolean,
 		isArray: isArray,
 		isObject: isObject,
