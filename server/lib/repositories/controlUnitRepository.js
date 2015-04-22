@@ -20,7 +20,11 @@ ControlUnitRepository = (function() {
 								controlUnitId: controlUnitId, 
 								name: name, 
 								apiKey: apiKey,
-								owner: userId
+								owner: userId,
+								connection: {
+									isConnected: true,
+									lastHeartbeat: new Date()
+								}
 							});
                             
 		return controlUnitId;

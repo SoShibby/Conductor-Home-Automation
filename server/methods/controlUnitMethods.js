@@ -187,5 +187,9 @@ Meteor.methods({
 		
 		//Send OK response
 		return true;
-	}
+	},
+    heartbeat: function(apiKey){
+        var controlUnitId = ControlUnitRepository.getControlUnitIdByApiKey(apiKey);
+		HeartbeatManager.heartbeat(controlUnitId);
+    }
 });
