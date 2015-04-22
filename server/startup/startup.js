@@ -1,3 +1,5 @@
+Fiber = Npm.require('fibers')
+
 Meteor.startup(function() {
     //Create a new communication channel for each control unit
     var controlUnits = ControlUnitRepository.getAll();
