@@ -23,7 +23,7 @@ Router.route('home', {
     },
     subscriptions: function() {
         return [
-                    Meteor.subscribe('friends'),
+                    Meteor.subscribe('confirmedFriends'),
                     Meteor.subscribe('myProfile')
                 ];
     },
