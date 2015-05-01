@@ -1,7 +1,13 @@
+var selectedUser = new ReactiveVar(null);
+
 Template.Home.helpers({
     selected: function() {
-        //Make the person John Doe selected, just so we can see how the website will look.
-        if(this.firstName === "John" && this.lastName === "Doe")
-            return "selected";
+        var isUserSelected = this._id === selectedUser.get()._id;   //Check if the user we are currently iterating over is the same user that is selected
+        return (isUserSelected) ? "selected" : "";
     }
+});
+
+Template.Home.onCreated(function() {
+    //Set the currently logged in user as the default selected user when the homepage is rendered
+    selectedUser.set(Meteor.user());
 });
