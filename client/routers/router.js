@@ -15,7 +15,18 @@ Router.onBeforeAction(OnBeforeActions.loginRequired, {
 
 Router.route('home', {
     path: '/',
-    layoutTemplate: 'DesktopLayout'
+    layoutTemplate: 'DesktopLayout',
+    data: function() {
+        return {
+            people: Meteor.users.find().fetch()
+        }
+    },
+    subscriptions: function() {
+        return [
+                    Meteor.subscribe('friends'),
+                    Meteor.subscribe('myProfile')
+                ];
+    }
 });
 
 Router.route('lights', {
