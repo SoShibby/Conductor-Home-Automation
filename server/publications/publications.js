@@ -10,16 +10,24 @@ Meteor.publish("controlUnits", function () {
     return ControlUnits.find();
 });
 
-Meteor.reactivePublish("friends", function () {
+Meteor.reactivePublish("confirmedFriends", function () {
 	if(this.userId){
 		var user = Meteor.users.findOne({ _id: this.userId }, {reactive: true});
-        
-        var friends = [];
-        friends = friends.concat(user.friends.confirmed);
-        friends = friends.concat(user.friends.unconfirmed);
-        friends = friends.concat(user.friends.requests);        
-		
-        return Meteor.users.find({ _id: { $in: friends } }, { fields: { friends: 0, services: 0 }});
+		return Meteor.users.find({ _id: { $in: user.friends.confirmed } }, { fields: { friends: 0 }});
+	}
+});
+
+Meteor.reactivePublish("unconfirmedFriends", function () {
+	if(this.userId){
+		var user = Meteor.users.findOne({ _id: this.userId }, {reactive: true});
+		return Meteor.users.find({ _id: { $in: user.friends.unconfirmed } }, { fields: { friends: 0 }});
+	}
+});
+
+Meteor.reactivePublish("friendRequests", function () {
+	if(this.userId){
+		var user = Meteor.users.findOne({ _id: this.userId }, {reactive: true});
+		return Meteor.users.find({ _id: { $in: user.friends.requests } }, { fields: { friends: 0 }});
 	}
 });
 
