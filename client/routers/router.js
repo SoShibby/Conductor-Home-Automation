@@ -26,6 +26,11 @@ Router.route('home', {
                     Meteor.subscribe('friends'),
                     Meteor.subscribe('myProfile')
                 ];
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        }
     }
 });
 
