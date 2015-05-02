@@ -17,6 +17,15 @@ Template.ControlUnitSettings.events({
 		var domRoot = $('body')[0];
 		Blaze.renderWithData(Template.CreateControlUnit, undefined, domRoot);
 	},
+	'click .control-unit .js-remove': function(event, template){
+		Meteor.call('removeControlUnit', this.controlUnitId, function(error, result){
+			if(error){
+				MessageBox.displayError("Failed to remove control unit", "An error occurred when removing control unit. The error message was: " + error);
+			}else{
+				MessageBox.displayInfo("Success", "Successfully removed control unit");
+			}
+		}); 
+	},
     'change .filter-user select': function(event, template) {
 		var select = template.find('.filter-user select');
 		var userId = select.value;
