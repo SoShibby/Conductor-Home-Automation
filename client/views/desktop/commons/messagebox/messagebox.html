@@ -1,0 +1,19 @@
+﻿<template name="MessageBox">
+	{{#with message}}
+		<div id="message-box" class="popup">
+			<div class="content">
+				<div>
+					<div class="header">
+						<button type="button" class="close js-close">×</button>
+						<h4 class="title">{{title}}</h4>
+					</div>
+					<div class="body">{{body}}</div>
+					<div class="footer">
+						<button type="button" class="btn btn-primary js-close">Close</button>
+					</div>
+				</div>
+			</div>
+			<div class="background"></div>
+		</div>
+	{{/with}}
+</template>
