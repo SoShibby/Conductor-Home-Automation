@@ -17,6 +17,10 @@ Template.ControlUnitSettings.events({
 		var domRoot = $('body')[0];
 		Blaze.renderWithData(Template.CreateControlUnit, undefined, domRoot);
 	},
+    'click .js-info': function(event, template){
+		var domRoot = $('body')[0];
+		Blaze.renderWithData(Template.ViewControlUnit, this, domRoot);
+	},
 	'click .control-unit .js-remove': function(event, template){
 		Meteor.call('removeControlUnit', this.controlUnitId, function(error, result){
 			if(error){
