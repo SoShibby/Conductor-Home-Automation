@@ -1,4 +1,5 @@
 Fiber = Npm.require('fibers')
+Format = Meteor.npmRequire('string-format')
 
 Meteor.startup(function() {
     //Create a new communication channel for each control unit
