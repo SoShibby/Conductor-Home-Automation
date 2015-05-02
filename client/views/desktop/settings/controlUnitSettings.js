@@ -13,6 +13,10 @@ Template.ControlUnitSettings.controlUnits = function(){
 }
 
 Template.ControlUnitSettings.events({
+    'click .js-create': function(event, template){
+		var domRoot = $('body')[0];
+		Blaze.renderWithData(Template.CreateControlUnit, undefined, domRoot);
+	},
     'change .filter-user select': function(event, template) {
 		var select = template.find('.filter-user select');
 		var userId = select.value;
