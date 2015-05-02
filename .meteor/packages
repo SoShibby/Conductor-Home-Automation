@@ -12,3 +12,7 @@ momentjs:moment
 accounts-password
 arunoda:streams
 mrt:reactive-publish
+meteorhacks:npm
+
+
+npm-container
