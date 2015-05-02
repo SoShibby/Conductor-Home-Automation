@@ -131,7 +131,7 @@ Meteor.methods({
 			
 		if(ControlUnitRepository.isOwner(this.userId, controlUnitId)){
 			DeviceRepository.removeAllByControlUnitId(controlUnitId);
-			ControlUnitRepository.removeById(controlUnitId);
+			ControlUnitRepository.remove(controlUnitId);
 		}else{
 			throw new Meteor.Error(500, "Only the owner of this control unit can remove this control unit.");
 		}
