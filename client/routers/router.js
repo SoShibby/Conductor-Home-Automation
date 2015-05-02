@@ -10,7 +10,7 @@ var OnBeforeActions = {
 };
 
 Router.onBeforeAction(OnBeforeActions.loginRequired, {
-    only: ['home', 'lights']
+    only: ['home', 'lights', 'controlUnitSettings']
 });
 
 Router.route('home', {
@@ -47,6 +47,34 @@ Router.route('lights', {
         return [
                     Meteor.subscribe('devices'),
                     Meteor.subscribe('locations')
+                ];
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        }
+    }
+});
+
+Router.route('controlUnitSettings', {
+    path: '/settings/control-unit',
+    layoutTemplate: 'DesktopLayout',
+    data: function() {
+        return {
+            controlUnits: ControlUnits.find().fetch(),
+            friends: Meteor.users.find({  
+                                           _id:{  
+                                              $ne: Meteor.userId()
+                                           }
+                                       }).fetch(),
+            myUserId: Meteor.userId()
+        }
+    },
+    subscriptions: function() {
+        return [
+                    Meteor.subscribe('controlUnits'),
+                    Meteor.subscribe('myProfile'),
+                    Meteor.subscribe('confirmedFriends')
                 ];
     },
     action: function () {
