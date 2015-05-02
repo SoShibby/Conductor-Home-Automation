@@ -16,11 +16,13 @@
                 <span>LIGHTS</span>
             </a>
         </li>
-        <li class="category {{isCurrentRouteName 'settings'}}">
-            <div class="icon">
-                <i class="ionicons ion-settings"></i>
-            </div>
-            <span>SETTINGS</span>
+        <li class="category {{isCurrentRouteName 'controlUnitSettings'}}">
+            <a href="{{pathFor route='controlUnitSettings'}}">
+                <div class="icon">
+                    <i class="ionicons ion-settings"></i>
+                </div>
+                <span>SETTINGS</span>
+            </a>
         </li>
     </ul>
 </template>
