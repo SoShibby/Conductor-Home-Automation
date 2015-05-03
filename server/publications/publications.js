@@ -1,5 +1,7 @@
 Meteor.publish("devices", function () {
-    return Devices.find();
+	if(this.userId){
+		return Devices.find({ userAccess: { $in: [ this.userId ] } });
+	}
 });
 
 Meteor.publish("locations", function () {
