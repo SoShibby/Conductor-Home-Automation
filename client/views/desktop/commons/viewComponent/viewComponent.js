@@ -26,6 +26,9 @@ Template.ViewComponent.helpers({
         
         return result;
     },
+    value: function() {
+        return this.value.toString();
+    },
     methods: function() {
         //Blaze can't loop through object values, so we need to convert it into an array first
         var result = [];
