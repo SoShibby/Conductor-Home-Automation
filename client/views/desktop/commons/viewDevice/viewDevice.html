@@ -25,6 +25,28 @@
                                 <label>Device Type</label>
                                 <input type="text" value="{{type}}" disabled />
                             </div>
+                            
+                            <label>Components</label>
+                            <!-- Badge Viewer -->
+                            <div class="badge-viewer">
+                                <!-- Component Badges -->
+                                {{#each components}}
+                                    <div class="custom-badge component">
+                                        <div class="name-badge">
+                                            <span>
+                                                <span>{{name}}</span>
+                                                <span>{{type}}</span>
+                                            </span>
+                                            <div class="controls">
+                                                <div class="info js-info"></div>
+                                            </div>
+                                        </div>
+                                        <div class="image-holder">
+                                            <div class="image fa ionicons image-{{type}}"></div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
                         </form>
                     {{/with}}
 				</div>
