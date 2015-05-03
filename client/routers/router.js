@@ -114,6 +114,35 @@ Router.route('deviceSettings', {
     }
 });
 
+Router.route('deviceAccessSettings', {
+    path: '/settings/device-access',
+    layoutTemplate: 'DesktopLayout',
+    data: function() {
+        return {
+            friends: Meteor.users.find({  
+                                           _id:{  
+                                              $ne: Meteor.userId()
+                                           }
+                                       }).fetch()
+        }
+    },
+    subscriptions: function() {
+        return [
+                    Meteor.subscribe('controlUnits'),
+                    Meteor.subscribe('devices'),
+                    Meteor.subscribe('myProfile'),
+                    Meteor.subscribe('confirmedFriends'),
+                    Meteor.subscribe('unconfirmedFriends'),
+                    Meteor.subscribe('friendRequests')
+                ];
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        }
+    }
+});
+
 Router.route('create-account', {
     path: '/create-account'
 });
