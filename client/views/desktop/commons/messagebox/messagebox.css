@@ -1,3 +1,11 @@
+#message-box .content {
+    z-index: 999999999;
+}
+
+#message-box .background {
+    z-index: 999999998;
+}
+
 #message-box .footer {
     text-align: center;
 }
