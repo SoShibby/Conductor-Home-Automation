@@ -7,6 +7,6 @@ Template.ViewDevice.events({
     /* View component information */
     'click .js-info': function(event, template){
 		var domRoot = $('body')[0];
-		Blaze.renderWithData(Template.ViewComponent, this, domRoot);
+		Blaze.renderWithData(Template.ViewComponent, { componentId: this.id }, domRoot);
 	}
 });

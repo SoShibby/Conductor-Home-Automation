@@ -1,6 +1,19 @@
 var currentDate = new ReactiveVar(new Date());
 
 Template.ViewComponent.helpers({
+    component: function() {
+        var device = Devices.findOne({ 'components.id': this.componentId });
+        
+        if(!device) {   //If no device was found containing the component that we are looking for then just return an empty object
+            return {};
+        }
+        
+        device.components.filter(function(component, index, array) {
+            return (component.id === this.componentId);
+        });
+        
+        return (device.components.length > 0) ? device.components[0] : {};
+    },
     properties: function() {
         //Blaze can't loop through object values, so we need to convert it into an array first
         var result = [];
