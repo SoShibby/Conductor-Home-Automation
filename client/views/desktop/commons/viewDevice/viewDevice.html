@@ -1,0 +1,38 @@
+﻿<template name="ViewDevice">
+	<div id="view-device" class="popup">
+		<div class="content">
+			<div>
+				<div class="header">
+					<button type="button" class="close js-close">×</button>
+					<h4 class="title">Device Information</h4>
+				</div>
+				<div class="body">
+                    {{#with this}}
+                        <form>					
+                            <div class="form-group">
+                                <label>Device ID</label>
+                                <input type="text" value="{{id}}" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>In Control Unit With ID</label>
+                                <input type="text" value="{{controlUnitId}}" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>Device Name</label>
+                                <input type="text" value="{{name}}" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label>Device Type</label>
+                                <input type="text" value="{{type}}" disabled />
+                            </div>
+                        </form>
+                    {{/with}}
+				</div>
+				<div class="footer clearfix">
+					<button type="button" class="js-close btn-close btn btn-primary">Close</button>
+				</div>
+			</div>
+		</div>
+		<div class="background"></div>
+	</div>
+</template>
