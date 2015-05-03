@@ -172,3 +172,30 @@
     border-color: #0044cc #0044cc #002a80;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
+
+.popup table {
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.popup table > thead > tr > th {
+    border-bottom-width: 2px;
+    border: 1px solid #ddd;
+    vertical-align: bottom;
+    border-bottom: 2px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    text-align: left;
+}
+
+.popup table > tbody > tr > td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+}
