@@ -1,7 +1,7 @@
 .settings {
     height: 100%;
     padding-top: 1px;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .settings h3 {
