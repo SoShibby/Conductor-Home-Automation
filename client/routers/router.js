@@ -74,7 +74,8 @@ Router.route('controlUnitSettings', {
         return [
                     Meteor.subscribe('controlUnits'),
                     Meteor.subscribe('myProfile'),
-                    Meteor.subscribe('confirmedFriends')
+                    Meteor.subscribe('confirmedFriends'),
+                    Meteor.subscribe('devices')
                 ];
     },
     action: function () {

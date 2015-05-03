@@ -25,6 +25,28 @@
                                 <label>Owner</label>
                                 <input type="text" value="{{owner}}" disabled />
                             </div>
+                            
+                            <label>Devices</label>
+                            <!-- Badge Viewer -->
+                            <div class="badge-viewer">
+                                <!-- Device Badges -->
+                                {{#each devices}}
+                                    <div class="custom-badge device">
+                                        <div class="name-badge">
+                                            <span>
+                                                <span>{{name}}</span>
+                                                <span>{{type}}</span>
+                                            </span>
+                                            <div class="controls">
+                                                <div class="info js-info"></div>
+                                            </div>
+                                        </div>
+                                        <div class="image-holder">
+                                            <div class="image fa ionicons image-{{type}}"></div>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
                         </form>
                     {{/with}}
 				</div>
