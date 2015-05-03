@@ -84,6 +84,35 @@ Router.route('controlUnitSettings', {
     }
 });
 
+Router.route('deviceSettings', {
+    path: '/settings/devices',
+    layoutTemplate: 'DesktopLayout',
+    data: function() {
+        return {
+            controlUnits: ControlUnits.find().fetch(),
+            friends: Meteor.users.find({  
+                                           _id:{  
+                                              $ne: Meteor.userId()
+                                           }
+                                       }).fetch(),
+            myUserId: Meteor.userId()
+        }
+    },
+    subscriptions: function() {
+        return [
+                    Meteor.subscribe('controlUnits'),
+                    Meteor.subscribe('devices'),
+                    Meteor.subscribe('myProfile'),
+                    Meteor.subscribe('confirmedFriends')
+                ];
+    },
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        }
+    }
+});
+
 Router.route('create-account', {
     path: '/create-account'
 });
