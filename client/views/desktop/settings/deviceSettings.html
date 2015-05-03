@@ -1,0 +1,52 @@
+<template name="DeviceSettings">
+    {{> SettingsMenu}}
+    
+	<div id="control-panel-devices" class="settings">
+		<h3>Devices</h3>
+		
+		<!-- Badge Viewer -->
+		<div class="badge-viewer">
+		
+			<!-- Filters -->
+			<div class="filters"> 
+				<div class="filter form-control user">
+					<span>Owner</span>
+					<select>
+						<option value="">Select All</option>
+						<option value="{{myUserId}}">Me</option>
+						{{#each users}}
+							<option value="{{_id}}">{{firstName}} {{lastName}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="filter form-control control-unit">
+					<span>Control Unit</span>
+					<select>
+						<option value="">Select All</option>
+						{{#each controlUnits}}
+							<option value="{{controlUnitId}}">{{name}}</option>
+						{{/each}}
+					</select>
+				</div>
+			</div>
+		
+			<!-- Device Badges -->
+			{{#each devices}}
+				<div class="custom-badge device">
+					<div class="name-badge">
+						<span>
+							<span>{{name}}</span>
+							<span>{{type}}</span>
+						</span>
+						<div class="controls">
+							<div class="info js-info"></div>
+						</div>
+					</div>
+					<div class="image-holder">
+						<div class="image fa ionicons image-{{type}}"></div>
+					</div>
+				</div>
+			{{/each}}
+		</div>
+	</div>
+</template>
