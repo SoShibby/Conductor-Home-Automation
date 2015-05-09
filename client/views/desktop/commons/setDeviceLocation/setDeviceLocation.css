@@ -1,0 +1,7 @@
+#set-device-location .map-container {
+    height: 400px;
+}
+
+#set-device-location .btn-close {
+    float: left;
+}

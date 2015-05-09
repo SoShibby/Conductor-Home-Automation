@@ -1,0 +1,26 @@
+﻿<template name="SetDeviceLocation">
+	<div id="set-device-location" class="popup">
+        {{#with device}}
+            <div class="content">
+                <div>
+                    <div class="header">
+                        <button type="button" class="close js-close">×</button>
+                        <h4 class="title">Set New Location</h4>
+                    </div>
+                    <div class="body">
+                        <form>			
+                            <div class="map-container">
+                                {{> googleMap name="map" options=mapOptions}}
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer clearfix">
+                        <button type="button" class="js-close btn-close btn btn-primary">Close</button>
+                        <button type="button" class="js-save btn-save btn btn-primary">Save Location</button>
+                    </div>
+                </div>
+            </div>
+            <div class="background"></div>
+        {{/with}}
+	</div>
+</template>
