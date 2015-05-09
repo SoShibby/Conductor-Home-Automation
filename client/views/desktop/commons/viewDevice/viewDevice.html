@@ -25,6 +25,16 @@
                                 <label>Device Type</label>
                                 <input type="text" value="{{type}}" disabled />
                             </div>
+                            <div class="form-group">
+                                <label>Device Location (<a href="" class="edit-device-location">change location</a>)</label>
+                                {{#if this.location}}
+                                    <div class="map-container">
+                                        {{> googleMap name="viewDeviceMap" options=mapOptions}}
+                                    </div>
+                                {{else}}
+                                    <div class="alert-box"><i class="fa fa-exclamation-circle"></i>No device location is set for this device.</div>
+                                {{/if}}
+                            </div>
                             
                             <label>Components</label>
                             <!-- Badge Viewer -->
