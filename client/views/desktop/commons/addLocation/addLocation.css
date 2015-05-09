@@ -1,0 +1,12 @@
+#add-location .map-container {
+    height: 400px;
+}
+
+#add-location .btn-close {
+    float: left;
+}
+
+#add-location .options {
+    margin-top: 10px;
+    text-align: center;
+}
