@@ -243,6 +243,24 @@ DeviceRepository = (function() {
 							
 		return device !== undefined;
 	}
+    
+    function setLocation(controlUnitId, deviceId, longitude, latitude) {
+        var result = Devices.update({
+                                        controlUnitId: controlUnitId,
+                                        id: deviceId
+                                   },
+                                   {
+                                        $set: {
+                                                    'location.longitude': longitude,
+                                                    'location.latitude': latitude
+                                              }
+                                   });
+        
+        if(result === 1)
+            return true;
+        else
+            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to set device location.");
+    }
 	
     //Return public functions
 	return {
@@ -255,7 +273,8 @@ DeviceRepository = (function() {
 		setName: setName,
 		addUserAccess: addUserAccess,
 		removeUserAccess: removeUserAccess,
-		hasUserAccess: hasUserAccess
+		hasUserAccess: hasUserAccess,
+        setLocation: setLocation
 	};
 	
 }());

@@ -25,5 +25,19 @@ Meteor.methods({
             throw new Meteor.Error(ErrorCode.UNAUTHORIZED, "Only the creator of the location can remove it.");
         
         LocationRepository.remove(locationId);
+    },
+    setDeviceLocation: function(controlUnitId, deviceId, longitude, latitude) {
+        if(!User.isUserLoggedIn(this.userId))
+			throw new Meteor.Error(ErrorCode.UNAUTHORIZED);
+		
+        if(!ControlUnitRepository.isOwner(this.userId, controlUnitId)){
+			throw new Meteor.Error(ErrorCode.UNAUTHORIZED, "Only the owner of this device can set its location.");
+		}
+		
+		if(!DeviceRepository.exists(controlUnitId, deviceId)){
+			throw new Meteor.Error(ErrorCode.DEVICE_NOT_FOUND, "No device exists with the device id '" + deviceId + "' in control unit '" + controlUnitId + "'");
+		}
+        
+        DeviceRepository.setLocation(controlUnitId, deviceId, longitude, latitude);
     }
 });
