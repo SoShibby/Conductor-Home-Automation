@@ -143,6 +143,34 @@ Router.route('deviceAccessSettings', {
     }
 });
 
+Router.route('deviceLocationSettings', {
+    path: '/settings/device-location',
+    layoutTemplate: 'DesktopLayout',
+    data: function() {
+        return {
+            devices: Devices.find().fetch(),
+            locations: Locations.find().fetch(),
+            myUserId: Meteor.userId()
+        }
+    },
+    subscriptions: function() {
+        return [
+                    Meteor.subscribe('controlUnits'),
+                    Meteor.subscribe('devices'),
+                    Meteor.subscribe('locations'),
+                    Meteor.subscribe('myProfile'),
+                    Meteor.subscribe('confirmedFriends')
+                ];
+    },
+    action: function () {
+        GoogleMaps.load();
+        
+        if (this.ready()) {
+            this.render();
+        }
+    }
+});
+
 Router.route('create-account', {
     path: '/create-account'
 });
