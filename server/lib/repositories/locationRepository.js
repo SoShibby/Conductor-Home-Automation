@@ -8,30 +8,30 @@ LocationRepository = (function() {
 	 * Adds a new location with a specific name. Use the site http://www.gps-coordinates.net/ 
      * for an easier way to get the coordinates of the location you want to add.
 	 *
-	 * @param userId        the id of the user who created this location entry
-	 * @param locationName  the name of the location
-     * @param x1            the longitude coordinate of the top-left corner of the rectangle
-     * @param y1            the latitude coordinate of the top-left corner of the rectangle
-     * @param x2            the longitude coordinate of the bottom-right corner of the rectangle
-     * @param y2            the latitude coordinate of the bottom-right corner of the rectangle
+	 * @param userId              the id of the user who created this location entry
+	 * @param locationName        the name of the location
+     * @param northWestLongitude  the longitude coordinate of the top-left corner of the rectangle
+     * @param northWestLatitude   the latitude coordinate of the top-left corner of the rectangle
+     * @param southEastLongitude  the longitude coordinate of the bottom-right corner of the rectangle
+     * @param southEastLatitude   the latitude coordinate of the bottom-right corner of the rectangle
      */
-    function add(userId, locationName, x1, y1, x2, y2) {
+    function add(userId, locationName, northWestLongitude, northWestLatitude, southEastLongitude, southEastLatitude) {
         Assert.isString(userId, "Parameter user id must be a string");
         Assert.isNotEmptyString(userId, "Parameter user id must be a non empty string");
         Assert.isString(locationName, "Parameter location name must be a string");
         Assert.isNotEmptyString(locationName, "Parameter location name must be a non empty string");
-        Assert.isFloat(x1, "Parameter x1 must be a float value");
-        Assert.isFloat(x2, "Parameter x2 must be a float value");
-        Assert.isFloat(y1, "Parameter y1 must be a float value");
-        Assert.isFloat(y1, "Parameter y2 must be a float value");
+        Assert.isFloat(northWestLongitude, "Parameter northWestLongitude must be a float value");
+        Assert.isFloat(northWestLatitude, "Parameter northWestLatitude must be a float value");
+        Assert.isFloat(southEastLongitude, "Parameter southEastLongitude must be a float value");
+        Assert.isFloat(southEastLatitude, "Parameter southEastLatitude must be a float value");
         
         return Locations.insert({
                                     creator: userId,
                                     name: locationName,
-                                    x1: x1,
-                                    x2: x2,
-                                    y1: y1,
-                                    y2: y2
+                                    northWestLongitude: northWestLongitude,
+                                    northWestLatitude: northWestLatitude,
+                                    southEastLongitude: southEastLongitude,
+                                    southEastLatitude: southEastLatitude
                                  });
     }
     

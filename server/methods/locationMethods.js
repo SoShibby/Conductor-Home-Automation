@@ -1,16 +1,16 @@
 Meteor.methods({
-    addLocation: function(locationName, x1, y1, x2, y2){
+    addLocation: function(locationName, northWestLongitude, northWestLatitude, southEastLongitude, southEastLatitude){
 		if(!User.isUserLoggedIn(this.userId))
 			throw new Meteor.Error(ErrorCode.UNAUTHORIZED);
 			
 		Assert.isString(locationName, "The location name must be a string.");
 		Assert.isNotEmptyString(locationName, "The location name cannot be empty.");
-        Assert.isFloat(x1, "Parameter x1 must be a float value");
-        Assert.isFloat(x2, "Parameter x2 must be a float value");
-        Assert.isFloat(y1, "Parameter y1 must be a float value");
-        Assert.isFloat(y1, "Parameter y2 must be a float value");
+        Assert.isFloat(northWestLongitude, "Parameter northWestLongitude must be a float value");
+        Assert.isFloat(northWestLatitude, "Parameter northWestLatitude must be a float value");
+        Assert.isFloat(southEastLongitude, "Parameter southEastLongitude must be a float value");
+        Assert.isFloat(southEastLatitude, "Parameter southEastLatitude must be a float value");
 		
-		LocationRepository.add(this.userId, locationName, x1, y1, x2, y2);
+		LocationRepository.add(this.userId, locationName, northWestLongitude, northWestLatitude, southEastLongitude, southEastLatitude);
 	},
     removeLocation: function(locationId){
         if(!User.isUserLoggedIn(this.userId))
