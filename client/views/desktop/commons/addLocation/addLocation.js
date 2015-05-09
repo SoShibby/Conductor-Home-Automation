@@ -40,18 +40,18 @@ Template.AddLocation.events({
         var locationName = template.$('.js-location-name').val();
         
         Meteor.call('addLocation', locationName, sw.lng(), ne.lat(), ne.lng(), sw.lat(), function(error, result){
-			if(error){
-				MessageBox.displayInfo("Failed to add a new location", "An error occurred when adding a new location. The error message was: " + error);
-			}else{
-				Blaze.remove(template.view);
-				$(template.firstNode).remove();
-			}
-		});
+            if(error){
+                MessageBox.displayInfo("Failed to add a new location", "An error occurred when adding a new location. The error message was: " + error);
+            }else{
+                Blaze.remove(template.view);
+                $(template.firstNode).remove();
+            }
+        });
     },
     /* Close popup window */
     'click .js-close': function(event, template) {
-		Blaze.remove(template.view);
-		$(template.firstNode).remove();
+        Blaze.remove(template.view);
+        $(template.firstNode).remove();
     },
     /* Show/Hide location area on the map */
     'click .toggle-location-visibility': function(event, template) {

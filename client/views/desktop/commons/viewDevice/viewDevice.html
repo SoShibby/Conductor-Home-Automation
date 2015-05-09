@@ -1,14 +1,14 @@
 ﻿<template name="ViewDevice">
-	<div id="view-device" class="popup">
-		<div class="content">
-			<div>
-				<div class="header">
-					<button type="button" class="close js-close">×</button>
-					<h4 class="title">Device Information</h4>
-				</div>
-				<div class="body">
+    <div id="view-device" class="popup">
+        <div class="content">
+            <div>
+                <div class="header">
+                    <button type="button" class="close js-close">×</button>
+                    <h4 class="title">Device Information</h4>
+                </div>
+                <div class="body">
                     {{#with device}}
-                        <form>					
+                        <form>                  
                             <div class="form-group">
                                 <label>Device ID</label>
                                 <input type="text" value="{{id}}" disabled />
@@ -59,12 +59,12 @@
                             </div>
                         </form>
                     {{/with}}
-				</div>
-				<div class="footer clearfix">
-					<button type="button" class="js-close btn-close btn btn-primary">Close</button>
-				</div>
-			</div>
-		</div>
-		<div class="background"></div>
-	</div>
+                </div>
+                <div class="footer clearfix">
+                    <button type="button" class="js-close btn-close btn btn-primary">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="background"></div>
+    </div>
 </template>

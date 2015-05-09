@@ -66,7 +66,7 @@ Template.ViewComponent.helpers({
 Template.ViewComponent.events({
     'click .js-close': function(event, template) {
         Blaze.remove(template.view);
-		$(template.firstNode).remove();
+        $(template.firstNode).remove();
     }
 });
 

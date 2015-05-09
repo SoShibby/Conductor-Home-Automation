@@ -1,14 +1,14 @@
 ﻿<template name="ViewControlUnit">
-	<div id="view-control-unit" class="popup">
-		<div class="content">
-			<div>
-				<div class="header">
-					<button type="button" class="close js-close">×</button>
-					<h4 class="title">Control Unit Information</h4>
-				</div>
-				<div class="body">
+    <div id="view-control-unit" class="popup">
+        <div class="content">
+            <div>
+                <div class="header">
+                    <button type="button" class="close js-close">×</button>
+                    <h4 class="title">Control Unit Information</h4>
+                </div>
+                <div class="body">
                     {{#with this}}
-                        <form>					
+                        <form>                  
                             <div class="form-group">
                                 <label>Control Unit ID</label>
                                 <input type="text" value="{{controlUnitId}}" disabled />
@@ -49,12 +49,12 @@
                             </div>
                         </form>
                     {{/with}}
-				</div>
-				<div class="footer clearfix">
-					<button type="button" class="js-close 	 btn-close btn btn-primary">Close</button>
-				</div>
-			</div>
-		</div>
-		<div class="background"></div>
-	</div>
+                </div>
+                <div class="footer clearfix">
+                    <button type="button" class="js-close    btn-close btn btn-primary">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="background"></div>
+    </div>
 </template>

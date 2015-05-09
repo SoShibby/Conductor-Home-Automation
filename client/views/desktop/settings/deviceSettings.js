@@ -6,16 +6,16 @@ Template.DeviceSettings.helpers({
         var selectedUserId = selectedUser.get();
         var selectedControlUnitId = selectedControlUnit.get();
         
-        if(!selectedUserId && !selectedControlUnitId)	//If no filters are used then return all devices
+        if(!selectedUserId && !selectedControlUnitId)   //If no filters are used then return all devices
             return Devices.find().fetch();
         
         var filter = {};
         
-        if(selectedUserId){ 	//Filter by user id
+        if(selectedUserId){     //Filter by user id
             filter.owner = selectedUserId;
         }
         
-        if(selectedControlUnitId){ 		//Filter by control unit
+        if(selectedControlUnitId){      //Filter by control unit
             filter.controlUnitId = selectedControlUnitId;
         }
         
@@ -47,29 +47,29 @@ Template.DeviceSettings.helpers({
 Template.DeviceSettings.events = {
     /* View device information */
     'click .js-info': function(event, template){
-		var domRoot = $('body')[0];
-		Blaze.renderWithData(Template.ViewDevice, this, domRoot);
-	},
+        var domRoot = $('body')[0];
+        Blaze.renderWithData(Template.ViewDevice, this, domRoot);
+    },
     /* Filter by user */
-	'change .filter.user select': function(event, template){
-		var select = template.find('.filter.user select');
-		var userId = select.value;
-		
-		if(userId === "")
-			selectedUser.set(undefined);
-		else
-			selectedUser.set(userId);
-			
-		$(template.find('.filter.control-unit select')).val("").change();	//select the "show all" option in the control units filter
-	},
+    'change .filter.user select': function(event, template){
+        var select = template.find('.filter.user select');
+        var userId = select.value;
+        
+        if(userId === "")
+            selectedUser.set(undefined);
+        else
+            selectedUser.set(userId);
+            
+        $(template.find('.filter.control-unit select')).val("").change();   //select the "show all" option in the control units filter
+    },
     /* Filter by control unit name */
-	'change .filter.control-unit select': function(event, template){
-		var select = template.find('.filter.control-unit select');
-		var controlUnitId = select.value;
-		
-		if(controlUnitId === "")
-			selectedControlUnit.set(undefined);
-		else
-			selectedControlUnit.set(controlUnitId);
-	}
+    'change .filter.control-unit select': function(event, template){
+        var select = template.find('.filter.control-unit select');
+        var controlUnitId = select.value;
+        
+        if(controlUnitId === "")
+            selectedControlUnit.set(undefined);
+        else
+            selectedControlUnit.set(controlUnitId);
+    }
 }

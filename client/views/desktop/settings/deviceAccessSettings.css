@@ -1,10 +1,10 @@
 .settings.device-access {
-	margin-left: -24px;
-	padding-bottom: 24px;
+    margin-left: -24px;
+    padding-bottom: 24px;
 }
 
 .settings.device-access  > h3 {
-	margin-left: 24px;
+    margin-left: 24px;
 }
 
 .settings.device-access .badge-viewer:last-child {
@@ -12,20 +12,20 @@
 }
 
 .settings.device-access .custom-badge.user .image-holder{
-	font-size: 70px !important;
+    font-size: 70px !important;
 }
 
 .settings.device-access .custom-badge.user .image {
-	bottom: 0;
-	position: absolute;
-	margin-bottom: -6px;
-	line-height: 72px;
+    bottom: 0;
+    position: absolute;
+    margin-bottom: -6px;
+    line-height: 72px;
 }
 
 .settings.device-access .custom-badge.user:not(.selected) {
-	opacity: 0.5;
+    opacity: 0.5;
 }
 
 .settings.device-access .custom-badge.device .image {
-	line-height: 80px;
+    line-height: 80px;
 }

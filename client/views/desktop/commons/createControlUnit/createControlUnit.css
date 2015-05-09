@@ -1,16 +1,16 @@
 #create-control-unit {
-	z-index: 10;
-	display: block !important;
+    z-index: 10;
+    display: block !important;
 }
 
 /*
-	FOOTER
+    FOOTER
 */
 
 #create-control-unit .footer .btn-close {
-	float: left;
+    float: left;
 }
 
 #create-control-unit .footer .btn-add {
-	float: right;
+    float: right;
 }

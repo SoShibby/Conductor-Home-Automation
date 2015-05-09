@@ -1,14 +1,14 @@
 ﻿<template name="ViewComponent">
-	<div id="view-component" class="popup">
-		<div class="content">
-			<div>
-				<div class="header">
-					<button type="button" class="close js-close">×</button>
-					<h4 class="title">Component Information</h4>
-				</div>
-				<div class="body">
+    <div id="view-component" class="popup">
+        <div class="content">
+            <div>
+                <div class="header">
+                    <button type="button" class="close js-close">×</button>
+                    <h4 class="title">Component Information</h4>
+                </div>
+                <div class="body">
                     {{#with component}}
-                        <form>					
+                        <form>                  
                             <div class="form-group">
                                 <label>Component ID</label>
                                 <input type="text" value="{{id}}" disabled />
@@ -75,12 +75,12 @@
                             </table>
                         </form>
                     {{/with}}
-				</div>
-				<div class="footer clearfix">
-					<button type="button" class="js-close btn-close btn btn-primary">Close</button>
-				</div>
-			</div>
-		</div>
-		<div class="background"></div>
-	</div>
+                </div>
+                <div class="footer clearfix">
+                    <button type="button" class="js-close btn-close btn btn-primary">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="background"></div>
+    </div>
 </template>

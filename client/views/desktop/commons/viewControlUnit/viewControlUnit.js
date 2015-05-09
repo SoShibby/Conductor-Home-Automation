@@ -11,11 +11,11 @@ Template.ViewControlUnit.helpers({
 Template.ViewControlUnit.events({
     'click .js-close': function(event, template) {
         Blaze.remove(template.view);
-		$(template.firstNode).remove();
+        $(template.firstNode).remove();
     },
     /* View device information */
     'click .js-info': function(event, template){
-		var domRoot = $('body')[0];
-		Blaze.renderWithData(Template.ViewDevice, this, domRoot);
-	}
+        var domRoot = $('body')[0];
+        Blaze.renderWithData(Template.ViewDevice, this, domRoot);
+    }
 });

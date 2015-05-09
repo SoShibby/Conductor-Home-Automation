@@ -19,18 +19,18 @@ Template.DeviceLocationSettings.helpers({
         var selectedControlUnitId = selectedControlUnit.get(); // Get control unit filter
         
         // If no filters are set then display all devices
-        if(!selectedUserId && !selectedControlUnitId)	
+        if(!selectedUserId && !selectedControlUnitId)   
             return Devices.find().fetch();
         
         var filter = {};
         
         // Filter devices by owner if the owner filter is set
-        if(selectedUserId){ 	
+        if(selectedUserId){     
             filter.owner = selectedUserId;
         }
         
         // Filter by control unit if the control unit filter is set
-        if(selectedControlUnitId){ 		
+        if(selectedControlUnitId){      
             filter.controlUnitId = selectedControlUnitId;
         }
         
@@ -64,46 +64,46 @@ Template.DeviceLocationSettings.events({
     /* Show popup for adding new location area */
     'click .js-add-location': function(event, template) {
         var body = $('body')[0];
-		Blaze.render(Template.AddLocation, body);
+        Blaze.render(Template.AddLocation, body);
     },
     /* Remove location area */
     'click .js-remove-location': function(event, template) {
         var locationId = template.$('.js-selected-location').val();
         
         Meteor.call('removeLocation', locationId, function(error, result){
-			if(error){
-				MessageBox.displayInfo("Failed to remove location", "An error occurred when removing location. The error message was: " + error);
-			}
-		});
+            if(error){
+                MessageBox.displayInfo("Failed to remove location", "An error occurred when removing location. The error message was: " + error);
+            }
+        });
     },
     /* Show device information popup */
     'click .js-info': function(event, template) {
-		var body = $('body')[0];
+        var body = $('body')[0];
         Blaze.renderWithData(Template.ViewDevice, { deviceId: this.id }, body);
         return false;
-	},
+    },
     /* Filter devices by owner */
-	'change .filter.user select': function(event, template) {
-		var select = template.find('.filter.user select');
-		var userId = select.value;
-		
-		if(userId === "")
-			selectedUser.set(undefined);
-		else
-			selectedUser.set(userId);
-			
-		$(template.find('.filter.control-unit select')).val("").change();	//select the "show all" option in the control units filter
-	},
+    'change .filter.user select': function(event, template) {
+        var select = template.find('.filter.user select');
+        var userId = select.value;
+        
+        if(userId === "")
+            selectedUser.set(undefined);
+        else
+            selectedUser.set(userId);
+            
+        $(template.find('.filter.control-unit select')).val("").change();   //select the "show all" option in the control units filter
+    },
     /* Filter devices by control unit */
-	'change .filter.control-unit select': function(event, template) {
-		var select = template.find('.filter.control-unit select');
-		var controlUnitId = select.value;
-		
-		if(controlUnitId === "")
-			selectedControlUnit.set(undefined);
-		else
-			selectedControlUnit.set(controlUnitId);
-	},
+    'change .filter.control-unit select': function(event, template) {
+        var select = template.find('.filter.control-unit select');
+        var controlUnitId = select.value;
+        
+        if(controlUnitId === "")
+            selectedControlUnit.set(undefined);
+        else
+            selectedControlUnit.set(controlUnitId);
+    },
     /* Move the map to a selected location area */
     'click .js-view-location': function(event, template) {
         var locationId = template.$('.js-selected-location').val();

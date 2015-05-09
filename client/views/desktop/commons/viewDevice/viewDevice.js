@@ -5,17 +5,17 @@ Template.ViewDevice.events({
     /* Close pop up window */
     'click .js-close': function(event, template) {
         Blaze.remove(template.view);
-		$(template.firstNode).remove();
+        $(template.firstNode).remove();
     },
     /* View component information */
     'click .js-info': function(event, template) {
-		var body = $('body')[0];
-		Blaze.renderWithData(Template.ViewComponent, { componentId: this.id }, body);
-	},
+        var body = $('body')[0];
+        Blaze.renderWithData(Template.ViewComponent, { componentId: this.id }, body);
+    },
     /* Change device location */
     'click .edit-device-location': function(event, template) {
         var body = $('body')[0];
-		Blaze.renderWithData(Template.SetDeviceLocation, { deviceId: this.id }, body);
+        Blaze.renderWithData(Template.SetDeviceLocation, { deviceId: this.id }, body);
     }
 });
 

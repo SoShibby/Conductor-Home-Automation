@@ -47,17 +47,17 @@ Template.SetDeviceLocation.events({
         var longitude = marker.getPosition().lng();
         
         Meteor.call('setDeviceLocation', this.controlUnitId, this.id, longitude, latitude, function(error, result){
-			if(error){
-				MessageBox.displayInfo("Failed to set new device location", "An error occurred when setting a new device location. The error message was: " + error);
-			}else{
-				Blaze.remove(template.view);
-				$(template.firstNode).remove();
-			}
-		});
+            if(error){
+                MessageBox.displayInfo("Failed to set new device location", "An error occurred when setting a new device location. The error message was: " + error);
+            }else{
+                Blaze.remove(template.view);
+                $(template.firstNode).remove();
+            }
+        });
     },
     /* Close popup window */
     'click .js-close': function(event, template) {
-		Blaze.remove(template.view);
-		$(template.firstNode).remove();
+        Blaze.remove(template.view);
+        $(template.firstNode).remove();
     }
 });
