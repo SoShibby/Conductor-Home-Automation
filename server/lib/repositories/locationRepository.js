@@ -28,10 +28,14 @@ LocationRepository = (function() {
         return Locations.insert({
                                     creator: userId,
                                     name: locationName,
-                                    northWestLongitude: northWestLongitude,
-                                    northWestLatitude: northWestLatitude,
-                                    southEastLongitude: southEastLongitude,
-                                    southEastLatitude: southEastLatitude
+                                    northWest: {
+                                        longitude: northWestLongitude,
+                                        latitude: northWestLatitude
+                                    },
+                                    southEast: {
+                                        longitude: southEastLongitude,
+                                        latitude: southEastLatitude
+                                    }
                                  });
     }
     
