@@ -171,6 +171,16 @@ Router.route('deviceLocationSettings', {
     }
 });
 
+Router.route('sendCommandSettings', {
+    path: '/settings/send-command',
+    layoutTemplate: 'DesktopLayout',
+    action: function () {
+        if (this.ready()) {
+            this.render();
+        }
+    }
+});
+
 Router.route('create-account', {
     path: '/create-account'
 });
