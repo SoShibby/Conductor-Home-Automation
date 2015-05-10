@@ -7,10 +7,15 @@ Controller = (function() {
     /**
      * Send commands to control units
      *
-     * @param data  the data that is to be sent to the control unit(s), the data must contain at a minimum
-     *              propertyName and setPropertyValue or methodName and methodParameters. Filters can also
-     *              be used so only wanted devices will receive the commands. Example of filters are:
-     *              deviceName, deviceType, componentName, componentType etc.
+     * @param data  the data parameter should be a json object containing two fields named
+     *              filter and value. The filter field is used for filtering out which 
+     *              devices that should receive the command. The filter should at a minimum 
+     *              contain the field propertyName or methodName, depending on if a property 
+     *              value should be set or if a method should be called on the device.
+     *              The value field should contain the new data that is to be sent to the device.
+     *              The value field should be a json object containing the field propertyValue
+     *              if a property of the device is to be set or a field named methodParameters
+     *              if a method of the device is to be called.
      */
 	function send(data){
 		//Get and filter control units, devices, components that are matching the filters in the data parameter.
@@ -18,14 +23,20 @@ Controller = (function() {
 		var allCommands = [];
 		
 		if(data instanceof Array){
-			for(var i = 0; i < data.length; i++){
-				var controlUnits = ControlUnitFinder.find(data[i]);     //Get all control units that matches the filter
-                var commands = createCommands(controlUnits, data[i]);   //Create commands that is to be sent to each matching control unit
+            for(var i = 0; i < data.length; i++){
+				var filter = data[i].filter;
+                var value = data[i].value;
+            
+                var controlUnits = ControlUnitFinder.find(filter);            //Get all control units that matches the filter
+                var commands = createCommands(controlUnits, filter, value);   //Create commands that is to be sent to each matching control unit
                 allCommands = allCommands.concat(commands);
 			}
 		}else{ 
-			var controlUnits = ControlUnitFinder.find(data);            //Get all control units that matches the filter
-			var commands = createCommands(controlUnits, data);          //Create commands that is to be sent to each matching control unit
+			var filter = data.filter;
+            var value = data.value;
+                
+            var controlUnits = ControlUnitFinder.find(filter);             //Get all control units that matches the filter
+			var commands = createCommands(controlUnits, filter, value);    //Create commands that is to be sent to each matching control unit
 			allCommands = allCommands.concat(commands);
 		}
 		
@@ -98,10 +109,10 @@ Controller = (function() {
      * @param controlUnits  the control units where the command is to be sent to
      * @param data          the data containing the information that is to be sent to the control unit
      */
-    function createCommands(controlUnits, data){
-        if((data.propertyName === undefined || data.setPropertyValue === undefined) && 
-           (data.methodName === undefined || data.methodParameters === undefined)) {
-                throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to send command to control unit. 'propertyName' and 'setPropertyValue' or 'methodName' and 'methodParameters' must be set.");
+    function createCommands(controlUnits, filter, value){
+        if((filter.propertyName === undefined || value.propertyValue === undefined) && 
+           (filter.methodName === undefined   || value.methodParameters === undefined)) {
+                throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to send command to control unit. 'propertyName' and 'propertyValue' or 'methodName' and 'methodParameters' must be set.");
 		}
         
         var commands = [];
@@ -109,23 +120,23 @@ Controller = (function() {
         controlUnits.forEach(function(controlUnit) {
             controlUnit.devices.forEach(function(device) {
                 device.components.forEach(function(component) {
-                    if(data.setPropertyValue) {
+                    if(filter.propertyName) {
                         commands.push({
                                             apiKey: controlUnit.apiKey,
                                             deviceId: device.id,
                                             componentId: component.id,
-                                            propertyName: data.propertyName,
-                                            setPropertyValue: data.setPropertyValue
+                                            propertyName: filter.propertyName,
+                                            propertyValue: value.propertyValue
                                        });
                     }
                     
-                    if(data.methodName) {
+                    if(filter.methodName) {
                         commands.push({
                                             apiKey: controlUnit.apiKey,
                                             deviceId: device.id,
                                             componentId: component.id,
-                                            methodName: data.methodName,
-                                            methodParameters: data.methodParameters
+                                            methodName: filter.methodName,
+                                            methodParameters: value.methodParameters
                                        });
                     }
                 });
