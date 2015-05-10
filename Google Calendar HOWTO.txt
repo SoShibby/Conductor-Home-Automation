@@ -1,0 +1,12 @@
+1. Goto console.developers.google.com
+2. Create new project
+3. Click on the new project that you created
+4. Click "APIs & auth" -> "APIs"
+5. Set "Calendar API" to "ON"
+6. Click on "Credentials"
+7. Click on "Create new client id"
+8. On the popup window click "Service Account"
+9. A file should now be downloaded to your harddrive named "{random numbers}.p12"
+10. (In linux terminal type) openssl pkcs12 -in "{random numbers}.p12" -out keyStore.pem -nodes
+11. Store the keyStore.pem file somewhere on your computer and change the Properties.GOOGLE_CERTIFICATE_PATH to the path of your file
+12. Change the Properties.GOOGLE_SERVICE_ACCOUNT_EMAIL to the Email Address of your service account, you can find the servie account in the "Credentials" tab on the console.developers.google.com website.0
