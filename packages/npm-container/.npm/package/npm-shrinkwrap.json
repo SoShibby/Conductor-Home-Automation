@@ -186,6 +186,9 @@
         }
       }
     },
+    "rrule": {
+      "version": "2.1.0"
+    },
     "string-format": {
       "version": "0.5.0"
     }
