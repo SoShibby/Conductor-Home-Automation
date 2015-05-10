@@ -38,3 +38,9 @@ Meteor.publish("myProfile", function () {
         return Meteor.users.find({ _id: this.userId }, { fields: { services: 0 }});
     }
 });
+
+Meteor.publish("feeds", function () {
+    if(this.userId){
+        return Feeds.find({ owner: this.userId });
+    }
+});
