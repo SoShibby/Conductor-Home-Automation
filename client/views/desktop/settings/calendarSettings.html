@@ -1,0 +1,42 @@
+<template name="CalendarSettings">
+    {{> SettingsMenu}}
+    
+    <div class="settings calendar">
+        <h3>Calendar</h3>        
+        <button type="button" class="js-share-calendar btn-share btn btn-success"><i class="fa fa-share"></i>Share calendar</button>
+        <div class="fresh-table">
+            <div class="heading">
+                <h3 class="title">Events</h3>
+                <div class="refresh pull-right">
+                    <a href="#">
+                        <i class="js-refresh fa fa-refresh fa-fw"></i>
+                    </a>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="text" value="Event Name" />
+                        </th>
+                        <th>
+                            <input type="text" value="Start Date" />
+                        </th>
+                        <th>
+                            <input type="text" value="End Date" />
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each events}}
+                        <tr>
+                            <td>{{summary}}</td>
+                            <td>{{start}}</td>
+                            <td>{{end}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
