@@ -12,8 +12,8 @@ EventTransformer = (function() {
     
     function transformEvent(event) {
         return {
-            start: moment(event.start.dateTime),
-            end: moment(event.end.dateTime),
+            start: moment(event.start.dateTime).toDate(),
+            end: moment(event.end.dateTime).toDate(),
             summary: event.summary
         }
     }
