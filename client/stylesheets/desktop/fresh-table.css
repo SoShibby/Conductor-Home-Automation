@@ -1,0 +1,67 @@
+.fresh-table {
+    border: 1px solid #1fa67b;
+    border-radius: 4px;
+}
+
+.fresh-table .heading {
+    color: #fff;
+    background-color: #1fa67b;
+    border-color: #1fa67b;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.fresh-table .heading .title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+    line-height: 20px;
+}
+
+.fresh-table table {
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.fresh-table th {
+    padding-bottom: 0px;
+    padding-top: 9px;
+    vertical-align: bottom;
+    font-weight: bold;
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+}
+
+.fresh-table th input {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+    font-weight: 700;
+    box-sizing: border-box;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: middle;
+    border-radius: 4px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.fresh-table td {
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #dddddd;
+    font-size: 14px;
+    color: #333333;
+}
