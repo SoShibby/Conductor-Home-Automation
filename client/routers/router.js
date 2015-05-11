@@ -181,6 +181,26 @@ Router.route('sendCommandSettings', {
     }
 });
 
+Router.route('calendarSettings', {
+    path: '/settings/calendar',
+    layoutTemplate: 'DesktopLayout',
+    data: function() {
+        return {
+            feed: Feeds.find().fetch()
+        }
+    },
+    subscriptions: function() {
+        return [
+                    Meteor.subscribe('feeds')
+               ];
+    },
+    action: function () {
+       if (this.ready()) {
+            this.render();
+        }
+    }
+});
+
 Router.route('create-account', {
     path: '/create-account'
 });
