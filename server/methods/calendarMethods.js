@@ -7,7 +7,7 @@ Meteor.methods({
         
         var calendarId = CalendarFacade.getCalendarId(this.userId);
         
-        CalendarFacade.shareCalendar(this.userId, email);
+        CalendarFacade.shareCalendar(calendarId, email);
     },
     refreshEvents: function() {
         if(!User.isUserLoggedIn(this.userId))
