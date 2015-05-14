@@ -71,7 +71,7 @@ CalendarFacade = (function() {
     function getCalendarEvents(userId) {
         var feed = Feeds.findOne({ owner: userId });
         
-        if(!feed.calendar.events || !feed.calendar.events.items)
+        if(!feed.calendar || !feed.calendar.events)
             return [];
         
         return feed.calendar.events;
