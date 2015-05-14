@@ -1,6 +1,6 @@
 ﻿Template.Lights.helpers({
     locationName: function() {
-        return this.locationName.toUpperCase();
+        return (this.locationName) ? this.locationName.toUpperCase() : "Unknown location";
     },
     numberOfDevices: function() {
         return this.devices.length;
@@ -14,7 +14,9 @@
             var links = makeNavigationLinks();
             
             if(links.length !== 0){
-                Router.go('lights', {}, { query: { locationName: links[0].name }});     //Navigate to the first link in the sidebar
+                if(Router.current().route.getName() === 'lights') {
+                    Router.go('lights', {}, { query: { locationName: links[0].name }});     //Navigate to the first link in the sidebar
+                }
             }else{
                 //No links exist in the sidebar
             }
