@@ -48,7 +48,7 @@ Template.DeviceSettings.events = {
     /* View device information */
     'click .js-info': function(event, template){
         var domRoot = $('body')[0];
-        Blaze.renderWithData(Template.ViewDevice, this, domRoot);
+        Blaze.renderWithData(Template.ViewDevice, { deviceId: this.id }, domRoot);
     },
     /* Filter by user */
     'change .filter.user select': function(event, template){
