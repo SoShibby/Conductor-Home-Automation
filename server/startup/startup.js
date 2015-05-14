@@ -8,4 +8,7 @@ Meteor.startup(function() {
     for(var i = 0; i < controlUnits.length; i++){
         Stream.create(controlUnits[i].apiKey);      //Create the communication channel with the control units API key as the channel id
     }
+    
+    // Start looking for calendar events that are due
+    CalendarEventWatcher.start();
 });
