@@ -79,6 +79,8 @@ Router.route('controlUnitSettings', {
                 ];
     },
     action: function () {
+        GoogleMaps.load();
+        
         if (this.ready()) {
             this.render();
         }
@@ -108,6 +110,8 @@ Router.route('deviceSettings', {
                 ];
     },
     action: function () {
+        GoogleMaps.load();
+        
         if (this.ready()) {
             this.render();
         }
@@ -137,6 +141,8 @@ Router.route('deviceAccessSettings', {
                 ];
     },
     action: function () {
+        GoogleMaps.load();
+        
         if (this.ready()) {
             this.render();
         }
