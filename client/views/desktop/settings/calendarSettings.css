@@ -17,6 +17,10 @@
     margin-top: -20px;
 }
 
+.settings.calendar .btn-success i {
+    margin-right: 5px;
+}
+
 .settings.calendar .btn-success {
     margin-left: 25px;
     margin-bottom: 20px;
