@@ -44,3 +44,7 @@ Meteor.publish("feeds", function () {
         return Feeds.find({ owner: this.userId });
     }
 });
+
+Meteor.publish("calendarMappings", function () {
+	return CalendarMappings.find({ owner: this.userId });
+}); 
