@@ -1,0 +1,43 @@
+﻿<template name="CreateCalendarMapping">
+    <div id="create-calendar-mapping" class="popup">
+        <div class="content">
+            <div>
+                <div class="header">
+                    <button type="button" class="close js-close">×</button>
+                    <h4 class="title">Create Calendar Event Mapping</h4>
+                </div>
+                <div class="body">
+                    <form>          
+                        <div class="form-group">
+                            <label>Event Name</label>
+                            <input name="eventName" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Time Offset (in minutes)</label>
+                            <input name="timeOffset" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Command</label>
+<!-- This looks weird... but it is needed otherwise there will be a lot of blank spaces before the text.-->
+<textarea name="command" type="text" rows="10">[
+    {
+        "filter": {
+            "propertyName": ""
+        },
+        "value": {
+            "propertyValue": ""
+        }
+    }
+]</textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="footer clearfix">
+                    <button type="button" class="js-close btn-close btn btn-primary">Close</button>
+                    <button type="button" class="js-create-mapping btn-create-mapping btn btn-primary">Create Mapping</button>
+                </div>
+            </div>
+        </div>
+        <div class="background"></div>
+    </div>
+</template>
