@@ -201,6 +201,26 @@ Router.route('calendarSettings', {
     }
 });
 
+Router.route('calendarMappingSettings', {
+    path: '/settings/calendar-mapping',
+    layoutTemplate: 'DesktopLayout',
+    data: function() {
+        return {
+            mappings: CalendarMappings.find().fetch()
+        }
+    },
+    subscriptions: function() {
+        return [
+                    Meteor.subscribe('calendarMappings')
+               ];
+    },
+    action: function () {
+       if (this.ready()) {
+            this.render();
+        }
+    }
+});
+
 Router.route('create-account', {
     path: '/create-account'
 });
