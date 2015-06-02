@@ -1,0 +1,8 @@
+1. Create a free DNS domain on forexample noip.com
+2. Add a MX record to your DNS domain. Enter "mx.sendgrid.net" into the MX record.
+3. Register an account on Sendgrid.net.
+4. Goto https://sendgrid.com/developer/reply
+5. In the "hostname" input box enter the name of your domain that you created in step 1.
+6. In the "url" input box enter the url path to your server, where you want to receive your emails (if you are using this server then you should enter "http://my.domain.name.com/inbound").
+7. Create a new Google calendar account and enter the domain that you created in step 1 as your email address.
+8. Add event notifications to your calendar
