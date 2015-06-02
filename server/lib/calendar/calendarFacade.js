@@ -1,8 +1,8 @@
 CalendarFacade = (function() {
-	function createCalendar(userId, calendarName) {
+	function createCalendar(userId, calendarName, callback) {
 		Calendar.addCalendar(calendarName, function(error, calendar) {
 			if(error) {
-				throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Error when creating a new google calendar with name '" + calendarName + "', error message was: " + error);
+				throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Error when creating a new google calendar with name '" + calendarName + "', error message was: " + error);                
 			} else {
 				var calendarId = calendar.id;
 				
@@ -20,6 +20,10 @@ CalendarFacade = (function() {
 							});
 				
 			}
+            
+            if(callback) {
+                callback(error, calendar);
+            }
 		});
 	}
     
