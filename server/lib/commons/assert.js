@@ -24,7 +24,7 @@ Assert = (function() {
 	}
 	
 	function isArray(variable, errorMessage){
-		if(typeof variable !== "array"){
+		if(Object.prototype.toString.call(variable) !== '[object Array]' ) {
             throw new Meteor.Error(ErrorCode.ASSERTION_FAILED, errorMessage);
 		}
 	}
