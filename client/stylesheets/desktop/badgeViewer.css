@@ -115,7 +115,7 @@
 
 /* Images (icons) displayed */
 
-.badge-viewer .custom-badge.device .image:before {  
+.badge-viewer .custom-badge.device .image:before {
     font-family: FontAwesome;
     content: "\f085";
 }
@@ -124,7 +124,7 @@
     font-family: FontAwesome;
     content: "\f1eb";
 }
- 
+
 .badge-viewer .custom-badge .image.image-musicPlayer:before,
 .badge-viewer .custom-badge .image.image-videoPlayer:before,
 .badge-viewer .custom-badge .image.image-mediaPlayer:before,

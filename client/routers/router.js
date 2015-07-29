@@ -40,7 +40,7 @@ Router.route('lights', {
     data: function() {
         return {
             devices: DeviceFinder.find({ locationName: this.params.query.locationName }),    //Return only devices that are in the locationNames location
-            locationName: this.params.query.locationName 
+            locationName: this.params.query.locationName
         }
     },
     subscriptions: function() {
@@ -62,8 +62,8 @@ Router.route('controlUnitSettings', {
     data: function() {
         return {
             controlUnits: ControlUnits.find().fetch(),
-            friends: Meteor.users.find({  
-                                           _id:{  
+            friends: Meteor.users.find({
+                                           _id:{
                                               $ne: Meteor.userId()
                                            }
                                        }).fetch(),
@@ -80,7 +80,7 @@ Router.route('controlUnitSettings', {
     },
     action: function () {
         GoogleMaps.load();
-        
+
         if (this.ready()) {
             this.render();
         }
@@ -93,8 +93,8 @@ Router.route('deviceSettings', {
     data: function() {
         return {
             controlUnits: ControlUnits.find().fetch(),
-            friends: Meteor.users.find({  
-                                           _id:{  
+            friends: Meteor.users.find({
+                                           _id:{
                                               $ne: Meteor.userId()
                                            }
                                        }).fetch(),
@@ -111,7 +111,7 @@ Router.route('deviceSettings', {
     },
     action: function () {
         GoogleMaps.load();
-        
+
         if (this.ready()) {
             this.render();
         }
@@ -123,8 +123,8 @@ Router.route('deviceAccessSettings', {
     layoutTemplate: 'DesktopLayout',
     data: function() {
         return {
-            friends: Meteor.users.find({  
-                                           _id:{  
+            friends: Meteor.users.find({
+                                           _id:{
                                               $ne: Meteor.userId()
                                            }
                                        }).fetch()
@@ -142,7 +142,7 @@ Router.route('deviceAccessSettings', {
     },
     action: function () {
         GoogleMaps.load();
-        
+
         if (this.ready()) {
             this.render();
         }
@@ -170,7 +170,7 @@ Router.route('deviceLocationSettings', {
     },
     action: function () {
         GoogleMaps.load();
-        
+
         if (this.ready()) {
             this.render();
         }
