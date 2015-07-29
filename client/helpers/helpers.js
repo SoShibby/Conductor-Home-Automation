@@ -5,3 +5,7 @@ Template.registerHelper('isArrayOfSize', function(array, arraySize) {
 Template.registerHelper('equals', function(v1, v2) {
     return (v1 === v2);
 });
+
+Template.registerHelper('notEquals', function(v1, v2) {
+    return (v1 !== v2);
+});
