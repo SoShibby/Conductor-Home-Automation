@@ -36,5 +36,5 @@ $('html').on('click', '#notifications .js-close', function() {
         $('#notifications .background').fadeOut(400, function() {
             $('#notifications').hide();
         });
-    });     
+    });
 });

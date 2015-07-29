@@ -20,7 +20,7 @@
 }
 
 .slider input::-webkit-slider-runnable-track {
-    background-color: #888888; 
+    background-color: #888888;
 }
 
 .slider input::-webkit-slider-thumb:before {

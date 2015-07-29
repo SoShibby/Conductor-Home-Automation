@@ -17,31 +17,31 @@ MethodRepository = (function() {
         Assert.isString(deviceId, "Parameter deviceId must be a string");
         Assert.isString(componentId, "Parameter componentId must be a string");
         Assert.isString(methodName, "Parameter methodName must be a string");
-        
+
         if(!isValidParameters(methodParameters))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Parameter methodParameters contains invalid methodParameters");
-        
+
         var update = { $set: {} };
         update.$set['components.$.methods.' + methodName] = {
                                                                 parameters: methodParameters
                                                             };
-        var result = Devices.update({ 
+        var result = Devices.update({
                                         controlUnitId: controlUnitId,
                                         id: deviceId,
                                         'components.id': componentId
                                     },
                                     update,
-                                    { 
-                                        multi: false, 
-                                        upsert: false 
+                                    {
+                                        multi: false,
+                                        upsert: false
                                     });
-                                    
+
         if(result === 1)
             return true;
         else
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Failed to add method. No component found with id '" + componentId + "' in device with id '" + deviceId + "' in control unit with id '" + controlUnitId + "'");
     }
-    
+
     /**
      * Checks if method parameters are valid or not.
      * Valid method parameters should be in the form of:
@@ -56,22 +56,22 @@ MethodRepository = (function() {
     function isValidParameters(methodParameters){
         if(typeof methodParameters !== "object")
             return false;
-        
+
         var validDataTypes = [ "string", "integer", "double", "float", "enum" ];
-        
+
         for (var parameterName in methodParameters) {
             var parameterType = methodParameters[parameterName];
-            
+
             if(typeof parameterName !== "string")
                 return false;
-                
+
             if(!contains(validDataTypes, parameterType))
                 return false;
         }
-        
+
         return true;
     }
-    
+
     /**
      * Checks if an object exist in an array
      *
@@ -99,7 +99,7 @@ MethodRepository = (function() {
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isString(deviceId, "Parameter deviceId must be a string");
         Assert.isString(componentId, "Parameter componentId must be a string");
-        
+
         Devices.update({
                                 controlUnitId: controlUnitId,
                                 id: deviceId,
@@ -109,9 +109,9 @@ MethodRepository = (function() {
                                 $set: {
                                             'components.$.methods': {}
                                         }
-                            }); 
+                            });
     }
-    
+
     /**
      * Removes a method from a device component
      *
@@ -126,22 +126,22 @@ MethodRepository = (function() {
                         id: deviceId,
                         'components.id': componentId
                     };
-                    
+
         where['components.methods.' + methodName] = { $exists: true };
-        
+
         var update = { $unset: {} };
         update.$unset['components.$.methods.' + methodName] = 1;
-        
+
         var result = Devices.update(where,
                                     update,
-                                    { multi: false, upsert: false }); 
-        
+                                    { multi: false, upsert: false });
+
         if(result === 1)
             return true;
         else
-            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove method, couldn't find a method with the name '" + methodName + "' in component with id '" + componentId + "' and device with id '" + deviceId + "' and control unit with id '" + controlUnitId + "'"); 
+            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove method, couldn't find a method with the name '" + methodName + "' in component with id '" + componentId + "' and device with id '" + deviceId + "' and control unit with id '" + controlUnitId + "'");
     }
-    
+
     /**
      * Check if a method exist in a give device component
      *
@@ -158,12 +158,12 @@ MethodRepository = (function() {
                         'components.id': componentId
                     };
         where['components.methods.' + methodName] = { $exists: true };
-        
+
         var device = Devices.findOne(where);
 
         return (device) ? true : false;
     }
-    
+
     //Return public functions
     return {
         add: add,

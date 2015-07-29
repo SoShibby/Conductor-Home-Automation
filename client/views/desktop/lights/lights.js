@@ -12,7 +12,7 @@
         //If no location is selected in the sidebar, then go to the first link in the navigation sidebar
         if(this.locationName === undefined){
             var links = makeNavigationLinks();
-            
+
             if(links.length !== 0){
                 if(Router.current().route.getName() === 'lights') {
                     Router.go('lights', {}, { query: { locationName: links[0].name }});     //Navigate to the first link in the sidebar
@@ -21,7 +21,7 @@
                 //No links exist in the sidebar
             }
         }
-        
+
         return {
                     title: "Lighting Control",
                     links: makeNavigationLinks(this.locationName)
@@ -37,20 +37,20 @@
 function makeNavigationLinks(currentLocation){
     var links = [];
     var locations = Locations.find().fetch();
-    
+
     for(var i = 0; i < locations.length; i++){
         var location = locations[i];
-        
+
         var components = ComponentFinder.find({
                                                 locationName: location.name,
                                                 componentType: 'light',
                                                 propertyName: 'power',
                                                 propertyValue: true,
                                              });
-        
+
         var description = "";
         var highlightedDescription = "";
-        
+
         if(components.length === 0) {
             description = "All lights are off";
             highlightedDescription = "";
@@ -61,16 +61,16 @@ function makeNavigationLinks(currentLocation){
             description = " lights are on";
             highlightedDescription = components.length;
         }
-        
+
         links.push({
                         name: location.name,
                         highlightedDescription: highlightedDescription,
                         description: description,
                         url: Router.current().route.url() + "?locationName=" + location.name,
-                        selected: (currentLocation === location.name)       //If the location that this link points to is the same location that we are currently viewing then set this link as selected 
+                        selected: (currentLocation === location.name)       //If the location that this link points to is the same location that we are currently viewing then set this link as selected
                    });
     }
-    
+
     return links;
 }
 

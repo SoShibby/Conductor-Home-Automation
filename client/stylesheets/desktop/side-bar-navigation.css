@@ -100,12 +100,12 @@
 .side-bar-navigation ::-webkit-scrollbar {
     width: 5px;
 }
- 
+
 .side-bar-navigation ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(71, 78, 77, 1);
     border-radius: 10px;
 }
- 
+
 .side-bar-navigation ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);

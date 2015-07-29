@@ -21,11 +21,11 @@ DeviceRepository = (function() {
         Assert.isNotEmptyString(deviceId, "Parameter 'deviceId' must contain one or more characters");
         Assert.isNotEmptyString(deviceName, "Parameter 'deviceName' must contain one or more characters");
         Assert.isNotEmptyString(deviceType, "Parameter 'deviceType' must contain one or more characters");
-        
+
         if(exists(controlUnitId, deviceId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "A device already exists with the deviceId '" + deviceId + "' in control unit with the controlUnitId '" + controlUnitId + "'");
-        
-        Devices.insert({  
+
+        Devices.insert({
                             controlUnitId: controlUnitId,
                             id: deviceId,
                             name: deviceName,
@@ -33,10 +33,10 @@ DeviceRepository = (function() {
                             components: [],
                             userAccess: [ userId ]
                         });
-                        
+
         return deviceId;
     }
-    
+
     /**
      * Removes all devices that is associated with a certain control unit id
      *
@@ -45,12 +45,12 @@ DeviceRepository = (function() {
     function removeAllByControlUnitId(controlUnitId){
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isNotEmptyString(controlUnitId, "Parameter 'controlUnitId' must contain one or more characters");
-        
-        Devices.remove({ 
+
+        Devices.remove({
                             controlUnitId: controlUnitId
                        });
     }
-    
+
     /**
      * Removes a single device by its id
      *
@@ -65,13 +65,13 @@ DeviceRepository = (function() {
                                         controlUnitId: controlUnitId,
                                         id: deviceId
                                     });
-        
+
         if(result !== 0)    //If one or more record was successfully removed     then return true
             return true;
         else                //If no record was removed then throw error as this means no device was found
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove device, no device exists with the id '" + deviceId + "' in control unit with id '" + controlUnitId + "'");
     }
-    
+
     /**
      * Get the name of a device
      *
@@ -82,18 +82,18 @@ DeviceRepository = (function() {
     function getName(controlUnitId, deviceId){
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isString(deviceId, "Parameter deviceId must be a string");
-        
-        var device = Devices.findOne({ 
+
+        var device = Devices.findOne({
                                         controlUnitId: controlUnitId,
                                         id: deviceId
                                      });
-        
+
         if(!device)
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Couldn't find a device by the id '" + deviceId + "' in control unit with id '" + controlUnitId + "'");
-            
+
         return device.name;
     }
-    
+
     /**
      * Get all the devices that is associated with a certain control unit
      *
@@ -102,12 +102,12 @@ DeviceRepository = (function() {
      */
     function getDevicesByControlUnitId(controlUnitId){
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
-        
-        return Devices.find({ 
+
+        return Devices.find({
                                 controlUnitId: controlUnitId,
                             }).fetch();
     }
-    
+
     /**
      * Check if a device with a certain id exist in a control unit
      *
@@ -118,27 +118,27 @@ DeviceRepository = (function() {
     function exists(controlUnitId, deviceId){
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isString(deviceId, "Parameter deviceId must be a string");
-        
-        var device = Devices.findOne({ 
+
+        var device = Devices.findOne({
                                         controlUnitId: controlUnitId,
                                         id: deviceId
                                     });
-                                    
+
         return (device) ? true : false;
     }
-    
+
     /**
      * Set a new name for a device
      *
      * @param controlUnitId  the id of the control unit that contains the device
      * @param deviceId       the id of the device that you want to set a new name for
-     * @param deviceName     the new name you want to set for the device 
+     * @param deviceName     the new name you want to set for the device
      */
     function setName(controlUnitId, deviceId, deviceName){
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isString(deviceId, "Parameter deviceId must be a string");
         Assert.isString(deviceName, "Parameter deviceName must be a string");
-        
+
         var result = Devices.update({
                                         controlUnitId: controlUnitId,
                                         id: deviceId
@@ -146,15 +146,15 @@ DeviceRepository = (function() {
                                     {
                                         $set: {
                                                     name: deviceName
-                                                } 
+                                                }
                                     });
-        
+
         if(result === 1)  //If one record was successfully updated then return true
             return true;
         else            //If no records were updated then throw an error as this means that no device was found
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No device exist in control unit '" + controlUnitId + "' with device id '" + deviceId + "'");
     }
-    
+
     /**
      * Give a user access to a certain device
      *
@@ -166,28 +166,28 @@ DeviceRepository = (function() {
         Assert.isString(userId, "Parameter userId must be a string");
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isString(deviceId, "Parameter deviceId must be a string");
-        
+
         if(hasUserAccess(userId, controlUnitId, deviceId))
-            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "User with id '" + userId + "' already has access to device with id '" + deviceId + "'");    
-        
+            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "User with id '" + userId + "' already has access to device with id '" + deviceId + "'");
+
         var result = Devices.update({
                                         controlUnitId: controlUnitId,
                                         id: deviceId
                                     },
-                                    { 
-                                        $push: { 
-                                            userAccess: userId 
-                                        } 
+                                    {
+                                        $push: {
+                                            userAccess: userId
+                                        }
                                     });
-                                    
+
         if(result === 1)    //If one record was successfully updated then return true
             return true;
         else                //If no record was updated then throw an error as this means no device was found
-            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No device exist in control unit '" + controlUnitId + "' with device id '" + deviceId + "'");    
+            throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No device exist in control unit '" + controlUnitId + "' with device id '" + deviceId + "'");
     }
-    
+
     /**
-     * Removes a users access to a device 
+     * Removes a users access to a device
      *
      * @param userId         the id of the user of whom you want to remove access from
      * @param controlUnitId  the id of the control unit that contains the device
@@ -197,26 +197,26 @@ DeviceRepository = (function() {
         Assert.isString(userId, "Parameter userId must be a string");
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isString(deviceId, "Parameter deviceId must be a string");
-        
+
         if(!exists(controlUnitId, deviceId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No device exist in control unit '" + controlUnitId + "' with device id '" + deviceId + "'");
-        
+
         var result = Devices.update({
                                         controlUnitId: controlUnitId,
                                         id: deviceId
                                     },
-                                    { 
-                                        $pull: { 
-                                            userAccess: userId 
-                                        } 
+                                    {
+                                        $pull: {
+                                            userAccess: userId
+                                        }
                                     });
-                                    
+
         if(result === 1)    //If one record was successfully updated then return true
             return true;
         else                //If no record was updated then throw an error as this means no device was found
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No device exist in control unit '" + controlUnitId + "' with device id '" + deviceId + "'");
     }
-    
+
     /**
      * Check if a user has access to a device
      *
@@ -229,21 +229,21 @@ DeviceRepository = (function() {
         Assert.isString(controlUnitId, "Parameter controlUnitId must be a string");
         Assert.isString(deviceId, "Parameter deviceId must be a string");
         Assert.isString(userId, "Parameter userId must be a string");
-        
+
         if(!exists(controlUnitId, deviceId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No device exist in control unit '" + controlUnitId + "' with device id '" + deviceId + "'");
-        
+
         var device = Devices.findOne({
                                         controlUnitId: controlUnitId,
                                         id: deviceId,
-                                        userAccess: { 
-                                            $in: [ userId ] 
+                                        userAccess: {
+                                            $in: [ userId ]
                                         }
                                     });
-                            
+
         return device !== undefined;
     }
-    
+
     function setLocation(controlUnitId, deviceId, longitude, latitude) {
         var result = Devices.update({
                                         controlUnitId: controlUnitId,
@@ -255,13 +255,13 @@ DeviceRepository = (function() {
                                                     'location.latitude': latitude
                                               }
                                    });
-        
+
         if(result === 1)
             return true;
         else
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to set device location.");
     }
-    
+
     //Return public functions
     return {
         add: add,
@@ -276,5 +276,5 @@ DeviceRepository = (function() {
         hasUserAccess: hasUserAccess,
         setLocation: setLocation
     };
-    
+
 }());

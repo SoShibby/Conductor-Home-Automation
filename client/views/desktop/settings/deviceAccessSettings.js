@@ -6,44 +6,44 @@ Template.DeviceAccessSettings.helpers({
         if(!selectedUser.get() && this.friends.length > 0){
             selectedUser.set(this.friends[0]);
         }
-    
+
         return this.friends;
     },
     myDevices: function() {
         var controlUnits = ControlUnits.find({ owner: Meteor.userId() }).fetch();
         var controlUnitIds = controlUnits.map(function(controlUnit){ return controlUnit.controlUnitId });
-        return Devices.find({ controlUnitId: { $in: controlUnitIds} }).fetch(); 
+        return Devices.find({ controlUnitId: { $in: controlUnitIds} }).fetch();
     },
     receivedDevices: function() {
         if(!selectedUser.get())     //If no user has been selected then just exit
             return [];
-            
+
         var controlUnits = ControlUnits.find({ owner: selectedUser.get()._id }).fetch();
         var controlUnitIds = controlUnits.map(function(controlUnit){ return controlUnit.controlUnitId });
-        return Devices.find({ controlUnitId: { $in: controlUnitIds} }).fetch(); 
+        return Devices.find({ controlUnitId: { $in: controlUnitIds} }).fetch();
     },
-    isUserSelected: function() {        
+    isUserSelected: function() {
         if(!selectedUser.get())     //If no user has been selected then just return an empty string
             return "";
-        
+
         return (this._id === selectedUser.get()._id) ? "selected" : "";
     },
     hasAccess: function() {
         if(!selectedUser.get())     //If no user has been selected then just return an empty string
             return "";
-            
+
         return hasUserDeviceAccess(selectedUser.get()._id, this) ? "confirmed" : "";
     },
     accessGivenTo: function() {
         if(!selectedUser.get())     //If no user has been selected then just return an empty string
             return "";
-        
+
         return selectedUser.get().firstName + " " + selectedUser.get().lastName;
     },
     accessReceivedFrom: function() {
         if(!selectedUser.get())     //If no user has been selected then just return an empty string
             return "";
-            
+
         return selectedUser.get().firstName + " " + selectedUser.get().lastName;
     },
     unconfirmedFriend: function() {

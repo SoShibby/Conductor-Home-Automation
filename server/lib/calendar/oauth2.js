@@ -48,7 +48,7 @@ auth = function(key, options, callback) {
     }
 
     JWT = signatureInput + '.' + signature;
-		
+
     request.post({
         url: 'https://accounts.google.com/o/oauth2/token',
         headers: {
@@ -83,7 +83,7 @@ function sign(inStr, key) {
     //verification
     verifier = crypto.createVerify("RSA-SHA256");
     verifier.update(inStr);
-    if(!verifier.verify(key, sig, 'base64')){        
+    if(!verifier.verify(key, sig, 'base64')){
         return { error : "Signature NOT Verified" }
     }
 

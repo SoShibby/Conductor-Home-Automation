@@ -1,7 +1,7 @@
 Template.ViewControlUnit.helpers({
     'owner': function() {
         var user = Meteor.users.findOne({ _id: this.owner });
-        return Format('{firstName} {lastName} ({emails.0.address})', user); 
+        return Format('{firstName} {lastName} ({emails.0.address})', user);
     },
     devices: function() {
         return Devices.find({ controlUnitId: this.controlUnitId });

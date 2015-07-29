@@ -2,19 +2,19 @@ Template.SendCommandSettings.events({
     'click .js-set-property': function(event, template){
         var form = template.find('form#set-property');
         var formData = $(form).serializeObject();
-        
+
         try{
             var filter = JSON.parse(formData.filter);
-        }catch(error){ 
+        }catch(error){
             MessageBox.displayError("Error", "Invalid filter. The filter is not a valid JSON object: " + error);
             return false;
         }
-        
+
         var propertyValue = convertToDataType(formData.propertyValue, formData.dataType);
-        
+
         if(propertyValue === undefined)
             return false;
-        
+
         Meteor.call('sendCommand', filter, { propertyValue: propertyValue }, function(error, result){
             if(error){
                 MessageBox.displayError("Failed to send command", "An error occurred when sending command. The error message was: " + error);
@@ -22,13 +22,13 @@ Template.SendCommandSettings.events({
                 MessageBox.displayInfo("Success", "Command sent to server successfully!");
             }
         });
-        
+
         return false;
     },
     'keydown textarea': function(event, template){      //Fix so we can use tab to indent lines in textareas
         var keyCode = event.keyCode || event.which;
         var $this = $(event.target);
-        
+
         if (keyCode == 9) {
             event.preventDefault();
             var start = $this.get(0).selectionStart;

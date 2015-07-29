@@ -1,5 +1,5 @@
 /**
- * ComponentManager handles the insertion and retrieving of components 
+ * ComponentManager handles the insertion and retrieving of components
  * from and to the database
  */
 ComponentRepository = (function() {
@@ -32,16 +32,16 @@ ComponentRepository = (function() {
         Assert.isNotEmptyString(componentId, "Parameter 'componentId' must contain one or more characters");
         Assert.isNotEmptyString(componentName, "Parameter 'componentName' must contain one or more characters");
         Assert.isNotEmptyString(componentType, "Parameter 'componentType' must contain one or more characters");
-         
+
         if(this.exists(controlUnitId, deviceId, componentId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "A component already exists with the componentId '" + componentId + "' in device with id '" + deviceId + "' in control unit with the controlUnitId '" + controlUnitId + "'");
-             
-        var result = Devices.update({ 
+
+        var result = Devices.update({
                                         controlUnitId: controlUnitId,
                                         id: deviceId
-                                    }, 
-                                    { 
-                                        $push: { 
+                                    },
+                                    {
+                                        $push: {
                                                     components: {
                                                                 id: componentId,
                                                                 name: componentName,
@@ -51,11 +51,11 @@ ComponentRepository = (function() {
                                                             }
                                                 }
                                     },
-                                    { 
-                                        upsert: true 
+                                    {
+                                        upsert: true
                                     });
-                           
-                                    
+
+
         if(result === 1)
             return true;
         else
@@ -65,7 +65,7 @@ ComponentRepository = (function() {
     /**
      * Get the name of a component of a certain id
      *
-     * @param controlUnitId  the id of the control unit which contains the 
+     * @param controlUnitId  the id of the control unit which contains the
      *                       device which in turn contains the component
      * @param deviceId       the id of the device which contains the component
      * @param componentId    the id of the component we are looking for
@@ -74,13 +74,13 @@ ComponentRepository = (function() {
                              deviceId and componentId
      */
     function getName(controlUnitId, deviceId, componentId){
-        var device = Devices.findOne({ 
+        var device = Devices.findOne({
                                         controlUnitId: controlUnitId,
                                         id: deviceId,
                                         'components.id': componentId
                                     },
                                     {
-                                        fields: {   
+                                        fields: {
                                                     'components': {
                                                                     $elemMatch: {
                                                                                     id: componentId
@@ -88,30 +88,30 @@ ComponentRepository = (function() {
                                                                 }
                                                 }
                                     });
-        
+
         if (!device)
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Couldn't find a component with id '" + componentId + "' in device with deviceId '" + deviceId + "' in control unit with id '" + controlUnitId + "'");
-            
+
         return device.components[0].name;
     }
-    
+
     /**
      * Find a device component in a given device
      *
-     * @param controlUnitId  the id of the control unit which contains the 
+     * @param controlUnitId  the id of the control unit which contains the
      *                       device which in turn contains the component
      * @param deviceId       the id of the device which contains the component
      * @param componentId    the id of the component we are looking for
      * @return               the device component object, if no device component is found then undefined is returned
      */
     function find(controlUnitId, deviceId, componentId){
-        var device = Devices.findOne({ 
+        var device = Devices.findOne({
                                         controlUnitId: controlUnitId,
                                         id: deviceId,
                                         'components.id': componentId
                                     },
                                     {
-                                        fields: {   
+                                        fields: {
                                                     'components': {
                                                                     $elemMatch: {
                                                                                     id: componentId
@@ -119,50 +119,50 @@ ComponentRepository = (function() {
                                                                 }
                                                 }
                                     });
-        
+
         return (device) ? device.components[0] : undefined;
     }
-    
+
      /**
      * Find all device components of a given device
      *
-     * @param controlUnitId  the id of the control unit which contains the 
+     * @param controlUnitId  the id of the control unit which contains the
      *                       device which in turn contains the components
      * @param deviceId       the id of the device which contains the components
      * @return               all device components in a device, if no device is found then undefined is returned
      */
     function findAll(controlUnitId, deviceId){
-        var device = Devices.findOne({ 
+        var device = Devices.findOne({
                                          controlUnitId: controlUnitId,
                                          id: deviceId
                                      });
-        
+
         return (device) ? device.components : undefined;
     }
-    
+
     /**
      * Check if a component of a certain id exist in the database
      *
-     * @param controlUnitId  the id of the control unit which contains the 
+     * @param controlUnitId  the id of the control unit which contains the
      *                       device which in turn contains the component
      * @param deviceId       the id of the device which contains the component
      * @param componentId    the id of the component we are looking for
      * @return               true if the component exist otherwise return false
      */
     function exists(controlUnitId, deviceId, componentId){
-        var device = Devices.findOne({ 
+        var device = Devices.findOne({
                                         controlUnitId: controlUnitId,
                                         id: deviceId,
-                                        'components.id': componentId 
+                                        'components.id': componentId
                                     });
-                                    
+
         return device !== undefined;
     }
-    
+
     /**
      * Set a new name of a component
      *
-     * @param controlUnitId  the id of the control unit which contains the 
+     * @param controlUnitId  the id of the control unit which contains the
      *                       device which in turn contains the component
      * @param deviceId       the id of the device which contains the component
      * @param componentId    the id of the component that we want to set the new name for
@@ -178,15 +178,15 @@ ComponentRepository = (function() {
                                     {
                                         $set: {
                                                     "components.$.name": componentName
-                                              } 
+                                              }
                                     });
-                                    
+
         if(result === 1)
             return true;
         else
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No component exist in control unit '" + controlUnitId + "' with device id '" + deviceId + "' and componentId '" + componentName + "'");
     }
-    
+
     // return public functions
     return {
         add: add,

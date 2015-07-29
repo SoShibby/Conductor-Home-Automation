@@ -3,13 +3,13 @@
  * Locations is in the form of rectangles that specify a specific area on the world map.
  */
 LocationRepository = (function() {
-    
+
     /**
-	 * Adds a new location with a specific name. Use the site http://www.gps-coordinates.net/ 
+     * Adds a new location with a specific name. Use the site http://www.gps-coordinates.net/
      * for an easier way to get the coordinates of the location you want to add.
-	 *
-	 * @param userId              the id of the user who created this location entry
-	 * @param locationName        the name of the location
+     *
+     * @param userId              the id of the user who created this location entry
+     * @param locationName        the name of the location
      * @param northWestLongitude  the longitude coordinate of the top-left corner of the rectangle
      * @param northWestLatitude   the latitude coordinate of the top-left corner of the rectangle
      * @param southEastLongitude  the longitude coordinate of the bottom-right corner of the rectangle
@@ -24,7 +24,7 @@ LocationRepository = (function() {
         Assert.isFloat(northWestLatitude, "Parameter northWestLatitude must be a float value");
         Assert.isFloat(southEastLongitude, "Parameter southEastLongitude must be a float value");
         Assert.isFloat(southEastLatitude, "Parameter southEastLatitude must be a float value");
-        
+
         return Locations.insert({
                                     creator: userId,
                                     name: locationName,
@@ -38,30 +38,30 @@ LocationRepository = (function() {
                                     }
                                  });
     }
-    
+
     /**
-	 * Removes a location from the database
-	 *
-	 * @param _id  the id of the location that is to be removed
+     * Removes a location from the database
+     *
+     * @param _id  the id of the location that is to be removed
      */
     function remove(_id) {
         var result = Locations.remove(_id);
-        
+
         if(result === 1)
             return true;
         else
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "Unable to remove location, couldn't find a location with _id '" + _id + "'");
     }
-    
+
     /**
-	 * Get a location with a certain id
-	 *
+     * Get a location with a certain id
+     *
      * @param _id  the id of the location that is to be retrieved
      */
     function get(_id){
         return Locations.findOne(_id);
     }
-    
+
     //return public functions
     return {
         add: add,

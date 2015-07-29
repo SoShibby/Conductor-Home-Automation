@@ -3,14 +3,14 @@ Template.CalendarSettings.helpers({
         // If this user doesn't got a calendar then just exit
         if(!this.feed || !this.feed[0].calendar)
             return;
-        
+
         var events = this.feed[0].calendar.events;
-        
+
         // Sort events after their start date
         events.sort(function(event1, event2) {
             return (event1.start > event2.start) ? 1 : -1
         });
-        
+
         return events;
     },
     start: function() {

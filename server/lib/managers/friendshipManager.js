@@ -3,7 +3,7 @@
  * friend request and declining friend requests.
  */
 FriendshipManager = (function() {
-    
+
     /**
      * Make a new friend request.
      *
@@ -13,32 +13,32 @@ FriendshipManager = (function() {
     function makeFriendRequest(requester, friend){
         if(!existsUser(requester))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No user exists with _id: " + requester);
-        
+
         if(!existsUser(friend))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No user exists with _id: " + friend);
-        
+
         if(areFriends(requester, friend))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "The users are already friends");
-        
-        Meteor.users.update({ 
-                                _id: requester 
-                            }, 
-                            { 
-                                $addToSet: { 
-                                                'friends.unconfirmed': friend  
-                                            } 
+
+        Meteor.users.update({
+                                _id: requester
+                            },
+                            {
+                                $addToSet: {
+                                                'friends.unconfirmed': friend
+                                            }
                             });
-                            
-        Meteor.users.update({ 
-                                _id: friend 
-                            }, 
-                            { 
-                                $addToSet: { 
+
+        Meteor.users.update({
+                                _id: friend
+                            },
+                            {
+                                $addToSet: {
                                                 'friends.requests': requester
-                                            } 
+                                            }
                             });
     }
-    
+
     /**
      * Accept a friend request
      *
@@ -48,31 +48,31 @@ FriendshipManager = (function() {
     function acceptFriendRequest(userId, friendsUserId){
         if(!existsUser(userId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No user exists with _id: " + userId);
-        
+
         if(!existsUser(friendsUserId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No user exists with _id: " + friendsUserId);
-            
-        Meteor.users.update({ 
-                                _id: userId 
-                            }, 
-                            { 
-                                $addToSet: { 
+
+        Meteor.users.update({
+                                _id: userId
+                            },
+                            {
+                                $addToSet: {
                                                 'friends.confirmed': friendsUserId
-                                            } 
+                                            }
                             });
-                            
-        Meteor.users.update({ 
-                                _id: friendsUserId 
-                            }, 
-                            { 
-                                $addToSet: { 
+
+        Meteor.users.update({
+                                _id: friendsUserId
+                            },
+                            {
+                                $addToSet: {
                                                 'friends.confirmed': userId
-                                            } 
+                                            }
                             });
-                            
+
         removeFriendRequest(friendsUserId, userId);
     }
-    
+
     /**
      * Declines a invitation to become friends
      *
@@ -82,7 +82,7 @@ FriendshipManager = (function() {
     function declineFriendRequest(requesterId, requestedId){
         removeFriendRequest(requesterId, requestedId);
     }
-    
+
     /**
      * Removes an open friend request
      *
@@ -92,47 +92,47 @@ FriendshipManager = (function() {
     function removeFriendRequest(requesterId, requestedId){
         if(!existsUser(requesterId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No user exists with _id: " + requesterId);
-        
+
         if(!existsUser(requestedId))
             throw new Meteor.Error(ErrorCode.INTERNAL_ERROR, "No user exists with _id: " + requestedId);
-            
-        Meteor.users.update({ 
-                                _id: requesterId 
-                            }, 
-                            { 
-                                $pull: { 
+
+        Meteor.users.update({
+                                _id: requesterId
+                            },
+                            {
+                                $pull: {
                                             'friends.unconfirmed': requestedId
                                         }
                             });
-        
-        Meteor.users.update({ 
-                                _id: requestedId 
-                            }, 
-                            { 
-                                $pull: { 
+
+        Meteor.users.update({
+                                _id: requestedId
+                            },
+                            {
+                                $pull: {
                                             'friends.unconfirmed': requesterId
                                         }
                             });
-                            
-        Meteor.users.update({ 
-                                _id: requestedId 
-                            }, 
-                            { 
-                                $pull: { 
+
+        Meteor.users.update({
+                                _id: requestedId
+                            },
+                            {
+                                $pull: {
                                             'friends.requests': requesterId
                                         }
                             });
-                            
-        Meteor.users.update({ 
-                                _id: requesterId 
-                            }, 
-                            { 
-                                $pull: { 
+
+        Meteor.users.update({
+                                _id: requesterId
+                            },
+                            {
+                                $pull: {
                                             'friends.requests': requestedId
                                         }
                             });
     }
-    
+
     /**
      * Removes a friend
      *
@@ -140,34 +140,34 @@ FriendshipManager = (function() {
      * @param user2  the user id of the second user
      */
     function removeFriend(user1, user2){
-        Meteor.users.update({ 
-                                _id: user1 
-                            }, 
-                            { 
-                                $pull: { 
+        Meteor.users.update({
+                                _id: user1
+                            },
+                            {
+                                $pull: {
                                             'friends.confirmed': user2
                                         }
                             });
-                            
-        Meteor.users.update({ 
-                                _id: user2 
-                            }, 
-                            { 
-                                $pull: { 
+
+        Meteor.users.update({
+                                _id: user2
+                            },
+                            {
+                                $pull: {
                                             'friends.confirmed': user1
                                         }
                             });
     }
-    
+
     /**
-     * Check if a user with a certain user id exist in the database 
+     * Check if a user with a certain user id exist in the database
      *
      * @param userId  the id of the user of whom we want to check if he/she exist
      */
     function existsUser(userId){
         return Meteor.users.findOne({ _id: userId }) !== undefined;
     }
-    
+
     /**
      * Check if two users are friends or not
      *
@@ -175,20 +175,20 @@ FriendshipManager = (function() {
      * @param user1  the id of the second user
      */
     function areFriends(user1, user2){
-        var user = Meteor.users.findOne({ 
-                                            $and: [ 
-                                                    { 
-                                                        _id: user1 
-                                                    }, 
-                                                    { 
-                                                        'friends.confirmed': user2 
+        var user = Meteor.users.findOne({
+                                            $and: [
+                                                    {
+                                                        _id: user1
+                                                    },
+                                                    {
+                                                        'friends.confirmed': user2
                                                     }
                                                   ]
                                         });
-                                    
+
         return user !== undefined;
     }
-    
+
     //return public functions
     return {
         makeFriendRequest: makeFriendRequest,

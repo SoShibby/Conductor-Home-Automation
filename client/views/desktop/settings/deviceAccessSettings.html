@@ -3,7 +3,7 @@
 
     <div class="settings device-access">
         <h3>Device Access</h3>
-         
+
         <div class="badge-viewer">
             <div class="header">Friends</div>
 
@@ -15,11 +15,11 @@
                             {{#if isFriend}}
                                 <div class="remove js-remove-friend"></div>
                             {{/if}}
-                            
+
                             {{#if isUnconfirmedFriend}}
                                 <div class="remove js-remove-unconfirmed-friend"></div>
                             {{/if}}
-                            
+
                             {{#if isFriendRequestPending}}
                                 <div class="confirm js-accept-friend-request"></div>
                                 <div class="remove js-decline-friend-request"></div>
@@ -31,13 +31,13 @@
                     </div>
                 </div>
             {{/each}}
-            
+
             <div class="add-friend js-add-friend circle">
                 <div class="latitude-cross"></div>
                 <div class="longitude-cross"></div>
             </div>
         </div>
- 
+
         <div class="badge-viewer">
             <div class="header">Device access given to {{accessGivenTo}}</div>
 
@@ -62,7 +62,7 @@
                 <div>You don't own any devices yet.</div>
             {{/if}}
         </div>
-        
+
         <div class="badge-viewer">
             <div class="header">Device access received from {{accessReceivedFrom}}</div>
 

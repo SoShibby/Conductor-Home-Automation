@@ -1,13 +1,13 @@
-<template name="DeviceLocationSettings">  
+<template name="DeviceLocationSettings">
     {{> SettingsMenu}}
-    
+
     <div class="settings device-location">
         <h3>Device Locations</h3>
-        
+
         <div id="map" class="map-container">
             {{> googleMap name="map" options=mapOptions}}
         </div>
-        
+
         <div class="locations">
             <h4>Locations</h4>
             <input type="button" value="Add location" class="btn btn-primary add-location js-add-location" />
@@ -19,14 +19,14 @@
             <input type="button" value="View location" class="js-view-location btn btn-primary" />
             <input type="button" value="Remove location" class="js-remove-location btn btn-danger" />
         </div>
-        
+
         <!-- Badge Viewer -->
         <h4>Devices</h4>
 
         <div class="badge-viewer">
-        
+
             <!-- Filters -->
-            <div class="filters"> 
+            <div class="filters">
                 <div class="filter form-control user">
                     <span>Owner</span>
                     <select>
@@ -47,7 +47,7 @@
                     </select>
                 </div>
             </div>
-        
+
             <!-- Device Badges -->
             {{#each devices}}
                 <div class="custom-badge device js-view-device-location">
@@ -67,4 +67,4 @@
             {{/each}}
         </div>
     </div>
-</template>  
+</template>

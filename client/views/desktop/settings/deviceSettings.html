@@ -1,14 +1,14 @@
 <template name="DeviceSettings">
     {{> SettingsMenu}}
-    
+
     <div id="control-panel-devices" class="settings">
         <h3>Devices</h3>
-        
+
         <!-- Badge Viewer -->
         <div class="badge-viewer">
-        
+
             <!-- Filters -->
-            <div class="filters"> 
+            <div class="filters">
                 <div class="filter form-control user">
                     <span>Owner</span>
                     <select>
@@ -29,7 +29,7 @@
                     </select>
                 </div>
             </div>
-        
+
             <!-- Device Badges -->
             {{#each devices}}
                 <div class="custom-badge device">

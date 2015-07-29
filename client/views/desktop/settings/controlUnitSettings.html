@@ -3,11 +3,11 @@
 
     <div class="settings control-unit">
         <h3>Control Units</h3>
-        
+
         <div class="badge-viewer">
-        
+
             <!-- Filters -->
-            <div class="filters"> 
+            <div class="filters">
                 <div class="filter filter-user form-control">
                     <span>Owner</span>
                     <select>
@@ -19,7 +19,7 @@
                     </select>
                 </div>
             </div>
-                
+
             {{#each controlUnits}}
                 <div class="custom-badge device control-unit {{connected}}">
                     <div class="name-badge">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             {{/each}}
-            
+
             <div class="js-create circle">
                 <div class="latitude-cross"></div>
                 <div class="longitude-cross"></div>

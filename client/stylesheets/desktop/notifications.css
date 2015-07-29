@@ -60,19 +60,19 @@
 #notifications .messages::-webkit-scrollbar {
     width: 5px;
 }
- 
+
 #notifications .messages::-webkit-scrollbar-track {
     background-color: #3b3b3b;
     border-radius: 10px;
 }
- 
+
 #notifications .messages::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #8a8a8b;
 }
 
 /****************
-    Alert box   
+    Alert box
 ****************/
 
 #notifications  .alerts {
@@ -151,7 +151,7 @@
 
 #notifications .info .decisions .button.ok {
     background-color: #61c3ae;
-}   
+}
 
 #notifications .info .decisions .button.no {
     background-color: #dd5b43;
@@ -163,7 +163,7 @@
 }
 
 /******************
-    Old Notifications   
+    Old Notifications
 ******************/
 
 #notifications .past-notifications {

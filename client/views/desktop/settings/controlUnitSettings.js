@@ -3,11 +3,11 @@ var selectedUser = new ReactiveVar(undefined);
 Template.ControlUnitSettings.controlUnits = function(){
     var selectedUserId = selectedUser.get();
     var filter = {};
-    
+
     if(selectedUserId){     //Filter by user id
         filter.owner = selectedUserId;
     }
-    
+
     //Fetch all devices that matches the filter
     return ControlUnits.find(filter).fetch();
 }
@@ -28,12 +28,12 @@ Template.ControlUnitSettings.events({
             }else{
                 MessageBox.displayInfo("Success", "Successfully removed control unit");
             }
-        }); 
+        });
     },
     'change .filter-user select': function(event, template) {
         var select = template.find('.filter-user select');
         var userId = select.value;
-        
+
         if(userId === "")
             selectedUser.set(undefined);
         else
@@ -46,6 +46,6 @@ Template.ControlUnitSettings.events({
             }else{
                 MessageBox.displayInfo("Success", "Successfully removed control unit");
             }
-        }); 
+        });
     }
 });

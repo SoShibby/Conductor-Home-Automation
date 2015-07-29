@@ -4,7 +4,7 @@ var map;                // Google map instance
 var selectedUser = new ReactiveVar(undefined);          // Device owner filter
 var selectedControlUnit = new ReactiveVar(undefined);   // Control unit filter
 
-Template.DeviceLocationSettings.helpers({  
+Template.DeviceLocationSettings.helpers({
     mapOptions: function() {
         if (GoogleMaps.loaded()) {
             return {
@@ -15,25 +15,25 @@ Template.DeviceLocationSettings.helpers({
         }
     },
     devices: function(){
-        var selectedUserId = selectedUser.get();    // Get device owner filter 
+        var selectedUserId = selectedUser.get();    // Get device owner filter
         var selectedControlUnitId = selectedControlUnit.get(); // Get control unit filter
-        
+
         // If no filters are set then display all devices
-        if(!selectedUserId && !selectedControlUnitId)   
+        if(!selectedUserId && !selectedControlUnitId)
             return Devices.find().fetch();
-        
+
         var filter = {};
-        
+
         // Filter devices by owner if the owner filter is set
-        if(selectedUserId){     
+        if(selectedUserId){
             filter.owner = selectedUserId;
         }
-        
+
         // Filter by control unit if the control unit filter is set
-        if(selectedControlUnitId){      
+        if(selectedControlUnitId){
             filter.controlUnitId = selectedControlUnitId;
         }
-        
+
         // Fetch all devices that matches the filter
         var controlUnits = ControlUnits.find(filter).fetch();
         var controlUnitIds = controlUnits.map(function(controlUnit){ return controlUnit.controlUnitId });
@@ -41,16 +41,16 @@ Template.DeviceLocationSettings.helpers({
     },
     users: function(){
         var user = Meteor.user();
-        
+
         if(!user || !user.friends)
             return [];
-        
+
         // Fetch all friends and display them in the owner filter
         return Meteor.users.find({ _id: { $in: user.friends.confirmed }});
     },
     controlUnits: function(){
         var selectedUserId = selectedUser.get();
-        
+
         // Fetch control units and display them in the control unit filter
         if(selectedUserId){
             return ControlUnits.find({ owner: selectedUserId }).fetch();
@@ -69,7 +69,7 @@ Template.DeviceLocationSettings.events({
     /* Remove location area */
     'click .js-remove-location': function(event, template) {
         var locationId = template.$('.js-selected-location').val();
-        
+
         Meteor.call('removeLocation', locationId, function(error, result){
             if(error){
                 MessageBox.displayInfo("Failed to remove location", "An error occurred when removing location. The error message was: " + error);
@@ -86,19 +86,19 @@ Template.DeviceLocationSettings.events({
     'change .filter.user select': function(event, template) {
         var select = template.find('.filter.user select');
         var userId = select.value;
-        
+
         if(userId === "")
             selectedUser.set(undefined);
         else
             selectedUser.set(userId);
-            
+
         $(template.find('.filter.control-unit select')).val("").change();   //select the "show all" option in the control units filter
     },
     /* Filter devices by control unit */
     'change .filter.control-unit select': function(event, template) {
         var select = template.find('.filter.control-unit select');
         var controlUnitId = select.value;
-        
+
         if(controlUnitId === "")
             selectedControlUnit.set(undefined);
         else
@@ -108,21 +108,21 @@ Template.DeviceLocationSettings.events({
     'click .js-view-location': function(event, template) {
         var locationId = template.$('.js-selected-location').val();
         var location = Locations.findOne(locationId);
-        
+
         var bounds = new google.maps.LatLngBounds(
                         new google.maps.LatLng(location.southEast.latitude, location.northWest.longitude),
                         new google.maps.LatLng(location.northWest.latitude, location.southEast.longitude)
                      );
-        
+
         map.setCenter(bounds.getCenter());
-        
+
         var mapDimension = {
             width: $('#map').width(),
             height: $('#map').height()
         };
-        
+
         map.setZoom(getBoundsZoomLevel(bounds, mapDimension));
-        
+
         scrollTo('#map', '.settings.device-location');
     },
     /* Move the map to the device location when user clicks on the device */
@@ -132,22 +132,22 @@ Template.DeviceLocationSettings.events({
             MessageBox.displayInfo("No device location found", "No device location was found for this device");
             return;
         }
-        
+
         map.setCenter(new google.maps.LatLng(this.location.latitude, this.location.longitude));
         map.setZoom(16);
-        
+
         scrollTo('#map', '.settings.device-location');
     }
 });
 
-Template.DeviceLocationSettings.onCreated(function() {  
+Template.DeviceLocationSettings.onCreated(function() {
     GoogleMaps.ready('map', function(googleMap) {
         map = googleMap.instance;
-        
+
         // Watch for changes to the Location collection.
         // Add rectangles to the map when new locations are added.
         // Remove rectangle from the map when a location is removed.
-        Locations.find().observe({  
+        Locations.find().observe({
             added: function(location) {
                 // Show a rectangle on the map for this location
                 var rectangle = new google.maps.Rectangle({
@@ -177,7 +177,7 @@ Template.DeviceLocationSettings.onCreated(function() {
                 delete rectangles[location._id];
             }
         });
-        
+
         // Watch for changes done to the Device collection.
         // Add a new marker when a new device is added.
         // Move the marker when the device updates.
@@ -189,11 +189,11 @@ Template.DeviceLocationSettings.onCreated(function() {
             changed: function(device, oldDevice) {
                 if(device.location) {
                     var marker = getDeviceMarker(device);
-                    
+
                     if(marker === undefined) {
                         addDeviceMarker(device);
                     }
-                    
+
                     marker.setPosition( { lng: device.location.longitude, lat: device.location.latitude });
                 }
             },
@@ -201,21 +201,21 @@ Template.DeviceLocationSettings.onCreated(function() {
                 removeDeviceMarker(device);
             }
         });
-        
+
     });
 });
 
 function addDeviceMarker(device) {
     if(!device.location)
         return;
-    
+
     // Add a new marker on the map that shows the current device location
     var marker = new google.maps.Marker({
         position: { lng: device.location.longitude, lat: device.location.latitude },
         map: map,
         title: device.name
     });
-    
+
     // Display device information when user clicks on the marker on the map
     google.maps.event.addListener(marker, 'click', function() {
         var body = $('body')[0];
@@ -244,7 +244,7 @@ function removeDeviceMarker(device) {
 function scrollTo(selector, view){
     if(view === undefined)
         view = 'html,body';     // The default behavior is to scroll the HTML body
-       
+
     $(view).animate({ scrollTop: $(selector).offset().top }, 'slow');
 }
 
