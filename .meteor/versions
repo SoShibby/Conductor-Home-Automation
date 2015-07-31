@@ -2,6 +2,7 @@ accounts-base@1.2.0
 accounts-password@1.1.1
 andruschka:formidable@1.0.0
 angular:angular@1.4.2
+angularui:angular-ui-router@0.2.15
 arunoda:streams@0.1.17
 autoupdate@1.2.1
 base64@1.0.3
