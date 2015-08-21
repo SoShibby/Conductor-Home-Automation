@@ -2,6 +2,11 @@ Fiber = Npm.require('fibers')
 Format = Meteor.npmRequire('string-format')
 
 Meteor.startup(function() {
+    IntervalHelper.runEveryMinute(function(){
+        console.log("Running TriggerObserver");
+        TriggerObserver.check();
+    });
+
     //Create a new communication channel for each control unit
     var controlUnits = ControlUnitRepository.getAll();
 

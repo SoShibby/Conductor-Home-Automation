@@ -1,0 +1,53 @@
+<div class="select-properties popup-view popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <h4 class="title">Select Properties</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Name</th>
+                                <th>Value</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(propertyName, property) in properties">
+                                <td>
+                                    <input type="checkbox" ng-model="property.selected" checked="{{isPropertySelected}}" />
+                                </td>
+                                <td ng-bind="propertyName">{{name}}</td>
+                                <td>
+                                    <div ng-hide="property.function">
+                                        <input ng-if="property.type === 'string'" ng-model="property.value" type="text" ng-disabled="property.selected" />
+                                        <input ng-if="property.type === 'integer' || property.type === 'double'" ng-model="property.value" type="number" ng-disabled="property.selected"/>
+                                        <select ng-if="property.type === 'boolean'" ng-model="property.value" ng-options="o.v as o.n for o in [{ n: 'False', v: false }, { n: 'True', v: true }]" ng-disabled="property.selected">
+                                        </select>
+                                        <select  ng-if="property.type === 'enum'" ng-model="property.value" ng-disabled="property.selected">
+                                            <option ng-repeat="enum in property.enum">{{enum}}</option>
+                                        </select>
+                                    </div>
+                                    <div ng-show="property.function">
+                                        <input type="text" ng-model="property.function.description" ng-disabled="true" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="button" value="ƒ" ng-click="selectPropertyFunction(property)"/>
+                                    <input type="button" value="Remove ƒ" ng-click="removeFunction(property)" ng-show="property.function"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-back btn btn-primary" ng-click="close(selectedProperties)">Go Back</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

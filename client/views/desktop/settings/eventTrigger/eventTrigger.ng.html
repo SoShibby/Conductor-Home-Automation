@@ -1,0 +1,43 @@
+<settings-menu></settings-menu>
+<div id="event-triggers-actions" class="settings">
+    <h3>Event Triggers - Actions</h3>
+    <button type="button" class="btn-add btn btn-success" ng-click="add()">Add Trigger</button>
+
+    <div class="fresh-table">
+        <div class="heading">
+            <h3 class="title">Triggers - Actions</h3>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="text" value="Trigger Description" />
+                    </th>
+                    <th>
+                        <input type="text" value="Action Description" />
+                    </th>
+                    <th>
+                        <input type="text" value="Remove" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="triggerAction in triggerActions">
+                    <td>
+                        <div class="readable-triggers">
+                            <event-trigger-translator ng-repeat="trigger in triggerAction.triggers" trigger="trigger"></event-trigger-translator>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="readable-actions">
+                            <event-action-translator ng-repeat="action in triggerAction.actions" action="action"></event-action-translator>
+                        </div>
+                    </td>
+                    <td>
+                        <a ng-click="remove(triggerAction)" href="#">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

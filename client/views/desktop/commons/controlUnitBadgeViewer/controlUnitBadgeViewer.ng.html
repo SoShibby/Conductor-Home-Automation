@@ -1,0 +1,29 @@
+<div class="badge-viewer">
+    <!-- Filters -->
+    <div class="filters">
+        <div class="filter filter-user form-control">
+            <span>Owner</span>
+            <select>
+                <option value="">Select All</option>
+                <option value="{{myUserId}}">Me</option>
+                <option ng-repeat="friend in friends" value="{{friend._id}}">{{friend.firstName}} {{friend.lastName}}</option>
+            </select>
+        </div>
+    </div>
+    <div ng-repeat="controlUnit in controlUnits" class="custom-badge device control-unit" ng-class="{ danger: (controlUnit.connection.isConnected === false) }">
+        <div class="name-badge">
+            <span ng-bind="controlUnit.name"></span>
+            <div class="controls">
+                <div class="info" ng-click="showControlUnitDetails(controlUnit)"></div>
+                <div class="remove"></div>
+            </div>
+        </div>
+        <div class="image-holder">
+            <div class="image fa"></div>
+        </div>
+    </div>
+    <div class="js-create circle" ng-click="createControlUnit()">
+        <div class="latitude-cross"></div>
+        <div class="longitude-cross"></div>
+    </div>
+</div>

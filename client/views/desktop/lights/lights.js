@@ -1,77 +1,90 @@
-﻿Template.Lights.helpers({
-    locationName: function() {
-        return (this.locationName) ? this.locationName.toUpperCase() : "Unknown location";
-    },
-    numberOfDevices: function() {
-        return this.devices.length;
-    },
-    isLightOn: function() {
-        return this.properties.power ? "active" : "";
-    },
-    sidebarInformation: function() {
-        //If no location is selected in the sidebar, then go to the first link in the navigation sidebar
-        if(this.locationName === undefined){
-            var links = makeNavigationLinks();
+﻿angular.module('homeautomation')
+    .controller('lights', ['$scope', '$stateParams', '$meteor',
+        function($scope, $stateParams, $meteor) {
 
-            if(links.length !== 0){
-                if(Router.current().route.getName() === 'lights') {
-                    Router.go('lights', {}, { query: { locationName: links[0].name }});     //Navigate to the first link in the sidebar
+            $scope.toggleLight = function(component) {
+                var value = {
+                    propertyValue: !component.properties.power.value
+                };
+                var filter = {
+                    componentId: component.id,
+                    propertyName: 'power'
+                };
+
+                $meteor.call('sendCommand', filter, value).then(
+                    function(data) {
+                        console.log('success');
+                    },
+                    function(err) {
+                        console.log(err);
+                    }
+                );
+            }
+
+            $scope.sidebar = {
+                items: _.pluck($meteor.collection(Locations), 'name'),
+                fetchItemDescription: function(locationName) {
+                    var components = ComponentFinder.find({
+                        locationName: locationName,
+                        componentType: 'light',
+                        propertyName: 'power',
+                        propertyValue: true
+                    });
+
+                    if (components.length === 0) {
+                        return {
+                            highlightedDescription: "",
+                            description: "All lights are off"
+                        };
+                    } else if (components.length === 1) {
+                        return {
+                            highlightedDescription: "1",
+                            description: " light is on"
+                        };
+                    } else {
+                        return {
+                            highlightedDescription: components.length,
+                            description: " lights are on"
+                        };
+                    }
+                },
+                selected: function(locationName) {
+                    console.log(locationName);
+
+                    $scope.locationName = locationName;
+                    var location = Locations.findOne({
+                        name: locationName
+                    });
+
+                    console.log(location);
+
+                    $scope.devices = $meteor.collection(function() {
+                        return Devices.find({
+                            $and: [{
+                                'location.longitude': {
+                                    $gte: location.northWest.longitude
+                                }
+                            }, {
+                                'location.longitude': {
+                                    $lte: location.southEast.longitude
+                                }
+                            }, {
+                                'location.latitude': {
+                                    $lte: location.northWest.latitude
+                                }
+                            }, {
+                                'location.latitude': {
+                                    $gte: location.southEast.latitude
+
+                                }
+                            }]
+                        });
+                        // $scope.devices = Devices.find({
+                        //     locationName: locationName,
+                        //     componentType: 'light'
+                        // });
+                    });
                 }
-            }else{
-                //No links exist in the sidebar
             }
         }
-
-        return {
-                    title: "Lighting Control",
-                    links: makeNavigationLinks(this.locationName)
-               };
-    }
-});
-
-/**
- * makeNavigationLinks is used for creating links and link description for the side bar navigation
- *
- * @return  array containing link information that is shown in the side bar
- */
-function makeNavigationLinks(currentLocation){
-    var links = [];
-    var locations = Locations.find().fetch();
-
-    for(var i = 0; i < locations.length; i++){
-        var location = locations[i];
-
-        var components = ComponentFinder.find({
-                                                locationName: location.name,
-                                                componentType: 'light',
-                                                propertyName: 'power',
-                                                propertyValue: true,
-                                             });
-
-        var description = "";
-        var highlightedDescription = "";
-
-        if(components.length === 0) {
-            description = "All lights are off";
-            highlightedDescription = "";
-        } else if(components.length === 1) {
-            description = " light is on";
-            highlightedDescription = "1";
-        } else {
-            description = " lights are on";
-            highlightedDescription = components.length;
-        }
-
-        links.push({
-                        name: location.name,
-                        highlightedDescription: highlightedDescription,
-                        description: description,
-                        url: Router.current().route.url() + "?locationName=" + location.name,
-                        selected: (currentLocation === location.name)       //If the location that this link points to is the same location that we are currently viewing then set this link as selected
-                   });
-    }
-
-    return links;
-}
-
-
+    ]);

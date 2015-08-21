@@ -1,0 +1,18 @@
+<!-- Badge Viewer -->
+<div class="badge-viewer">
+    <!-- Component Badges -->
+    <div ng-repeat="component in components" class="custom-badge component" ng-class="{ 'confirmed': component.selected }" ng-click="events.onComponentSelected(component)">
+        <div class="name-badge">
+            <span>
+                <span ng-bind="component.name"></span>
+                <span ng-bind="component.type"></span>
+            </span>
+            <div class="controls">
+                <div class="info" ng-click="showComponentDetails(component)"></div>
+            </div>
+        </div>
+        <div class="image-holder">
+            <div class="image fa ionicons image-{{component.type}}"></div>
+        </div>
+    </div>
+</div>

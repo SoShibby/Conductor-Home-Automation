@@ -13,7 +13,7 @@
     margin-top: 24px;
 }
 
-.badge-viewer .header {
+.badge-viewer > .header {
     font-family: Roboto, arial, sans-serif;
     font-size: 20px;
     color: rgb(131, 127, 127);
@@ -58,11 +58,13 @@
 .badge-viewer .filter {
     margin-bottom: 16px;
     float: left;
-    margin-right: 16px;
+}
+
+.badge-viewer .filter:not(:first-child) {
+    margin-left: 16px;
 }
 
 .badge-viewer .filter span {
-    float: left;
     margin-right: 15px;
     padding-top: 5px;
     font-family: font-family: Roboto, arial, sans-serif !important;
@@ -72,6 +74,19 @@
 .badge-viewer .filter select {
     width: 155px;
     color: rgb(134, 134, 134);
+    display: block;
+    margin-top: 5px;
+}
+
+.badge-viewer .filter select {
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 20px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
 /*******************************/
@@ -112,6 +127,11 @@
     background-color: #ecfea1;
 }
 
+.badge-viewer .custom-badge.danger .image-holder {
+    color: #ED4848;
+    background-color: #FEA1A1;
+}
+
 
 /* Images (icons) displayed */
 
@@ -133,7 +153,7 @@
     content: "\f16a";
 }
 
-.badge-viewer .custom-badge .image.image-phone:before, 
+.badge-viewer .custom-badge .image.image-phone:before,
 .badge-viewer .custom-badge .image.image-gsm:before {
     font-family: FontAwesome;
     content: "\f10b";
@@ -144,8 +164,8 @@
     content: "\f116";
 }
 
-.badge-viewer .custom-badge .image.image-car:before, 
-.badge-viewer .custom-badge .image.image-carDoor:before, 
+.badge-viewer .custom-badge .image.image-car:before,
+.badge-viewer .custom-badge .image.image-carDoor:before,
 .badge-viewer .custom-badge .image.image-steeringWheel:before,
 .badge-viewer .custom-badge .image.image-instrumentPanel:before {
     font-family: "Ionicons";

@@ -1,0 +1,44 @@
+﻿<div id="event-trigger-creator">
+    <!-- Start View -->
+    <div class="event-main popup-view popup">
+        <div class="content">
+            <div>
+                <div class="header">
+                    <button type="button" class="close" ng-click="close()">×</button>
+                    <h4 class="title">Create New Event Trigger - Action</h4>
+                </div>
+                <div class="body">
+                    <form>
+                        <div class="form-group" style="display: none;">
+                            <label>Name</label>
+                            <input type="text" name="name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Triggers</label>
+                            <div class="readable-triggers">
+                                <event-trigger-translator ng-repeat="trigger in triggers" trigger="trigger"></event-trigger-translator>
+                            </div>
+                        </div>
+                        <div class="form-group btn-group">
+                            <button type="button" class="btn-add-trigger btn btn-primary" ng-click="createTrigger()">Add Trigger</button>
+                        </div>
+                        <div class="form-group">
+                            <label>Actions</label>
+                            <div class="readable-actions">
+                                <event-action-translator ng-repeat="action in actions" action="action"></event-action-translator>
+                            </div>
+                        </div>
+                        <div class="form-group btn-group">
+                            <button type="button" class="btn-add-action btn btn-primary" ng-click="createAction()">Add Action</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="footer clearfix">
+                    <button type="button" class="btn-close btn btn-primary" ng-click="close()">Close</button>
+                    <button type="button" class="btn-save btn btn-primary" ng-click="save()">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="background"></div>
+    </div>
+</div>

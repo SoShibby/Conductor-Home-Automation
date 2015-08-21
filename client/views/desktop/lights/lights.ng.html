@@ -1,0 +1,19 @@
+<sidebar title="Lighting Control" items="sidebar.items" fetch-item-description="sidebar.fetchItemDescription" selected="sidebar.selected"></sidebar>
+
+<section id="devices" class="main-device-layout simple-device-view">
+    <div class="content-wrapper">
+        <header>
+            <span>{{ locationName | uppercase }}</span>
+            <span ng-if="components.length === 0">NO LIGHT SOURCES FOUND</span>
+            <span ng-if="components.length === 1">TOTAL OF {{numberOfDevices}} LIGHT SOURCE</span>
+            <span ng-if="components.length > 1">TOTAL OF {{numberOfDevices}} LIGHT SOURCES</span>
+        </header>
+        <ul ng-repeat="device in devices">
+            <li ng-repeat="component in device.components | filter: { type: 'light' }">
+                <h3 ng-bind="component.name"></h3>
+                <span>LIGHTS ARE <span class="switch" ng-class="{ active: (component.properties.power.value === true) }" ng-click="toggleLight(component)"></span></span>
+                <!-- <slider data-max="100" data-min="0" data-value="component.properties.brightness.value"></slider> -->
+            </li>
+        </ul>
+    </div>
+</section>

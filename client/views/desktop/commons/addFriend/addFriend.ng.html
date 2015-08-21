@@ -1,0 +1,23 @@
+﻿<div id="add-friend" class="popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="title">Add New Friend</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <div class="form-group">
+                        <label>Friends email address</label>
+                        <input ng-model="email" type="text" />
+                    </div>
+                </form>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-close btn btn-primary" ng-click="close()">Close</button>
+                <button type="button" class="btn-add   btn btn-primary" ng-click="addFriend(email)">Add friend</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

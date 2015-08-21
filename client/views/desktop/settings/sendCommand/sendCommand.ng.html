@@ -1,0 +1,20 @@
+<settings-menu></settings-menu>
+<div class="settings send-command">
+    <h3>Send Command</h3>
+
+    <form id="set-property">
+        <h4>Set Property</h4>
+        <label>Filter</label>
+        <!-- This looks weird, but it is needed to make the text indent in the textarea correct, otherwise it will be lots of spaces before the actual text. -->
+    <textarea  type="text" rows="10" ng-model="command.filter"></textarea>
+    <label>Property Value</label>
+    <input type="text" ng-model="command.propertyValue" />
+    <select ng-model="command.dataType">
+        <option value="string">String</option>
+        <option value="integer">Integer</option>
+        <option value="double">Double</option>
+        <option value="boolean">Boolean</option>
+    </select>
+    <button class="btn" ng-click="sendCommand(command)">Set Property Value</button>
+</form>
+</div>

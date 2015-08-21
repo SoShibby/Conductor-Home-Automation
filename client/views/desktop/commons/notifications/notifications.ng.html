@@ -1,0 +1,19 @@
+﻿<div id="notifications">
+    <div class="background" ng-click="close()"></div>
+    <div class="drop-down">
+        <h1>NOTIFICATIONS AND ALERT CENTER</h1>
+        <span>PURGE</span>
+        <div class="messages">
+            <h2>PAST NOTIFICATIONS</h2>
+            <ul class="past-notifications">
+                <li class="notification" ng-repeat="notification in notifications">
+                    <h2 ng-bind="notification.description"></h2>
+                    <span am-time-ago="notification.date"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="close" ng-click="close()">
+            <i class="ionicons ion-navicon-round"></i>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+.popup.select-component .content > div {
+    width: 510px;
+}
+
+.popup.select-component .header {
+    border-bottom: 0px;
+}
+
+.popup.select-component .body {
+    padding: 0px;
+}
+
+.popup.select-component .footer {
+    margin-top: 0px;
+    border-top: 0px;
+}
+
+.popup.select-component .footer button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

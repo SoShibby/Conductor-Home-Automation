@@ -1,16 +1,14 @@
-Template.Login.events = {
-    'click .js-login': function(event, template){
-        var form = template.find('form');
-        var formData = $(form).serializeObject();
-
-        Meteor.loginWithPassword(formData.email, formData.password, function(error){
-            if(error){
-                alert("Unable to login. Reason: " + error.reason);
-            }else{
-                Router.go('home');
-            }
-        });
-
-        return false;
-    }
-}
+angular.module('homeautomation')
+    .controller('login', ['$scope', '$state', '$meteor',
+        function($scope, $state, $meteor) {
+            $scope.doLogin = function(credentials) {
+                $meteor.loginWithPassword(credentials.email, credentials.password).then(
+                    function(data) {
+                        $state.go('dashboard');
+                    },
+                    function(error) {
+                        $scope.errorMessage = 'Login error - ' + error;
+                    });
+            };
+        }
+    ]);

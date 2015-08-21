@@ -1,0 +1,30 @@
+﻿<!-- SOURCE: http://bootsnipp.com/snippets/featured/easy-log-in-form -->
+<div id="account-form">
+    <div id="create-account">
+        <section id="account-info">
+            <h1>Register a new account</h1>
+            <div ng-show="errorMessage" ng-bind="errorMessage"></div>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" ng-model="account.firstName" class="form-control" placeholder="First name">
+                </div>
+                <div class="form-group">
+                    <input type="text" ng-model="account.lastName" class="form-control" placeholder="Last name">
+                </div>
+                <div class="form-group">
+                    <input type="email" ng-model="account.email" class="form-control" placeholder="somebody@example.com">
+                </div>
+                <div class="form-group">
+                    <input type="password" ng-model="account.password" class="form-control" placeholder="Password">
+                </div>
+                <input type="submit" ng-click="createAccount(account)" id="btn-register" class="btn btn-custom btn-lg btn-block" value="Register">
+            </form>
+            <a ui-sref="login" class="forget">Already have an account? Click here to login</a>
+            <hr>
+        </section>
+
+        <footer id="footer">
+            <p>Homeautomation © - 2014</p>
+        </footer>
+    </div>
+</div>

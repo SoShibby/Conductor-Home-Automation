@@ -1,0 +1,23 @@
+<settings-menu></settings-menu>
+<div class="settings device-location">
+    <h3>Device Locations</h3>
+
+    <div id="map" class="map-container">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" bounds="map.bounds">
+        <ui-gmap-marker ng-repeat="device in devices" idKey="device._id" coords="device.location"></ui-gmap-marker>
+        <ui-gmap-rectangle ng-repeat="rectangle in rectangles" bounds="rectangle" fill="'#FF0000 0.35'"></ui-gmap-rectangle>
+    </ui-gmap-google-map>
+</div>
+
+<div class="locations">
+    <h4>Locations</h4>
+    <input type="button" value="Add location" class="btn btn-primary add-location" ng-click="addLocation()" />
+    <select ng-model="selectedLocation" ng-options="location.name for location in locations"></select>
+    <input type="button" value="View location" class="btn btn-primary" ng-click="viewLocation(selectedLocation)" />
+    <input type="button" value="Remove location" class="btn btn-danger" ng-click="removeLocation(selectedLocation)" />
+</div>
+
+<h4>Devices</h4>
+<device-badge-viewer devices="devices" events="deviceView.events"></device-badge-viewer>
+
+</div>

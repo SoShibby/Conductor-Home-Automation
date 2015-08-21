@@ -1,0 +1,30 @@
+<div class="select-location-trigger popup-view popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="title">Select Location</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <div>
+                        <label>Select Location</label>
+                        <select ng-model="selectedLocation" ng-options="location.name for location in locations"></select>
+                    </div>
+                    <div>
+                        <label>Trigger When</label>
+                        <select ng-model="triggerWhen">
+                            <option value="deviceEnters">Device Enters Area</option>
+                            <option value="deviceLeaves">Device Leaves Area</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-back btn btn-primary" ng-click="close()">Go Back</button>
+                <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

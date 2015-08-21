@@ -1,0 +1,43 @@
+<div class="badge-viewer">
+    <div ng-repeat="friend in confirmedFriends" class="custom-badge user" ng-click="events.onFriendClicked(friend)">
+        <div class="name-badge">
+            <span>{{friend.firstName}} {{friend.lastName}}</span>
+            <div class="controls">
+                <div class="remove" ng-click="removeFriend(friend)"></div>
+            </div>
+        </div>
+        <div class="image-holder">
+            <div class="image fa fa-user"></div>
+        </div>
+    </div>
+
+    <div ng-repeat="friend in unconfirmedFriends" class="custom-badge user" ng-click="events.onFriendClicked(friend)">
+        <div class="name-badge">
+            <span>{{friend.firstName}} {{friend.lastName}}</span>
+            <div class="controls">
+                <div class="remove" ng-click="removeUnconfirmedFriend(friend)"></div>
+            </div>
+        </div>
+        <div class="image-holder">
+            <div class="image fa fa-user"></div>
+        </div>
+    </div>
+
+    <div ng-repeat="friend in friendRequestPending" class="custom-badge user" ng-click="events.onFriendClicked(friend)">
+        <div class="name-badge">
+            <span>{{friend.firstName}} {{friend.lastName}}</span>
+            <div class="controls">
+                <div class="confirm" ng-click="acceptFriendRequest(friend)"></div>
+                <div class="remove" ng-click="declineFriendRequest(friend)"></div>
+            </div>
+        </div>
+        <div class="image-holder">
+            <div class="image fa fa-user"></div>
+        </div>
+    </div>
+
+    <div class="circle" ng-click="addFriend()">
+        <div class="latitude-cross"></div>
+        <div class="longitude-cross"></div>
+    </div>
+</div>

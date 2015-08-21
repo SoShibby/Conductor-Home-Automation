@@ -1,0 +1,19 @@
+<settings-menu></settings-menu>
+<div class="settings device-access">
+    <h3>Device Access</h3>
+
+    <div class="header">Friends</div>
+    <friend-badge-viewer friends="friends" events="friendViewer.events"></friend-badge-viewer>
+
+    <div ng-if="selectedUser">
+        <div class="header">Device access given to {{selectedUser.firstName}} {{selectedUser.lastName}}</div>
+        <device-badge-viewer ng-if="deviceAccessGiven.length > 0" devices="deviceAccessGiven"></device-badge-viewer>
+        <div ng-if="deviceAccessGiven.length === 0">You don't own any devices yet.</div>
+    </div>
+
+    <div ng-if="selectedUser">
+        <div class="header">Device access received from {{selectedUser.firstName}} {{selectedUser.lastName}}</div>
+        <device-badge-viewer ng-if="deviceAccessReceived.length > 0" devices="deviceAccessReceived"></device-badge-viewer>
+        <div ng-if="deviceAccessReceived.length === 0">You haven't received access to any device.</div>
+    </div>
+</div>

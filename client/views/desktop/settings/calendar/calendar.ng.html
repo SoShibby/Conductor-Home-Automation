@@ -1,0 +1,43 @@
+<settings-menu></settings-menu>
+<div class="settings calendar">
+    <h3>Calendar</h3>
+    <button type="button" class="btn-share btn btn-success" ng-click="shareCalendar()"><i class="fa fa-share"></i>Share calendar</button>
+    <div class="fresh-table">
+        <div class="heading">
+            <h3 class="title">Events</h3>
+            <div class="refresh pull-right">
+                <a href="#">
+                    <i class="fa fa-refresh fa-fw" ng-click="refreshEvents()"></i>
+                </a>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="text" value="Event Name" />
+                    </th>
+                    <th>
+                        <input type="text" value="Start Date" />
+                    </th>
+                    <th>
+                        <input type="text" value="End Date" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="event in feed.calendar.events | orderBy: 'start'">
+                    <td ng-bind="event.summary"></td>
+                    <td>
+                        <span>{{ event.start | amDateFormat:'YYYY-MM-DD HH:mm' }}</span>
+                        (<span am-time-ago="event.start"></span>)
+                    </td>
+                    <td>
+                        <span>{{ event.end | amDateFormat: 'YYYY-MM-DD HH:mm' }}</span>
+                        (<span am-time-ago="event.end"></span>)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

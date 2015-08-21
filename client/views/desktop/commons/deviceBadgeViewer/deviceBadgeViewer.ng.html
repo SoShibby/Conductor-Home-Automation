@@ -1,0 +1,35 @@
+<!-- Badge Viewer -->
+<div class="badge-viewer">
+    <!-- Filters -->
+    <div class="filters" ng-hide="hideFilter">
+        <div class="filter form-control user">
+            <span>Owner</span>
+            <select>
+                <option value="">Select All</option>
+                <option value="{{myUserId}}">Me</option>
+                <option value="{{_id}}">{{firstName}} {{lastName}}</option>
+            </select>
+        </div>
+        <div class="filter form-control control-unit">
+            <span>Control Unit</span>
+            <select ng-change="" ng-options="controlUnit.name for controlUnit in controlUnits" ng-model="filterByControlUnit">
+                <option value="" selected>Select All</option>
+            </select>
+        </div>
+    </div>
+    <!-- Device Badges -->
+    <div ng-repeat="device in devices | filter: deviceFilter" class="custom-badge device" ng-class="{ 'confirmed': device.selected }" ng-click="events.onDeviceSelected(device)">
+        <div class="name-badge">
+            <span>
+                <span>{{device.name}}</span>
+                <span>{{device.type}}</span>
+            </span>
+            <div class="controls">
+                <div class="info" ng-click="showDeviceDetails(device)"></div>
+            </div>
+        </div>
+        <div class="image-holder">
+            <div class="image fa ionicons image-{{type}}"></div>
+        </div>
+    </div>
+</div>

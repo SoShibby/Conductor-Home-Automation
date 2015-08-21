@@ -1,0 +1,28 @@
+﻿<div id="add-location" class="popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="title">Add New Location</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <div class="form-group">
+                        <label>Location Name</label>
+                        <input type="text" ng-model="locationName" />
+                    </div>
+                    <div id="map" class="map-container">
+                        <ui-gmap-google-map center="map.center" zoom="map.zoom" bounds="map.bounds">
+                        <ui-gmap-rectangle bounds="rectangle.bounds" events="rectangle.events" fill="'#FF0000 0.35'" draggable="true" editable="true"></ui-gmap-rectangle>
+                    </ui-gmap-google-map>
+                </div>
+            </form>
+        </div>
+        <div class="footer clearfix">
+            <button type="button" class="btn-close btn btn-primary" ng-click="close()">Close</button>
+            <button type="button" class="btn-add   btn btn-primary" ng-click="addLocation(locationName, currentRectangleBounds)">Add Location</button>
+        </div>
+    </div>
+</div>
+<div class="background"></div>
+</div>
