@@ -22,7 +22,6 @@ angular.module('homeautomation')
         function($scope, $stateParams, $meteor, close) {
             $scope.messages = $meteor.collection(Messages);
             $scope.close = function(message) {
-                console.log(message);
                 Messages.remove(message._id);
             }
         }
