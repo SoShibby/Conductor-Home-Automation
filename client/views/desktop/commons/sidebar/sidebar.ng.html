@@ -1,0 +1,20 @@
+<nav class="side-bar-navigation">
+    <header>
+        <div class="bar"></div>
+        <h2>{{ title | uppercase }}</h2>
+    </header>
+    <div class="scroll-box-wrapper">
+        <div class="scroll-box-overlay"></div>
+        <div class="scroll-box">
+            <ul>
+                <li ng-repeat="item in items" ng-click="selectItem(item)" ng-class="{ active: (selectedItem === item) }">
+                    <a href="#">
+                        <h3 ng-bind="item"></h3>
+                        <span>{{fetchItemDescription(item).hightlightedDescription}}<span ng-bind="fetchItemDescription(item).description"></span></span>
+                        <i class="arrow ionicons ion-ios-arrow-forward"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

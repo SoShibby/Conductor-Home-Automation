@@ -1,0 +1,26 @@
+﻿<div id="set-device-location" class="popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="title">Set New Location</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <div class="map-container">
+                        <div id="map">
+                            <ui-gmap-google-map center="map.center" zoom="map.zoom" bounds="map.bounds">
+                            <ui-gmap-marker idKey="1" coords="marker.coords" options="marker.options"></ui-gmap-marker>
+                        </ui-gmap-google-map>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="footer clearfix">
+            <button type="button" class="btn-close btn btn-primary" ng-click="close()">Close</button>
+            <button type="button" class="btn-save btn btn-primary" ng-click="setDeviceLocation(device, marker.coords.longitude, marker.coords.latitude)">Save Location</button>
+        </div>
+    </div>
+</div>
+<div class="background"></div>
+</div>

@@ -1,0 +1,37 @@
+<div id="view-control-unit" class="popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="title">Control Unit Information</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <div class="form-group">
+                        <label>Control Unit ID</label>
+                        <input type="text" ng-model="controlUnit.controlUnitId" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Control Unit Name</label>
+                        <input type="text" ng-model="controlUnit.name" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Api Key</label>
+                        <input type="text" ng-model="controlUnit.apiKey" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label>Owner</label>
+                        <input type="text" ng-model="controlUnit.owner" disabled />
+                    </div>
+
+                    <label>Devices</label>
+                    <device-badge-viewer devices="devices" hide-filter="true"></device-badge-viewer>
+                </form>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-close btn btn-primary" ng-click="close()">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

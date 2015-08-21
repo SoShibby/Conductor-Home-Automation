@@ -1,0 +1,43 @@
+﻿  <div id="dashboard">
+    <div class="card-wrapper">
+        <div class="card temperature">
+            <div class="bar"></div>
+            <h2>TEMPERATURE INSIDE NOW</h2>
+            <div class="details">
+                <div class="icon">
+                    <div class="circle">
+                        <i class="ionicons ion-thermometer"></i>
+                    </div>
+                </div>
+                <div class="temperature">
+                    <span>21</span>
+                    <span>°C</span>
+                </div>
+            </div>
+            <div class="slider">
+                <div class="slider-background"></div>
+                <div class="slider-foreground"></div>
+            </div>
+        </div>
+        <div class="card next-event">
+            <div class="bar"></div>
+            <h2>NEXT SCHEDULED EVENT</h2>
+            <div class="details">
+                <h3>TODAY</h3>
+                <h2>7:30</h2>
+                <h2>PM</h2>
+            </div>
+            <div class="about">
+                <span>Full system check</span>
+            </div>
+        </div>
+    </div>
+    <div id="people">
+        <div ng-repeat="user in users" class="person" ng-class="{ selected: (user === selectedUser) }">
+            <div class="portrait">
+                <i class="fa fa-user"></i>
+            </div>
+            <span class="name">{{user.firstName}} {{user.lastName}}</span>
+        </div>
+    </div>
+</div>

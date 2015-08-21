@@ -1,85 +1,59 @@
-var locations = {};
-var map;
-var rectangle;
+angular.module('homeautomation')
+    .controller('addLocation', ['$scope', '$stateParams', '$meteor', 'close',
+        function($scope, $stateParams, $meteor, close) {
+            $scope.close = close;
+            $scope.currentRectangleBounds = undefined;
 
-Template.AddLocation.helpers({
-    mapOptions: function() {
-        if (GoogleMaps.loaded()) {
-            // Center the map at a random coordinate
-            return {
-                center: new google.maps.LatLng(59.37903727051661, 13.49996566772461),
-                zoom: 8
+            $scope.map = {
+                center: {
+                    latitude: 59.37903727051661,
+                    longitude: 13.49996566772461
+                },
+                zoom: 8,
+                pan: true
             };
-        }
-    }
-});
 
-Template.AddLocation.onCreated(function() {
-    GoogleMaps.ready('map', function(googleMap) {
-        map = googleMap.instance;
+            $scope.rectangle = {
+                bounds: new google.maps.LatLngBounds(
+                    new google.maps.LatLng(59.350911963131786, 13.33517074584961),
+                    new google.maps.LatLng(59.44035755347623, 13.62630844116211)
+                ),
+                events: {
+                    bounds_changed: function(rectangle) {
+                        $scope.currentRectangleBounds = rectangle.bounds;
+                    }
+                }
+            };
 
-        var bounds = getBoundsByPercentage(map, 0.8);   // Get a rectangle that takes up 80% of the current map view
+            $scope.addLocation = function(locationName, bounds) {
+                var ne = bounds.getNorthEast(); // Get North-East coordinate of the rectangle
+                var sw = bounds.getSouthWest(); // Get the South-West coordinate of the rectangle
 
-        // Show a rectangle on the map that defines the new location area
-        rectangle = new google.maps.Rectangle({
-            bounds: bounds,
-            editable: true,
-            draggable: true,
-            map: map
-        });
-
-    });
-});
-
-Template.AddLocation.events({
-    /* Add new location area */
-    'click .js-add': function(event, template) {
-        var ne = rectangle.getBounds().getNorthEast();  // Get North-East coordinate of the rectangle
-        var sw = rectangle.getBounds().getSouthWest();  // Get the South-West coordinate of the rectangle
-
-        var locationName = template.$('.js-location-name').val();
-
-        Meteor.call('addLocation', locationName, sw.lng(), ne.lat(), ne.lng(), sw.lat(), function(error, result){
-            if(error){
-                MessageBox.displayInfo("Failed to add a new location", "An error occurred when adding a new location. The error message was: " + error);
-            }else{
-                Blaze.remove(template.view);
-                $(template.firstNode).remove();
+                $meteor.call('addLocation', locationName, sw.lng(), ne.lat(), ne.lng(), sw.lat()).then(
+                    function(response) {
+                        alert('Location added successfully!');
+                        close();
+                    },
+                    function(error) {
+                        alert('Failed to add a new location. The error was: ' + error);
+                    });
             }
-        });
-    },
-    /* Close popup window */
-    'click .js-close': function(event, template) {
-        Blaze.remove(template.view);
-        $(template.firstNode).remove();
-    },
-    /* Show/Hide location area on the map */
-    'click .toggle-location-visibility': function(event, template) {
-        var visible = !rectangle.getVisible();
-        rectangle.setVisible(visible);
+        }
+    ]);
 
-        rectangle.setBounds(getBoundsByPercentage(map, 0.8));   // Get a rectangle that takes up 80% of the current map view
+// function getBoundsByPercentage(map, percentage) {
+//     var latNE = map.getBounds().getNorthEast().lat();
+//     var lngNE = map.getBounds().getNorthEast().lng();
+//     var latSE = map.getBounds().getSouthWest().lat();
+//     var lngSE = map.getBounds().getSouthWest().lng();
 
-        if(visible)
-            template.$('.toggle-location-visibility').text('Hide location');
-        else
-            template.$('.toggle-location-visibility').text('Show location');
-    }
-});
+//     var latDiff = latNE - latSE;
+//     var lngDiff = lngNE - lngSE;
 
-function getBoundsByPercentage(map, percentage) {
-    var latNE = map.getBounds().getNorthEast().lat();
-    var lngNE = map.getBounds().getNorthEast().lng();
-    var latSE = map.getBounds().getSouthWest().lat();
-    var lngSE = map.getBounds().getSouthWest().lng();
+//     var bounds = new google.maps.LatLngBounds(
+//         new google.maps.LatLng(latSE + latDiff * (1 - percentage), lngSE + lngDiff * (1 - percentage)),
+//         new google.maps.LatLng(latSE + latDiff * percentage, lngSE + lngDiff * percentage)
+//     );
 
-    var latDiff = latNE - latSE;
-    var lngDiff = lngNE - lngSE;
-
-    var bounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(latSE + latDiff * (1 - percentage), lngSE + lngDiff * (1 - percentage)),
-        new google.maps.LatLng(latSE + latDiff * percentage, lngSE + lngDiff * percentage)
-    );
-
-    return bounds;
-}
+//     return bounds;
+// }

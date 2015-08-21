@@ -1,0 +1,9 @@
+<div class="slider">
+    <div class="popup" ng-style="{ 'margin-left': (popupLeft + '%') }">
+        <div class="bottom-line"></div>
+        <div class="top-line"></div>
+        <span>%</span>
+        <span class="value" ng-bind="value"></span>
+    </div>
+    <input type="range" min="{{min}}" max="{{max}}" ng-model="value">
+</div>

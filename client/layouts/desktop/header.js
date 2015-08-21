@@ -1,14 +1,14 @@
-var currentDate = new ReactiveVar(moment());
-
-Template.Header.helpers({
-    time: function(){
-        return currentDate.get().format('hh:mmA');
-    },
-    date: function(){
-        return currentDate.get().format('M MMMM YYYY');
+angular.module('homeautomation').
+directive('header', function() {
+    return {
+        restrict: 'A',
+        templateUrl: "client/layouts/desktop/header.ng.html",
+        scope: {},
+        controller: ['$scope', '$interval', function($scope, $interval) {
+            $interval(function() {
+                $scope.time = moment().format('hh:mmA');
+                $scope.date = moment().format('M MMMM YYYY');
+            }, 1000);
+        }]
     }
 });
-
-setInterval(function() {
-    currentDate.set(moment());
-}, 1000);

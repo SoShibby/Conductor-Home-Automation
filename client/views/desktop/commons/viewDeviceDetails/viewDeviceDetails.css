@@ -1,0 +1,48 @@
+#view-device .footer{
+    text-align: center;
+}
+
+#view-device .map-container {
+    height: 300px;
+}
+
+#view-device label {
+    margin-top: 5px;
+}
+
+#view-device form > label {
+    margin-top: 20px;
+}
+
+#view-device .map-canvas {
+    border: 1px solid rgb(174, 174, 174);
+}
+
+#view-device .badge-viewer {
+    border: 1px solid #e4e4e4;
+    margin-top: 0px;
+}
+
+#view-device .alert-box {
+    background-color: rgb(253, 123, 123);
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+#view-device .alert-box i {
+    margin-right: 10px;
+}
+
+#view-device #device-name-wrapper {
+    position: relative;
+}
+
+#view-device #device-name-wrapper i {
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    color: #B8B8B8;
+    cursor: pointer;
+}

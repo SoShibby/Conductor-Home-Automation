@@ -1,18 +1,16 @@
-Template.ShareCalendar.events({
-    'click .js-share': function(event, template) {
-        var email = template.$('input[name="email"]').val();
+angular.module('homeautomation')
+.controller('shareCalendar', ['$scope', '$stateParams', '$meteor', 'close',
+    function($scope, $stateParams, $meteor, close) {
+        $scope.close = close;
 
-        Meteor.call('shareCalendar', email, function(error, result){
-            if(error){
-                MessageBox.displayInfo("Failed to share calendar", "An error occurred when trying to share calendar. The error message was: " + error);
-            }else{
-                Blaze.remove(template.view);
-                $(template.firstNode).remove();
-            }
-        });
-    },
-    'click .js-close': function(event, template){
-        Blaze.remove(template.view);
-        $(template.firstNode).remove();
+        $scope.share = function() {
+            $meteor.call('shareCalendar', $scope.email).then(
+                function(response) {
+                    alert('Calendar shared successfully!');
+                },
+                function(error) {
+                    alert('An error occured while sharing calendar. The error was: ' + error);
+                })
+        }
     }
-});
+    ]);

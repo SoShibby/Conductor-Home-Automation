@@ -1,0 +1,23 @@
+﻿<div id="share-calendar" class="popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="title">Share Calendar</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <div class="form-group">
+                        <label>Email address</label>
+                        <input type="email" ng-model="email" />
+                    </div>
+                </form>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-close btn btn-primary" ng-click="close()">Close</button>
+                <button type="button" class="btn-share btn btn-primary" ng-click="share()">Share Calendar</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

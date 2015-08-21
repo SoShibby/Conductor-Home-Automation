@@ -1,19 +1,17 @@
-Template.CreateControlUnit.events = {
-    'click .js-create': function(event, template){
-        var form = template.find('form');
-        var formData = $(form).serializeObject();
+angular.module('homeautomation')
+    .controller('createControlUnit', ['$scope', '$stateParams', '$meteor', 'close',
+        function($scope, $stateParams, $meteor, close) {
+            $scope.close = close;
 
-        Meteor.call('addControlUnit', formData.controlUnitName, function(error, result){
-            if(error){
-                MessageBox.displayInfo("Failed to add control unit", "An error occurred when creating a new control unit. The error message was: " + error);
-            }else{
-                Blaze.remove(template.view);
-                $(template.firstNode).remove();
+            $scope.create = function(controlUnitName) {
+                $meteor.call('addControlUnit', controlUnitName).then(
+                    function(response) {
+                        close();
+                    },
+                    function(error) {
+                        alert("An error occurred when creating a new control unit. The error message was: " + error);
+                    }
+                );
             }
-        });
-    },
-    'click .js-close': function(event, template){
-        Blaze.remove(template.view);
-        $(template.firstNode).remove();
-    }
-}
+        }
+    ]);

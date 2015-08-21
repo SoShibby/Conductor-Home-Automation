@@ -1,0 +1,211 @@
+/********************
+    Card
+********************/
+#dashboard .card-wrapper {
+    background-color: #00ebc1;
+    height: 310px;
+    border-top: 1px solid #00ffd7;
+    box-shadow: 0 1px 0 #43f0d1;
+    border-bottom: 1px solid #00e8b7;
+    display: flex;
+    justify-content: center;
+}
+
+#dashboard .card {
+    width: 370px;
+    min-width: 370px;
+    margin-top: 40px;
+}
+
+#dashboard .card:first-child {
+    margin-right: 100px;
+}
+
+#dashboard .card:last-child {
+    margin-left: 100px;
+}
+
+#dashboard .card .bar {
+    width: 135px;
+    border-radius: 5px;
+    height: 5px;
+    background-color: #1aa28a;
+}
+
+#dashboard .card h2 {
+    color: white;
+    font-weight: normal;
+    font-size: small;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+#dashboard .card.temperature .details {
+    height: 117px;
+}
+
+#dashboard .card.temperature .details .icon {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#dashboard .card.temperature .details .icon .circle {
+    height: 70px;
+    width: 70px;
+    background-color: #17ab91;
+    border-radius: 50%;
+    line-height: 60px;
+    text-align: center;
+    display: table;
+}
+
+#dashboard .card.temperature .details .icon .circle i {
+    font-size: 60px;
+    color: #00ebc1;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#dashboard .card.temperature .details .temperature {
+    font-size: 110px;
+    color: white;
+    margin-left: 45px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#dashboard .card.temperature .temperature span:last-child {
+    margin-left: -27px;
+    color: #19a68d;
+}
+
+#dashboard .card.temperature .slider {
+    width: 250px;
+    height: 5px;
+    clear: both;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 55px;
+}
+
+#dashboard .card.temperature .slider .slider-background {
+    background-color: #10c1a2;
+    height: inherit;
+    border-radius: 5px;
+    position: absolute;
+    width: inherit;
+}
+
+#dashboard .card.temperature .slider .slider-foreground {
+    background-color: white;
+    height: inherit;
+    position: absolute;
+    width: 85px;
+    border-radius: 5px;
+}
+
+#dashboard .card.next-event {
+    width: 280px;
+    min-width: 280px;
+}
+
+#dashboard .card.next-event .details h3 {
+    color: #1aa38b;
+    font-size: 36px;
+    font-weight: 100;
+    margin: 0;
+}
+
+#dashboard .card.next-event .details h2:nth-child(2) {
+    font-size: 80px;
+    margin: 0;
+    float: left;
+}
+
+#dashboard .card.next-event .details h2:nth-child(3) {
+    margin: 0;
+    float: left;
+    font-size: 80px;
+    color: #1b9e87;
+}
+
+#dashboard .card.next-event .about {
+    color: white;
+    font-size: 23px;
+    clear: both;
+    padding-top: 9px;
+}
+
+/********************
+    People
+********************/
+
+#dashboard #people {
+    height: 120px;
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+#dashboard #people .person {
+    height: 70px;
+    width: 230px;
+    text-align: center;
+    opacity: 0.4;
+    cursor: pointer;
+    margin-right: 60px;
+}
+
+#dashboard #people .person:last-child {
+    margin-right: 0px;
+}
+
+#dashboard #people .person.selected {
+    opacity: 1;
+}
+
+#dashboard #people .person .portrait {
+    height: 70px;
+    width: 70px;
+    background-color: #e76e5e;
+    color: #CD1C04;
+    border-radius: 50%;
+    line-height: 60px;
+    text-align: center;
+    display: table;
+    float: left;
+}
+
+#dashboard #people .person .portrait i {
+    font-size: 50px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#dashboard #people .person .name {
+    line-height: 80px;
+    color: #878787;
+    font-size: large;
+    float: left;
+    margin-left: 15px;
+}
+
+#dashboard #people .add-person {
+    background-color: #00ba99;
+    height: 30px;
+    width: 30px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+#dashboard #people .add-person span {
+    color: white;
+    font-size: xx-large;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 30px;
+    padding-left: 6px;
+}
