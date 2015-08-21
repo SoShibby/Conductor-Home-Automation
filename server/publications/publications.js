@@ -106,3 +106,11 @@ Meteor.publish("calendarMappings", function() {
         owner: this.userId
     });
 });
+
+Meteor.publish("triggerActions", function() {
+    if (this.userId) {
+        return TriggerActions.find({
+            owner: this.userId
+        });
+    }
+});
