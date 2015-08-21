@@ -1,0 +1,10 @@
+<div class="row">
+    <span class="highlight" ng-bind="action.filter.propertyName"></span>
+    <span> to </span>
+    <span class="highlight" ng-bind="action.value.propertyValue"></span>
+    <span> in </span>
+    <span class="highlight" ng-bind="(device.components | filter: { id: trigger.componentId })[0].name"></span>
+    <span> on the </span>
+    <span class="highlight" ng-bind="device.name"></span>
+    <span> device</span>
+</div>

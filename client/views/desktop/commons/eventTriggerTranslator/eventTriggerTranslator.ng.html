@@ -1,0 +1,35 @@
+<div ng-if="trigger.triggerType === 'deviceProperty'" class="row">
+  <span class="highlight" ng-bind="trigger.propertyName"></span>
+  <span> is set to </span>
+  <span class="highlight" ng-bind="trigger.propertyValue"></span>
+  <span> in </span>
+  <span class="highlight" ng-bind="(device.components | filter: { id: trigger.componentId })[0].name"></span>
+  <span> on the </span>
+  <span class="highlight" ng-bind="device.name"></span>
+  <span> device</span>
+</div>
+
+<div ng-if="trigger.triggerType === 'calendarEvent'" class="row">
+  <span ng-show="trigger.timeOffset !== 0">
+    <span>the time is </span>
+    <span class="highlight">{{readableTimeOffset(trigger.timeOffset)}}</span>
+    <span ng-if="trigger.timeOffset > 0">after</span>
+    <span ng-if="trigger.timeOffset < 0">before</span>
+  </span>
+  <span>the calendar event </span>
+  <span class="highlight" ng-bind="trigger.calendarEventName"></span>
+  <span> is </span>
+  <span class="highlight" ng-show="trigger.triggerWhen === 'startEvent'">starting</span>
+  <span class="highlight" ng-show="trigger.triggerWhen === 'duringEvent'">ongoing</span>
+  <span class="highlight" ng-show="trigger.triggerWhen === 'endEvent'">ending</span>
+</div>
+
+<div ng-if="trigger.triggerType === 'deviceLocation'" class="row">
+ <span>the </span>
+ <span class="highlight" ng-bind="device.name"></span>
+ <span> device </span>
+ <span class="highlight" ng-show="trigger.triggerWhen === 'deviceEnters'">enters</span>
+ <span class="highlight" ng-show="trigger.triggerWhen === 'deviceLeaves'">leaves</span>
+ <span> the location </span>
+ <span class="highlight" ng-bind="trigger.locationName"></span>
+</div>

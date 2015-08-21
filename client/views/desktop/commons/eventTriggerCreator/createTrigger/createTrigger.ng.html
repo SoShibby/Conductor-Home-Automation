@@ -1,0 +1,21 @@
+<div class="select-trigger-type popup-view popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close(triggers)">×</button>
+                <h4 class="title">Select Trigger Type</h4>
+            </div>
+            <div class="body">
+                <div>
+                    <button type="button" class="btn btn-primary" ng-click="selectDevice()">Trigger When Device Property Changes</button>
+                    <button type="button" class="btn btn-primary" ng-click="selectCalendarEvent()">Trigger On Calendar Event</button>
+                    <button type="button" class="btn btn-primary" ng-click="selectDeviceLocation()">Trigger When Device Location Changes</button>
+                </div>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-back btn btn-primary" ng-click="close(triggers)">Go Back</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

@@ -1,0 +1,31 @@
+.readable-triggers {
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgb(197, 197, 197);
+    margin-bottom: 10px;
+    min-height: 100px;
+    overflow: auto;
+    width: 350px;
+}
+
+.readable-triggers .highlight {
+    color: rgb(249, 3, 3);
+}
+
+event-trigger-translator {
+    display: inline-block;
+}
+
+event-trigger-translator::before {
+    content: "and";
+}
+
+event-trigger-translator:first-child::before {
+    content: "When";
+}
+
+.readable-triggers .row {
+    white-space: nowrap;
+    color: rgb(31, 31, 31);
+    display: inline;
+}

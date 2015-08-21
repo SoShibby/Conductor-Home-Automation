@@ -1,0 +1,49 @@
+<div class="popup-view popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <h4 class="title">Select Property Function</h4>
+            </div>
+            <div class="body">
+                <!-- Select Function -->
+                <div>
+                    <label>Function Name</label>
+                    <select ng-model="selectedFunction" ng-options="function.description for function in functions[property.type]"></select>
+                </div>
+                <!-- Select Function Options -->
+                <div ng-show="selectedFunction">
+                    <!-- Boolean Options -->
+                    <div ng-if="property.type === 'boolean'">
+                        <span ng-if="selectedFunction.name === 'toggle'">No options available for this function</span>
+                    </div>
+                    <!-- Integer Options -->
+                    <div ng-if="property.type === 'integer'">
+                        <div ng-if="selectedFunction.name === 'increaseBy'">
+                            <label>Increase Value By</label>
+                            <input type="number" ng-model="options.increaseBy" />
+                            <label>Max Value</label>
+                            <input type="number" ng-model="options.maxValue" />
+                        </div>
+                        <div ng-if="selectedFunction.name === 'decreaseBy'">
+                            <label>Decrease Value By</label>
+                            <input type="number" ng-model="options.decreaseBy" />
+                            <label>Min Value</label>
+                            <input type="number" ng-model="options.minValue" />
+                        </div>
+                    </div>
+                    <div ng-if="property.type === 'string'">
+                        <div ng-if="selectedFunction.name === 'notEqual'">
+                            <label>Not equal to the following value</label>
+                            <input type="text" ng-model="options.value" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-back btn btn-primary" ng-click="close()">Go Back</button>
+                <button type="button" class="btn-back btn btn-primary" ng-click="add(selectedFunction.name, selectedFunction.description, options)">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

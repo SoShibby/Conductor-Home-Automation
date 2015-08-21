@@ -1,0 +1,17 @@
+.select-trigger-type .body button {
+    width: 300px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.select-trigger-type .footer {
+    margin-top: 0px;
+}
+
+.select-trigger-type .footer button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

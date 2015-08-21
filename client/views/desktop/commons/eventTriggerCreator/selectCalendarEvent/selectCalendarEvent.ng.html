@@ -1,0 +1,35 @@
+<div class="popup-view popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close()">×</button>
+                <h4 class="title">Select Trigger Type</h4>
+            </div>
+            <div class="body">
+                <form>
+                    <div>
+                        <label>Calendar Event Name</label>
+                        <input type="text" ng-model="options.calendarEventName" />
+                    </div>
+                    <div>
+                        <label>Time Offset (in minutes)</label>
+                        <input type="number" ng-model="options.timeOffset" />
+                    </div>
+                    <div>
+                        <label>Trigger When Event Is:</label>
+                        <select ng-model="options.triggerWhen">
+                            <option value="startEvent">Starting</option>
+                            <option value="duringEvent">Ongoing</option>
+                            <option value="endEvent">Ending</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="footer clearfix">
+                <button type="button" class="btn-back btn btn-primary" ng-click="close()">Go Back</button>
+                <button type="button" class="btn btn-primary" ng-click="close(options)">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>
