@@ -68,10 +68,16 @@
 
 /*********************/
 
-.popup input {
+.popup input,
+.popup select {
     box-sizing: border-box;
     width: 100%;
     height: 35px;
+}
+
+.popup input:disabled,
+.popup select:disabled {
+    background-color: rgba(234, 229, 229, 0.58) !important;
 }
 
 .popup input[type="checkbox"] {
@@ -82,7 +88,9 @@
     margin-right: 6px;
 }
 
-.popup input[type="text"] {
+.popup input[type="text"],
+.popup input[type="number"],
+.popup select {
     background-color: #ffffff;
     border: 1px solid #cccccc;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
