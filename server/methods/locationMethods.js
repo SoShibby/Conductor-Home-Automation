@@ -39,5 +39,7 @@ Meteor.methods({
         }
 
         DeviceRepository.setLocation(controlUnitId, deviceId, longitude, latitude);
+
+        TriggerObserver.check();
     }
 });

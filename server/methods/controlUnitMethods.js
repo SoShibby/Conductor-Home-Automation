@@ -11,7 +11,7 @@ Meteor.methods({
     addDevice: function(apiKey, deviceId, deviceName, deviceType, components){
         try{
             console.log('\n------- addDevice DDP --------');
-            
+
             //Print debug messages
             console.log("API key: " + apiKey);
             console.log("device id: " + deviceId);
@@ -189,7 +189,9 @@ Meteor.methods({
 
         //Set the property value in the database
         PropertyRepository.setValue(controlUnitId, deviceId, componentId, propertyName, propertyValue);
-        
+
+        TriggerObserver.check();
+
         //Send OK response
         return true;
     },
