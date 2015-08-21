@@ -1,6 +1,11 @@
 angular.module('homeautomation', ['angular-meteor', 'ui.router', 'angularMoment', 'angularModalService', 'uiGmapgoogle-maps']);
 
-angular.module('homeautomation').run(["$rootScope", "$state", function($rootScope, $state) {
+angular.module('homeautomation').run(["$rootScope", "$state", 'ModalService', function($rootScope, $state, ModalService) {
+  ModalService.showModal({
+    templateUrl: "client/views/desktop/commons/messagebox/messagebox.ng.html",
+    controller: "messageBoxHandler"
+  });
+
   $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
     // We can catch the error thrown when the $requireUser promise is rejected
     // and redirect the user back to the main page

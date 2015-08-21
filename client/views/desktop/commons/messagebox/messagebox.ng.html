@@ -1,0 +1,15 @@
+﻿<div ng-if="messages.length > 0" id="message-box" class="popup">
+    <div class="content">
+        <div>
+            <div class="header">
+                <button type="button" class="close" ng-click="close(messages[0])">×</button>
+                <h4 class="title" ng-bind="messages[0].title"></h4>
+            </div>
+            <div class="body" ng-bind="messages[0].description"></div>
+            <div class="footer">
+                <button type="button" class="btn btn-primary" ng-click="close(messages[0])">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="background"></div>
+</div>

@@ -1,30 +1,29 @@
-var Messages = new Meteor.Collection(null);
-
-$(document).ready(function() {
-    MessageBox.init();
-});
+var Messages = new Mongo.Collection(null);
 
 MessageBox = {
-    init: function(){
-        var domRoot = $('body')[0];
-        Blaze.render(Template.MessageBox, domRoot);
-        console.log('rendered');
-        console.log(domRoot);
+    displayInfo: function(title, description) {
+        Messages.insert({
+            title: title,
+            description: description,
+            type: 'info'
+        });
     },
-    displayInfo: function(title, message){
-        Messages.insert({ title: title, body: message });
-    },
-    displayError: function(title, message){
-        Messages.insert({ title: title, body: message });
+    displayError: function(title, message) {
+        Messages.insert({
+            title: title,
+            description: description,
+            type: 'error'
+        });
     }
 }
 
-Template.MessageBox.message = function(){
-    return Messages.findOne();
-}
-
-Template.MessageBox.events({
-    'click .js-close': function(event){
-        Messages.remove(this._id);
-    }
-});
+angular.module('homeautomation')
+    .controller('messageBoxHandler', ['$scope', '$stateParams', '$meteor', 'close',
+        function($scope, $stateParams, $meteor, close) {
+            $scope.messages = $meteor.collection(Messages);
+            $scope.close = function(message) {
+                console.log(message);
+                Messages.remove(message._id);
+            }
+        }
+    ]);
