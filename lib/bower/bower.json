@@ -1,0 +1,8 @@
+{
+  "name": "homeautomation",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-modal-service": "0.6.7"
+  },
+  "private": true
+}
