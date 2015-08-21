@@ -62,12 +62,14 @@ sha@1.0.3
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3
+stevezhu:lodash@1.0.2
 templating@1.1.1
 tonekk:angular-moment@1.0.2
 tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3
 urigo:angular@0.9.3
+urigo:angular-google-maps@2.0.8
 url@1.0.4
 webapp@1.2.0
 webapp-hashing@1.0.3
